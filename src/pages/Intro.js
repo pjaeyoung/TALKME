@@ -1,6 +1,5 @@
 import React from 'react';
-import Login from './Login';
-// import { Switch, Route, Redirect } from 'react-router-dom';
+import { withRouter } from 'react-router-dom';
 
 class Intro extends React.Component {
   constructor(props) {
@@ -10,10 +9,27 @@ class Intro extends React.Component {
   render() {
     return (
       <div>
-        도입하면입니다.
+        <div>애니메이션</div>
+        <div>
+          <button onClick={() => {
+            this.props.history.push('/createRoom');
+          }}>
+            GUEST
+          </button>
+          <button onClick={() => {
+            this.props.history.push('/login');
+          }}>
+            LOGIN
+            </button>
+          <button onClick={() => {
+            this.props.history.push('/signup');
+          }}>
+            signup
+            </button>
+        </div>
       </div>
     )
   }
 }
 
-export default Intro;
+export default withRouter(Intro);
