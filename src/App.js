@@ -2,6 +2,8 @@ import React from 'react';
 import Main from './pages/Main';
 import Intro from './pages/Intro';
 import Login from './pages/Login';
+import Signup from './pages/Signup';
+import CreateRoom from './pages/CreateRoom';
 import { Switch, Route, Redirect } from 'react-router-dom';
 
 class App extends React.Component {
@@ -36,6 +38,16 @@ class App extends React.Component {
               exact
               path="/login"
               render={() => <Login />}
+            />
+            <Route
+              exact
+              path="/signup"
+              render={() => <Signup />}
+            />
+            <Route
+              exact
+              path="/createRoom"
+              render={() => <CreateRoom />}
             />
           </Switch>
 
