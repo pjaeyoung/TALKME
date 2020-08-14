@@ -2,35 +2,12 @@ import React from 'react'
 import QuestionAnswerPair from "../component/QuestionAnswerPair";
 import { withRouter } from 'react-router-dom';
 
-//더미 데이터
-let data = {
-  title: "My way",
-  questions: [
-    {
-      id: 1,
-      text: "How are you feeling today?"
-    },
-    {
-      id: 2,
-      text: "What makes you happy?"
-    },
-    {
-      id: 3,
-      text: "The most important thing is that you did it your way."
-    },
-    {
-      id: 4,
-      text: "Don't lose yourself."
-    }
-  ]
-}
-
 class ChattingRoom extends React.Component {
   constructor(props) {
     super(props)
     this.state = {
-      title: data.title,
-      questions_answers: [data.questions[0]],
+      title: this.props.location.title,
+      questions_answers: [this.props.location.questions[0]],
       answer: "",
       idx: 0
     }
@@ -53,8 +30,8 @@ class ChattingRoom extends React.Component {
 
     //questions_answers 배열에 question 인덱스를 바탕으로 요소 추가
     //만약 인덱스가 주어진 데이터배열의 길이-1 보다 작으면 인덱스 +1에 해당하는 데이터객체를 추가
-    if (idx < data.questions.length - 1) {
-      newQuestions_answers.push(data.questions[idx + 1])
+    if (idx < this.props.location.questions.length - 1) {
+      newQuestions_answers.push(this.props.location.questions[idx + 1])
     }
     //작으면 빈값으로 이루어진 더미데이터 객체를 questions_answers 배열에 추가
     //(더미 데이터가 없으면 아래에서 map이 안되고 + 질문과 답변의 순서 인덱스가 1 차이가 나기때문에 이렇게 해결해보았음 )

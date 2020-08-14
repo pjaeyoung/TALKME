@@ -5,7 +5,6 @@ import Login from './pages/Login';
 import Signup from './pages/Signup';
 import CreateRoom from './pages/CreateRoom';
 import ChattingRoom from './pages/ChattingRoom';
-import ChattingRoom from './pages/ChattingRoom';
 import PasswordFst from './pages/PasswordFst';
 import PasswordSnd from './pages/PasswordSnd';
 import PasswordTrd from './pages/PasswordTrd';
