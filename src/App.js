@@ -4,7 +4,8 @@ import Intro from './pages/Intro';
 import Login from './pages/Login';
 import Signup from './pages/Signup';
 import CreateRoom from './pages/CreateRoom';
-import { Switch, Route, Redirect } from 'react-router-dom';
+import ChattingRoom from './pages/ChattingRoom';
+import { Switch, Route } from 'react-router-dom';
 
 class App extends React.Component {
   constructor(props) {
@@ -48,6 +49,11 @@ class App extends React.Component {
               exact
               path="/createRoom"
               render={() => <CreateRoom />}
+            />
+            <Route
+              exact
+              path="/chattingRoom"
+              render={() => <ChattingRoom />}
             />
           </Switch>
 
