@@ -5,6 +5,11 @@ import Login from './pages/Login';
 import Signup from './pages/Signup';
 import CreateRoom from './pages/CreateRoom';
 import ChattingRoom from './pages/ChattingRoom';
+import ChattingRoom from './pages/ChattingRoom';
+import PasswordFst from './pages/PasswordFst';
+import PasswordSnd from './pages/PasswordSnd';
+import PasswordTrd from './pages/PasswordTrd';
+import RoomList from './pages/RoomList';
 import { Switch, Route } from 'react-router-dom';
 
 class App extends React.Component {
@@ -47,12 +52,32 @@ class App extends React.Component {
             />
             <Route
               exact
-              path="/createRoom"
+              path="/passwordfst"
+              render={() => <PasswordFst />}
+            />
+            <Route
+              exact
+              path="/passwordsnd"
+              render={() => <PasswordSnd />}
+            />
+            <Route
+              exact
+              path="/passwordtrd"
+              render={() => <PasswordTrd />}
+            />
+            <Route
+              exact
+              path="/roomlist"
+              render={() => <RoomList />}
+            />
+            <Route
+              exact
+              path="/createroom"
               render={() => <CreateRoom />}
             />
             <Route
               exact
-              path="/chattingRoom"
+              path="/chattingroom"
               render={() => <ChattingRoom />}
             />
           </Switch>
