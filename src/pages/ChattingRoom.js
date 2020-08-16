@@ -20,8 +20,8 @@ class ChattingRoom extends React.Component {
   componentDidMount() {
     const { id, title, questions } = this.props.location
     //id가 있으면 유저 -> id가지고 api요청 setstate, this.props.location.id 
-    if (!id) {
-      fetch(`/room/1/questions`)
+    if (id) {
+      fetch(`/room/${id}/questions`)
         .then(res => res.json())
         .then(data => this.setState({
           //타이틀과 첫번째 질문 셋팅

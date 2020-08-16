@@ -1,6 +1,6 @@
 import React from 'react'
 import { withRouter } from 'react-router-dom';
-import jwtDecode from "jwt-decode"
+// import jwtDecode from "jwt-decode"
 
 function SocialLogin(props) {
   //리다이렉트되어서 왔을 때 쿼리를 받아서 있으면 post요청
@@ -14,11 +14,11 @@ function SocialLogin(props) {
       method: "post"
     })
       .then(res => res.json())
-      .then(data => {
-        console.log(jwtDecode(data.id_token))
-        const { email, name } = jwtDecode(data.id_token)
-        console.log(email, name)
-      })
+    // .then(data => {
+    // console.log(jwtDecode(data.id_token))
+    // const { email, name } = jwtDecode(data.id_token)
+    // console.log(email, name)
+    // })
 
     return (
       <div>

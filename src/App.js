@@ -3,20 +3,22 @@ import Main from './pages/Main';
 import Intro from './pages/Intro';
 import Login from './pages/Login';
 import Signup from './pages/Signup';
+import RoomList from './pages/RoomList';
 import CreateRoom from './pages/CreateRoom';
+import UpdateRoom from './pages/UpdateRoom';
 import ChattingRoom from './pages/ChattingRoom';
+import SocialLogin from './pages/SocialLogin';
 import PasswordFst from './pages/PasswordFst';
 import PasswordSnd from './pages/PasswordSnd';
 import PasswordTrd from './pages/PasswordTrd';
-import RoomList from './pages/RoomList';
+import WrongPath from './component/WrongPath';
 import { Switch, Route, Redirect } from 'react-router-dom';
-import SocialLogin from './pages/SocialLogin';
 
 class App extends React.Component {
   constructor(props) {
     super(props)
     this.state = {
-      isLogin: false,
+      isLogin: true,
       isGuest: false
     }
     this.handlingIsLogin = this.handlingIsLogin.bind(this)
@@ -82,15 +84,35 @@ class App extends React.Component {
               path="/roomlist"
               render={() => <RoomList isLogin={isLogin} />}
             />
+            {/* <Route
+              exact
+              path="/roomlist"
+              render={() => {
+                if (this.state.isLogin) {
+                  return <RoomList />
+                } else {
+                  return <Redirect to="/intro" />
+                }
+              }}
+            /> */}
             <Route
               exact
               path="/createroom"
-              render={() => <CreateRoom />}
+              render={() => <CreateRoom isLogin={this.state.isLogin} />}
+            />
+            <Route
+              exact
+              path="/updateroom/:roomId"
+              render={() => <UpdateRoom />}
             />
             <Route
               exact
               path="/chattingroom"
               render={() => this.state.isLogin || this.state.isGuest ? <ChattingRoom isLogin={isLogin} isGuest={isGuest} /> : <Redirect to="/login" />}
+            />
+            <Route
+              path="/"
+              render={() => <WrongPath />}
             />
           </Switch>
 

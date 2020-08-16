@@ -2,18 +2,19 @@ import React from 'react';
 import Question from '../component/Question';
 import { withRouter } from 'react-router-dom';
 
-class CreateRoom extends React.Component {
+class UpdateRoom extends React.Component {
   constructor(props) {
     super(props)
     this.state = {
+      id: "",
       title: "",
       description: "",
       questions: [],
     }
   }
-  // intro page로 이동
+  // 뒤로가기 클릭 시 roomlist로 이동
   backBtn() {
-    this.props.history.push('/intro');
+    this.props.history.push('/roomlist');
   }
   // state의 key와 value를 입력받아 변경
   changeState(key, value) {
@@ -47,52 +48,55 @@ class CreateRoom extends React.Component {
       questions: questions
     })
   }
-  // 질문의 id값을 순서대로 재할당 후 chttingroom에 title과 questions를 보내고 이동
-  startBtn() {
-    if (this.state.title) {
-      let count = 0;
-      let questions = this.state.questions.reduce((arr, cur) => {
-        cur.id = count;
-        count++;
-        arr[0].push(cur);
-        arr[1].push(cur.text);
-        return arr;
-      }, [[], []])
-      console.log('요청')
 
-      if (this.props.isLogin) {
-        // 유저일 때
-        fetch('/room', {
-          method: 'POST',
-          headers: {
-            "Content-Type": "application/json",
-          },
-          body: JSON.stringify({
-            title: this.state.title,
-            description: this.state.description,
-            questions: questions[1]
-          }),
-          credentials: 'include'
-        })
-          .then(res => res.json())
-          .then(data => {
-            this.props.history.push({
-              pathname: "/chattingroom",
-              id: data.room.id
-            });
-          })
-          .catch(err => console.log(err))
-      } else {
-        // 게스트일 때
-        this.props.history.push({
-          pathname: "/chattingroom",
+  saveBtn() {
+    if (this.state.title) {
+      // room patch 요청
+      let questionsText = this.state.questions.map(question => question.text);
+
+      fetch("/room", {
+        method: "PATCH",
+        headers: {
+          "Content-Type": "application/json"
+        },
+        body: JSON.stringify({
+          roomId: this.state.id,
           title: this.state.title,
-          questions: questions[0]
-        });
-      }
+          description: this.state.description,
+          questions: questionsText
+        }),
+        credentials: "include"
+      })
+        .then(res => res.json())
+        .then(data => console.log(data))
+        .catch(err => console.log(err))
+
+      this.props.history.push({
+        pathname: "/roomlist"
+      });
     } else {
       alert("title을 입력해 주세요.")
     }
+  }
+
+  componentDidMount() {
+    fetch(`/room/${this.props.match.params.roomId}`, {
+      method: "get",
+      headers: {
+        "Content-Type": "application/json"
+      },
+      credentials: "include"
+    })
+      .then(res => res.json())
+      .then(room => {
+        this.setState({
+          id: room.id,
+          title: room.title,
+          description: room.description,
+          questions: room.questions
+        })
+      })
+      .catch(err => console.log(err))
   }
 
   render() {
@@ -104,20 +108,27 @@ class CreateRoom extends React.Component {
         </div>
         <div>
           <span>title: </span>
-          <input type="text" onChange={(e) => { this.changeState("title", e.target.value) }}></input>
+          <input
+            type="text"
+            value={this.state.title}
+            onChange={(e) => { this.changeState("title", e.target.value) }}></input>
         </div>
         <div>
           <div>description: </div>
-          <input type="text" onChange={(e) => { this.changeState("description", e.target.value) }}></input>
+          <input
+            type="text"
+            value={this.state.description}
+            onChange={(e) => { this.changeState("description", e.target.value) }}></input>
         </div>
         <div>
           <ul >
-            {this.state.questions.map(question =>
-              <Question
+            {this.state.questions.map(question => {
+              return <Question
                 key={question.id}
                 question={question}
                 deleteQuestion={this.deleteQuestion.bind(this)}
-              />)}
+              />
+            })}
           </ul>
           <input type="text" placeholder="+ add question"
             onKeyPress={(e) => {
@@ -127,10 +138,10 @@ class CreateRoom extends React.Component {
               }
             }}></input>
         </div>
-        <button onClick={() => this.startBtn()}>start</button>
+        <button onClick={() => this.saveBtn()}>save</button>
       </div>
     )
   }
 }
 
-export default withRouter(CreateRoom);
+export default withRouter(UpdateRoom);
