@@ -37,7 +37,7 @@ class ChattingRoom extends React.Component {
         ))
     }
     //없으면 게스트 -> props 다시 확인해서 setstate  this.props.location.title, this.props.location.questions[0]
-    else {
+    else if (questions) {
       this.setState({
         //타이틀과 첫번째 질문 셋팅
         data: questions,
@@ -50,8 +50,10 @@ class ChattingRoom extends React.Component {
         ]
       })
     }
-
-
+    // 
+    else {
+      this.props.history.push("/intro")
+    }
   }
 
   handlingInputValue(e) {

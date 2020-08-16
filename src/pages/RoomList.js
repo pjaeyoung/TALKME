@@ -61,25 +61,20 @@ class RoomList extends React.Component {
   }
 
   componentDidMount() {
-    if (this.props.isLogin) {
-      fetch("/roomList", {
-        method: "get",
-        headers: {
-          "Content-Type": "application/json"
-        },
-        credentials: "include"
-      })
-        .then(res => res.json())
-        .then(data => {
-          this.setState({
-            rooms: data.rooms
-          })
+    fetch("/roomList", {
+      method: "get",
+      headers: {
+        "Content-Type": "application/json"
+      },
+      credentials: "include"
+    })
+      .then(res => res.json())
+      .then(data => {
+        this.setState({
+          rooms: data.rooms
         })
-        .catch(err => console.log(err))
-    } else {
-      this.props.history.push('/intro');
-    }
-
+      })
+      .catch(err => console.log(err))
   }
 
   render() {

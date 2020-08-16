@@ -11,7 +11,6 @@ import SocialLogin from './pages/SocialLogin';
 import PasswordFst from './pages/PasswordFst';
 import PasswordSnd from './pages/PasswordSnd';
 import PasswordTrd from './pages/PasswordTrd';
-import WrongPath from './component/WrongPath';
 import { Switch, Route, Redirect } from 'react-router-dom';
 
 class App extends React.Component {
@@ -41,18 +40,13 @@ class App extends React.Component {
           <Switch>
             <Route
               exact
-              path="/"
-              render={() => <Main />}
-            />
-            <Route
-              exact
               path="/intro"
               render={() => <Intro handlingIsLogin={this.handlingIsLogin} />}
             />
             <Route
               exact
               path="/login"
-              render={() => <Login handlingIsLogin={this.handlingIsLogin} isLogin={this.state.isLogin} />}
+              render={() => <Login handlingIsLogin={this.handlingIsLogin} />}
             />
             <Route
               exact
@@ -82,37 +76,26 @@ class App extends React.Component {
             <Route
               exact
               path="/roomlist"
-              render={() => <RoomList isLogin={isLogin} />}
+              render={() => this.state.isLogin ? <RoomList /> : <Redirect to="/intro" />}
             />
-            {/* <Route
-              exact
-              path="/roomlist"
-              render={() => {
-                if (this.state.isLogin) {
-                  return <RoomList />
-                } else {
-                  return <Redirect to="/intro" />
-                }
-              }}
-            /> */}
             <Route
               exact
               path="/createroom"
-              render={() => <CreateRoom isLogin={this.state.isLogin} />}
+              render={() => this.state.isLogin || this.state.isGuest ? <CreateRoom isLogin={isLogin} /> : <Redirect to="/intro" />}
             />
             <Route
               exact
               path="/updateroom/:roomId"
-              render={() => <UpdateRoom />}
+              render={() => this.state.isLogin ? <UpdateRoom /> : <Redirect to="/intro" />}
             />
             <Route
               exact
               path="/chattingroom"
-              render={() => this.state.isLogin || this.state.isGuest ? <ChattingRoom isLogin={isLogin} isGuest={isGuest} /> : <Redirect to="/login" />}
+              render={() => this.state.isLogin || this.state.isGuest ? <ChattingRoom isLogin={isLogin} isGuest={isGuest} /> : <Redirect to="/intro" />}
             />
             <Route
               path="/"
-              render={() => <WrongPath />}
+              render={() => <Main />}
             />
           </Switch>
 
