@@ -9,17 +9,25 @@ import PasswordFst from './pages/PasswordFst';
 import PasswordSnd from './pages/PasswordSnd';
 import PasswordTrd from './pages/PasswordTrd';
 import RoomList from './pages/RoomList';
-import { Switch, Route } from 'react-router-dom';
+import { Switch, Route, Redirect } from 'react-router-dom';
+import SocialLogin from './pages/SocialLogin';
 
 class App extends React.Component {
   constructor(props) {
     super(props)
     this.state = {
-      isLogin: false
+      isLogin: false,
+      isGuest: false
     }
+    this.handlingIsLogin = this.handlingIsLogin.bind(this)
+  }
+
+  handlingIsLogin(key) {
+    this.setState({ [key]: true })
   }
 
   render() {
+    const { isLogin, isGuest } = this.state
     return (
       <>
         <div>
@@ -37,17 +45,22 @@ class App extends React.Component {
             <Route
               exact
               path="/intro"
-              render={() => <Intro />}
+              render={() => <Intro handlingIsLogin={this.handlingIsLogin} />}
             />
             <Route
               exact
               path="/login"
-              render={() => <Login />}
+              render={() => <Login handlingIsLogin={this.handlingIsLogin} isLogin={this.state.isLogin} />}
             />
             <Route
               exact
               path="/signup"
               render={() => <Signup />}
+            />
+            <Route
+              exact
+              path="/sociallogin"
+              render={() => <SocialLogin />}
             />
             <Route
               exact
@@ -67,7 +80,7 @@ class App extends React.Component {
             <Route
               exact
               path="/roomlist"
-              render={() => <RoomList />}
+              render={() => <RoomList isLogin={isLogin} />}
             />
             <Route
               exact
@@ -77,7 +90,7 @@ class App extends React.Component {
             <Route
               exact
               path="/chattingroom"
-              render={() => <ChattingRoom />}
+              render={() => this.state.isLogin || this.state.isGuest ? <ChattingRoom isLogin={isLogin} isGuest={isGuest} /> : <Redirect to="/login" />}
             />
           </Switch>
 

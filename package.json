@@ -6,6 +6,7 @@
     "@testing-library/jest-dom": "^4.2.4",
     "@testing-library/react": "^9.5.0",
     "@testing-library/user-event": "^7.2.1",
+    "jwt-decode": "^2.2.0",
     "react": "^16.13.1",
     "react-dom": "^16.13.1",
     "react-router-dom": "^5.2.0",
@@ -35,5 +36,6 @@
   },
   "devDependencies": {
     "eslint-plugin-react": "^7.20.5"
-  }
+  },
+  "proxy": "http://ec2-13-124-126-40.ap-northeast-2.compute.amazonaws.com:4000"
 }
