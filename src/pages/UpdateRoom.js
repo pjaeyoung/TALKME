@@ -54,13 +54,6 @@ class UpdateRoom extends React.Component {
       // room patch 요청
       let questionsText = this.state.questions.map(question => question.text);
 
-      console.log(JSON.stringify({
-        roomId: this.state.id,
-        title: this.state.title,
-        description: this.state.description,
-        questions: questionsText
-      }))
-
       fetch("/room", {
         method: "PATCH",
         headers: {

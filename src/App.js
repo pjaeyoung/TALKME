@@ -7,6 +7,7 @@ import RoomList from './pages/RoomList';
 import CreateRoom from './pages/CreateRoom';
 import UpdateRoom from './pages/UpdateRoom';
 import ChattingRoom from './pages/ChattingRoom';
+import SocialLogin from './pages/SocialLogin';
 import PasswordFst from './pages/PasswordFst';
 import PasswordSnd from './pages/PasswordSnd';
 import PasswordTrd from './pages/PasswordTrd';
@@ -17,11 +18,18 @@ class App extends React.Component {
   constructor(props) {
     super(props)
     this.state = {
-      isLogin: false
+      isLogin: true,
+      isGuest: false
     }
+    this.handlingIsLogin = this.handlingIsLogin.bind(this)
+  }
+
+  handlingIsLogin(key) {
+    this.setState({ [key]: true })
   }
 
   render() {
+    const { isLogin, isGuest } = this.state
     return (
       <>
         <div>
@@ -39,17 +47,22 @@ class App extends React.Component {
             <Route
               exact
               path="/intro"
-              render={() => <Intro />}
+              render={() => <Intro handlingIsLogin={this.handlingIsLogin} />}
             />
             <Route
               exact
               path="/login"
-              render={() => <Login />}
+              render={() => <Login handlingIsLogin={this.handlingIsLogin} isLogin={this.state.isLogin} />}
             />
             <Route
               exact
               path="/signup"
               render={() => <Signup />}
+            />
+            <Route
+              exact
+              path="/sociallogin"
+              render={() => <SocialLogin />}
             />
             <Route
               exact
@@ -69,7 +82,7 @@ class App extends React.Component {
             <Route
               exact
               path="/roomlist"
-              render={() => <RoomList isLogin={this.state.isLogin} />}
+              render={() => <RoomList isLogin={isLogin} />}
             />
             {/* <Route
               exact
@@ -95,7 +108,7 @@ class App extends React.Component {
             <Route
               exact
               path="/chattingroom"
-              render={() => <ChattingRoom />}
+              render={() => this.state.isLogin || this.state.isGuest ? <ChattingRoom isLogin={isLogin} isGuest={isGuest} /> : <Redirect to="/login" />}
             />
             <Route
               path="/"
