@@ -6,22 +6,14 @@ class QuestionAnswerPair extends React.Component {
   }
 
   render() {
+
     return (
-      //props로 질문과 답변이 모두 오면
-      this.props.data.answer && this.props.data.text ?
-        <>
-          <div>{this.props.data.text}</div>
-          <div>{this.props.data.answer}</div>
-        </>
+      //props로 답변이 오면
+      this.props.data.answer ?
+        <div>{this.props.data.answer}</div>
         :
-        //둘 중 하나만 오면
-        this.props.data.text ?
-          <div>{this.props.data.text}</div>
-          :
-          <div>{this.props.data.answer}</div>
-
-
-
+        //질문만 오면
+        <div>{this.props.data.text}</div>
     )
   }
 }

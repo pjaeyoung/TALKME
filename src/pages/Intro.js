@@ -12,7 +12,8 @@ class Intro extends React.Component {
         <div>애니메이션</div>
         <div>
           <button onClick={() => {
-            this.props.history.push('/createRoom');
+            this.props.handlingIsLogin("isGuest")
+            this.props.history.push('/createroom');
           }}>
             GUEST
           </button>
