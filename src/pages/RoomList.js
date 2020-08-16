@@ -2,22 +2,32 @@ import React from 'react';
 import Room from '../component/Room';
 import { withRouter } from 'react-router-dom';
 
-let rooms = [
-  { id: 1, title: "hello" },
-  { id: 2, title: "world" }
-]
-
 class RoomList extends React.Component {
   constructor(props) {
     super(props)
     this.state = {
-      rooms: rooms
+      rooms: []
     }
     this.deleteRoom = this.deleteRoom.bind(this);
   }
 
   backBtn() {
-    this.props.history.push('/login');
+    //
+    // 로그아웃 구현
+    //
+    // fetch("/auth/logout", {
+    //   method: "get",
+    //   headers: {
+    //     "Content-Type": "application/json"
+    //   },
+    //   credentials: "include"
+    // })
+    //   .then(res => {
+    //     if (res.ok) {
+    //       this.props.history.push('/login');
+    //     }
+    //   })
+    //   .catch(err => console.log(err))
   }
 
   redirectCreateRoom() {
@@ -25,14 +35,51 @@ class RoomList extends React.Component {
   }
 
   deleteRoom(id) {
-    let rooms = this.state.rooms.filter(room => {
-      if (room.id !== id) {
-        return room;
-      }
+    fetch("/room", {
+      method: "delete",
+      headers: {
+        "Content-Type": "application/json"
+      },
+      body: JSON.stringify({
+        roomId: id
+      }),
+      credentials: "include"
     })
-    this.setState({
-      rooms: rooms
-    })
+      .then(res => {
+        if (res.ok) {
+          let rooms = this.state.rooms.filter(room => {
+            if (room.id !== id) {
+              return room;
+            }
+          })
+          this.setState({
+            rooms: rooms
+          })
+        }
+      })
+      .catch(err => console.log(err))
+  }
+
+  componentDidMount() {
+    if (this.props.isLogin) {
+      fetch("/roomList", {
+        method: "get",
+        headers: {
+          "Content-Type": "application/json"
+        },
+        credentials: "include"
+      })
+        .then(res => res.json())
+        .then(data => {
+          this.setState({
+            rooms: data.rooms
+          })
+        })
+        .catch(err => console.log(err))
+    } else {
+      this.props.history.push('/intro');
+    }
+
   }
 
   render() {
@@ -46,8 +93,7 @@ class RoomList extends React.Component {
           {this.state.rooms.map(room =>
             <Room
               key={room.id}
-              id={room.id}
-              title={room.title}
+              room={room}
               deleteRoom={this.deleteRoom}
             />)}
           <li onClick={() => this.redirectCreateRoom()}>+</li>

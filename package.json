@@ -35,5 +35,6 @@
   },
   "devDependencies": {
     "eslint-plugin-react": "^7.20.5"
-  }
+  },
+  "proxy": "http://ec2-13-124-126-40.ap-northeast-2.compute.amazonaws.com:4000"
 }

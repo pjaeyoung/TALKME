@@ -9,7 +9,6 @@ class CreateRoom extends React.Component {
       title: "",
       description: "",
       questions: [],
-      questionCount: 1
     }
   }
   // intro page로 이동
@@ -24,17 +23,17 @@ class CreateRoom extends React.Component {
   }
   // state.questions 배열에 {id: ,question: } 추가
   addQuestion(value) {
+    let { questions } = this.state;
+
     let question = {
-      id: this.state.questionCount,
+      id: questions.length ? questions[questions.length - 1].id + 1 : 0,
       text: value
     };
 
-    let questions = this.state.questions;
     questions.push(question);
 
     this.setState({
-      questions: questions,
-      questionCount: this.state.questionCount + 1
+      questions: questions
     })
   }
   // id를 입력받아 해당 id를 key로 가지는 질문 삭제
@@ -50,18 +49,50 @@ class CreateRoom extends React.Component {
   }
   // 질문의 id값을 순서대로 재할당 후 chttingroom에 title과 questions를 보내고 이동
   startBtn() {
-    let count = 1;
-    let questions = this.state.questions.map(question => {
-      question.id = count;
-      count++;
-      return question;
-    })
+    if (this.state.title) {
+      let count = 0;
+      let questions = this.state.questions.reduce((arr, cur) => {
+        cur.id = count;
+        count++;
+        arr[0].push(cur);
+        arr[1].push(cur.text);
+        return arr;
+      }, [[], []])
+      console.log('요청')
 
-    this.props.history.push({
-      pathname: "/chattingroom",
-      title: this.state.title,
-      questions: questions
-    });
+      if (this.props.isLogin) {
+        // 유저일 때
+        fetch('/room', {
+          method: 'POST',
+          headers: {
+            "Content-Type": "application/json",
+          },
+          body: JSON.stringify({
+            title: this.state.title,
+            description: this.state.description,
+            questions: questions[1]
+          }),
+          credentials: 'include'
+        })
+          .then(res => res.json())
+          .then(data => {
+            this.props.history.push({
+              pathname: "/chattingroom",
+              id: data.room.id
+            });
+          })
+          .catch(err => console.log(err))
+      } else {
+        // 게스트일 때
+        this.props.history.push({
+          pathname: "/chattingroom",
+          title: this.state.title,
+          questions: questions[0]
+        });
+      }
+    } else {
+      alert("title을 입력해 주세요.")
+    }
   }
 
   render() {

@@ -3,13 +3,15 @@ import Main from './pages/Main';
 import Intro from './pages/Intro';
 import Login from './pages/Login';
 import Signup from './pages/Signup';
+import RoomList from './pages/RoomList';
 import CreateRoom from './pages/CreateRoom';
+import UpdateRoom from './pages/UpdateRoom';
 import ChattingRoom from './pages/ChattingRoom';
 import PasswordFst from './pages/PasswordFst';
 import PasswordSnd from './pages/PasswordSnd';
 import PasswordTrd from './pages/PasswordTrd';
-import RoomList from './pages/RoomList';
-import { Switch, Route } from 'react-router-dom';
+import WrongPath from './component/WrongPath';
+import { Switch, Route, Redirect } from 'react-router-dom';
 
 class App extends React.Component {
   constructor(props) {
@@ -67,17 +69,37 @@ class App extends React.Component {
             <Route
               exact
               path="/roomlist"
-              render={() => <RoomList />}
+              render={() => <RoomList isLogin={this.state.isLogin} />}
             />
+            {/* <Route
+              exact
+              path="/roomlist"
+              render={() => {
+                if (this.state.isLogin) {
+                  return <RoomList />
+                } else {
+                  return <Redirect to="/intro" />
+                }
+              }}
+            /> */}
             <Route
               exact
               path="/createroom"
-              render={() => <CreateRoom />}
+              render={() => <CreateRoom isLogin={this.state.isLogin} />}
+            />
+            <Route
+              exact
+              path="/updateroom/:roomId"
+              render={() => <UpdateRoom />}
             />
             <Route
               exact
               path="/chattingroom"
               render={() => <ChattingRoom />}
+            />
+            <Route
+              path="/"
+              render={() => <WrongPath />}
             />
           </Switch>
 
