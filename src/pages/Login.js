@@ -1,22 +1,22 @@
-import React from 'react'
-import { withRouter } from 'react-router-dom';
+import React from "react";
+import { withRouter } from "react-router-dom";
 
 class Login extends React.Component {
   constructor(props) {
-    super(props)
+    super(props);
     this.state = {
       email: "",
       password: "",
-    }
+    };
   }
 
   handlingInputValue(key, e) {
-    this.setState({ [key]: e.target.value })
+    this.setState({ [key]: e.target.value });
   }
 
   isCorrectInformation() {
-    const { email, password } = this.state
-    const { handlingIsLogin } = this.props
+    const { email, password } = this.state;
+    const { handlingIsLogin } = this.props;
     fetch("/auth/login", {
       method: "POST",
       headers: {
@@ -27,17 +27,17 @@ class Login extends React.Component {
     })
       .then(res => {
         if (res.status === 200) {
-          handlingIsLogin()
+          handlingIsLogin();
 
         } else {
-          alert("잘못된 로그인 정보입니다.")
+          alert("잘못된 로그인 정보입니다.");
         }
-      })
+      });
   }
 
   render() {
-    const { email, password } = this.state
-    const { handlingIsLogin } = this.props
+    const { email, password } = this.state;
+    const { handlingIsLogin } = this.props;
     return (
       <div>
         <button onClick={() => this.props.history.push("/intro")}>뒤로가기</button >
@@ -61,20 +61,20 @@ class Login extends React.Component {
               //response의 상태코드가 200이면 App의 state변경 메소드 실행
               .then(res => {
                 if (res.status === 200) {
-                  console.log(res.status)
-                  handlingIsLogin("isLogin")
-                  this.props.history.push("/roomlist")
+                  console.log(res.status);
+                  handlingIsLogin("isLogin");
+                  this.props.history.push("/roomlist");
                 } else {
-                  alert("잘못된 로그인 정보입니다.")
+                  alert("잘못된 로그인 정보입니다.");
                 }
-              })
+              });
           }}>
             Login
           </button>
           <button>Continue with Google</button>
         </div>
       </div>
-    )
+    );
   }
 }
 
