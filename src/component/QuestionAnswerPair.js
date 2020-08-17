@@ -1,8 +1,8 @@
-import React from 'react'
+import React from "react";
 
 class QuestionAnswerPair extends React.Component {
   constructor(props) {
-    super(props)
+    super(props);
   }
 
   render() {
@@ -14,7 +14,7 @@ class QuestionAnswerPair extends React.Component {
         :
         //질문만 오면
         <div>{this.props.data.text}</div>
-    )
+    );
   }
 }
 

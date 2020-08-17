@@ -39,9 +39,14 @@ class App extends React.Component {
         </div>
 
         <div id="rightMain">
-          <button id="contactBtn">contact</button>
+          <div id="rightHeader">
+            <div id="contactBtn">
+              <div id="contactText">contact</div>
+              <div id="contactLine"></div>
+            </div>
+          </div>
 
-          <div id="mobile">
+          <div id="mobileBox">
             <Switch>
               <Route
                 exact
@@ -116,8 +121,10 @@ class App extends React.Component {
             </Switch>
           </div>
 
-          <div id="teamName">
-            2020 Sensual people
+          <div id="rightBottom">
+            <div id="teamName">
+              © 2020 Sensual people
+          </div>
           </div>
 
         </div>
