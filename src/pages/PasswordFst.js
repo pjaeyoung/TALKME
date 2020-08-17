@@ -1,29 +1,27 @@
-import React from 'react'
-import { withRouter } from 'react-router-dom';
+import React from "react";
+import { withRouter } from "react-router-dom";
 
 class PasswordFst extends React.Component {
   constructor(props) {
-    super(props)
+    super(props);
     this.state = {
       email: ""
-    }
+    };
   }
-
+  // 뒤로가기 버튼 클릭 시 login page로 이동
   backBtn() {
-    this.props.history.push('/login');
+    this.props.history.push("/login");
   }
-
+  // state의 email을 입력받은 email로 변경
   changeEmail(email) {
     this.setState({
       email: email
-    })
+    });
   }
-
+  // send 버튼 클릭 시 secret key 발급 API 요청 후 passwordsnd page로 이동
   sendEmail() {
-    // fetch
-
     // fetch("/auth/pwinquiry/askkey", {
-    //   method: "post",
+    //   method: "POST",
     //   headers: {
     //     "Content-Type": "application/json"
     //   },
@@ -37,15 +35,14 @@ class PasswordFst extends React.Component {
     //       alert("Secret key가 정상적으로 발송되었습니다. email을 확인해 주세요");
     //       this.props.history.push("/passwordsnd");
     //     } else {
-    //       alert("해당 email을 찾을 수 없습니다.")
+    //       alert("해당 email을 찾을 수 없습니다.");
     //     }
     //   })
-    //   .catch(err => console.log(err))
-
+    //   .catch(err => console.log(err));
 
     let em = "inho";
     if (this.state.email === em) {
-      this.props.history.push('/passwordsnd');
+      this.props.history.push("/passwordsnd");
     } else {
       alert("email을 찾을 수 없습니다.");
     }
@@ -54,13 +51,13 @@ class PasswordFst extends React.Component {
   render() {
     return (
       <div>
-        <button onClick={() => { this.backBtn() }}>뒤로가기</button>
+        <button onClick={() => this.backBtn()}>뒤로가기</button>
         <div>별똥별 애니메이션</div>
         <div>Enter your email for new password</div>
-        <input type="email" onChange={(e) => { this.changeEmail(e.target.value) }}></input>
-        <button onClick={() => { this.sendEmail() }}>send</button>
+        <input type="email" onChange={e => this.changeEmail(e.target.value)}></input>
+        <button onClick={() => this.sendEmail()}>send</button>
       </div>
-    )
+    );
   }
 }
 

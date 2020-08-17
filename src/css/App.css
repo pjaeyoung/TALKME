@@ -1,0 +1,46 @@
+html, body, #root, #main {
+  width: 100%;
+  height: 100%;
+}
+
+@font-face {
+  font-family: 'BMHANNAAir';
+  src: url('https://cdn.jsdelivr.net/gh/projectnoonnu/noonfonts_four@1.0/BMHANNAAir.woff') format('woff');
+  font-weight: normal;
+  font-style: normal;
+}
+
+body {
+  background-color: #1D1A28;
+  color: white;
+  font-family: 'BMHANNAAir';
+}
+
+#main {
+  display: flex;
+}
+
+#leftMain {
+  width: 55%;
+}
+
+#rightMain {
+  width: 45%;
+}
+
+#contactBtn {
+  position: relative;
+  left: 80%;
+}
+
+#mobile {
+  position: absolute;
+  top: 15%;
+  width: 40%;
+  height: 70%;
+}
+
+#teamName {
+  position: relative;
+  top: 85%;
+}

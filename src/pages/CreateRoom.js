@@ -1,27 +1,27 @@
-import React from 'react';
-import Question from '../component/Question';
-import { withRouter } from 'react-router-dom';
+import React from "react";
+import Question from "../component/Question";
+import { withRouter } from "react-router-dom";
 
 class CreateRoom extends React.Component {
   constructor(props) {
-    super(props)
+    super(props);
     this.state = {
       title: "",
       description: "",
       questions: [],
-    }
+    };
   }
-  // intro page로 이동
+  // 뒤로가기 클릭 시 intro page로 이동
   backBtn() {
-    this.props.history.push('/intro');
+    this.props.history.push("/intro");
   }
   // state의 key와 value를 입력받아 변경
   changeState(key, value) {
     this.setState({
       [key]: value
-    })
+    });
   }
-  // state.questions 배열에 {id: ,question: } 추가
+  // state.questions 배열에 id와 question을 객체 형태로 추가
   addQuestion(value) {
     let { questions } = this.state;
 
@@ -34,7 +34,7 @@ class CreateRoom extends React.Component {
 
     this.setState({
       questions: questions
-    })
+    });
   }
   // id를 입력받아 해당 id를 key로 가지는 질문 삭제
   deleteQuestion(id) {
@@ -42,10 +42,10 @@ class CreateRoom extends React.Component {
       if (question.id !== id) {
         return question;
       }
-    })
+    });
     this.setState({
       questions: questions
-    })
+    });
   }
   // 질문의 id값을 순서대로 재할당 후 chttingroom에 title과 questions를 보내고 이동
   startBtn() {
@@ -57,13 +57,12 @@ class CreateRoom extends React.Component {
         arr[0].push(cur);
         arr[1].push(cur.text);
         return arr;
-      }, [[], []])
-      console.log('요청')
+      }, [[], []]);
 
       if (this.props.isLogin) {
         // 유저일 때
-        fetch('/room', {
-          method: 'POST',
+        fetch("/room", {
+          method: "POST",
           headers: {
             "Content-Type": "application/json",
           },
@@ -72,7 +71,7 @@ class CreateRoom extends React.Component {
             description: this.state.description,
             questions: questions[1]
           }),
-          credentials: 'include'
+          credentials: "include"
         })
           .then(res => res.json())
           .then(data => {
@@ -81,7 +80,7 @@ class CreateRoom extends React.Component {
               id: data.room.id
             });
           })
-          .catch(err => console.log(err))
+          .catch(err => console.log(err));
       } else {
         // 게스트일 때
         this.props.history.push({
@@ -91,7 +90,7 @@ class CreateRoom extends React.Component {
         });
       }
     } else {
-      alert("title을 입력해 주세요.")
+      alert("title을 입력해 주세요.");
     }
   }
 
@@ -104,11 +103,11 @@ class CreateRoom extends React.Component {
         </div>
         <div>
           <span>title: </span>
-          <input type="text" onChange={(e) => { this.changeState("title", e.target.value) }}></input>
+          <input type="text" onChange={e => this.changeState("title", e.target.value)}></input>
         </div>
         <div>
           <div>description: </div>
-          <input type="text" onChange={(e) => { this.changeState("description", e.target.value) }}></input>
+          <input type="text" onChange={e => this.changeState("description", e.target.value)}></input>
         </div>
         <div>
           <ul >
@@ -120,7 +119,7 @@ class CreateRoom extends React.Component {
               />)}
           </ul>
           <input type="text" placeholder="+ add question"
-            onKeyPress={(e) => {
+            onKeyPress={e => {
               if (e.key === "Enter") {
                 this.addQuestion(e.target.value);
                 e.target.value = "";
@@ -129,7 +128,7 @@ class CreateRoom extends React.Component {
         </div>
         <button onClick={() => this.startBtn()}>start</button>
       </div>
-    )
+    );
   }
 }
 

@@ -1,12 +1,12 @@
-import React from 'react';
+import React from "react";
 
 class Question extends React.Component {
   constructor(props) {
-    super(props)
+    super(props);
     this.state = {
       question: this.props.question,
       deleteDisplay: false
-    }
+    };
     this.handleButtonPress = this.handleButtonPress.bind(this);
     this.handleButtonRelease = this.handleButtonRelease.bind(this);
     this.handleButtonLeave = this.handleButtonLeave.bind(this);
@@ -16,7 +16,7 @@ class Question extends React.Component {
     this.buttonPressTimer = setTimeout(() => {
       this.setState({
         deleteDisplay: !this.state.deleteDisplay
-      })
+      });
     }, this.state.deleteDisplay ? 0 : 1000);
   }
   // 마우스를 해제 할 시 buttonPressTimer의 타이머 해제
@@ -27,7 +27,7 @@ class Question extends React.Component {
   handleButtonLeave() {
     this.setState({
       deleteDisplay: false
-    })
+    });
   }
 
   render() {
@@ -39,15 +39,15 @@ class Question extends React.Component {
           onMouseUp={this.handleButtonRelease}>
           {this.state.question.text}
         </li>
-        <button style={{ display: this.state.deleteDisplay ? 'none' : 'block' }}>
+        <button style={{ display: this.state.deleteDisplay ? "none" : "block" }}>
           삼선
         </button>
         <button onClick={() => this.props.deleteQuestion(this.state.question.id)}
-          style={{ display: this.state.deleteDisplay ? 'block' : 'none' }}>
+          style={{ display: this.state.deleteDisplay ? "block" : "none" }}>
           삭제
         </button>
       </div>
-    )
+    );
   }
 }
 
