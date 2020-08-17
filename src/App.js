@@ -1,5 +1,6 @@
 import React from "react";
 import Main from "./pages/Main";
+import LeftMain from "./pages/LeftMain";
 import Intro from "./pages/Intro";
 import Login from "./pages/Login";
 import Signup from "./pages/Signup";
@@ -34,7 +35,7 @@ class App extends React.Component {
       <div id="main">
 
         <div id="leftMain">
-          왼쪽 div 내용 채우기
+          <LeftMain />
         </div>
 
         <div id="rightMain">
