@@ -23,28 +23,25 @@ class PasswordTrd extends React.Component {
   saveBtn() {
     let { newPassword, confirmPassword } = this.state;
     if (newPassword === confirmPassword) {
-      // fetch
-      // fetch("/auth/pwinquiry/newpassword", {
-      //   method: "PATCH",
-      //   headers: {
-      //     "Content-Type": "application/json"
-      //   },
-      //   body: JSON.stringify({
-      //     password: newPassword
-      //   }),
-      //   credentials: "include"
-      // })
-      //   .then(res => {
-      //     if (res.ok) {
-      //       alert("비밀번호가 정상적으로 변경되었습니다.");
-      //       this.props.history.push('/login');
-      //     } else {
-      //       alert("Secret Key가 일치하지 않습니다.");
-      //     }
-      //   })
-      //   .catch(err => console.log(err));
-
-      alert("비밀번호가 정상적으로 변경되었습니다.");
+      fetch("/auth/pwinquiry/newpassword", {
+        method: "PATCH",
+        headers: {
+          "Content-Type": "application/json"
+        },
+        body: JSON.stringify({
+          password: newPassword
+        }),
+        credentials: "include"
+      })
+        .then(res => {
+          if (res.ok) {
+            alert("비밀번호가 정상적으로 변경되었습니다.");
+            this.props.history.push('/login');
+          } else {
+            alert("Secret Key가 일치하지 않습니다.");
+          }
+        })
+        .catch(err => console.log(err));
     } else {
       alert("비밀번호가 일지하지 않습니다.");
     }
