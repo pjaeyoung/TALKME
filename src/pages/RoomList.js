@@ -1,6 +1,7 @@
 import React from "react";
 import Room from "../component/Room";
 import { withRouter } from "react-router-dom";
+import "../css/RoomList.css";
 
 class RoomList extends React.Component {
   constructor(props) {
@@ -12,22 +13,19 @@ class RoomList extends React.Component {
   }
   // 뒤로가기 버튼 클릭 시 로그아웃 API 요청 후 login page로 이동
   backBtn() {
-    //
-    // 로그아웃 구현
-    //
-    // fetch("/auth/logout", {
-    //   method: "GET",
-    //   headers: {
-    //     "Content-Type": "application/json"
-    //   },
-    //   credentials: "include"
-    // })
-    //   .then(res => {
-    //     if (res.ok) {
-    //       this.props.history.push('/login');
-    //     }
-    //   })
-    //   .catch(err => console.log(err));
+    fetch("/auth/logout", {
+      method: "GET",
+      headers: {
+        "Content-Type": "application/json"
+      },
+      credentials: "include"
+    })
+      .then(res => {
+        if (res.ok) {
+          this.props.history.push('/login');
+        }
+      })
+      .catch(err => console.log(err));
   }
   // 생성버튼 클릭 시 createroom page로 이동
   redirectCreateRoom() {
@@ -79,21 +77,28 @@ class RoomList extends React.Component {
 
   render() {
     return (
-      <div>
-        <div>
-          <button onClick={() => this.backBtn()}>뒤로가기</button>
-          <span>Chat List</span>
+      <>
+        <button id="roomListBack" onClick={() => this.backBtn()}>← </button>
+        <div id="roomListTitle">
+          <p>
+            Chat List
+          </p>
         </div>
-        <ul>
+        <ul id="roomListBottom">
           {this.state.rooms.map(room =>
             <Room
               key={room.id}
               room={room}
               deleteRoom={this.deleteRoom}
-            />)}
-          <li onClick={() => this.redirectCreateRoom()}>+</li>
+            />
+          )}
+          <li id="createRoomBtn" onClick={() => this.redirectCreateRoom()}>
+            <p>
+              +
+            </p>
+          </li>
         </ul>
-      </div>
+      </>
     );
   }
 }

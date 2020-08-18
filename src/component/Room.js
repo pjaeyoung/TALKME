@@ -1,5 +1,8 @@
 import React from "react";
 import { withRouter } from "react-router-dom";
+import "../css/RoomList.css";
+import edit from "../img/edit.png";
+import dlt from "../img/delete.png";
 
 class Room extends React.Component {
   constructor(props) {
@@ -12,9 +15,9 @@ class Room extends React.Component {
   }
   // 클릭 이벤트 발생 시 분기 후 처리
   clickList(e) {
-    if (e === "편집") {
+    if (e === "edit") {
       this.props.history.push(`/updateroom/${this.state.id}`);
-    } else if (e === "삭제") {
+    } else if (e === "delete") {
       this.props.deleteRoom(this.state.id);
     } else {
       this.props.history.push({
@@ -26,13 +29,17 @@ class Room extends React.Component {
 
   render() {
     return (
-      <li >
-        <span onClick={(e) => this.clickList(e.target.textContent)}>
-          {this.state.title}
-          {this.state.count}
-          <button >편집</button>
-          <button >삭제</button>
-        </span>
+      <li className="roomList">
+        <div onClick={(e) => this.clickList(e.target.className)}>
+          <p className="roomTitle">
+            {this.state.title}
+          </p>
+          <p className="roomCount">
+            {`${this.state.count} count`}
+          </p>
+          <img className="edit" src={edit} />
+          <img className="delete" src={dlt} />
+        </div>
       </li>
     );
   }

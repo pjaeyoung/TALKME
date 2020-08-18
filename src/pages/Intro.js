@@ -8,8 +8,7 @@ class Intro extends React.Component {
 
   render() {
     return (
-      <div id="mobile">
-        <div id="mobileTop"></div>
+      <>
         <div>애니메이션</div>
         <div>
           <button onClick={() => {
@@ -29,7 +28,7 @@ class Intro extends React.Component {
             signup
             </button>
         </div>
-      </div>
+      </>
     );
   }
 }
