@@ -1,6 +1,6 @@
 import React from "react";
 import { withRouter } from "react-router-dom";
-import "../css/intro.css";
+import "../css/Intro.css";
 
 class Intro extends React.Component {
   constructor(props) {
