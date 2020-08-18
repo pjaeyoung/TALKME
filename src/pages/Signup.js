@@ -52,7 +52,7 @@ class Signup extends React.Component {
             Sign up
           </button>
           <button onClick={() =>
-            window.location.href = "https://accounts.google.com/o/oauth2/v2/auth?response_type=code&client_id=192549111246-ji6meo3haqck4p6nq3l10hmhvkso45qb.apps.googleusercontent.com&scope=openid%20profile%20email&redirect_uri=http://localhost:3000/sociallogin"
+            window.location.href = 'https://accounts.google.com/o/oauth2/v2/auth?response_type=code&client_id=573943257082-7st2e4102s4unen44o7794ooiimbm97u.apps.googleusercontent.com&scope=openid%20profile%20email&redirect_uri=http://localhost:4000/auth/social'
           }>
             소셜회원가입
           </button>
