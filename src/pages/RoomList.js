@@ -78,7 +78,9 @@ class RoomList extends React.Component {
   render() {
     return (
       <>
-        <button id="roomListBack" onClick={() => this.backBtn()}>← </button>
+        <button id="roomListBack" onClick={() => this.backBtn()}>
+          <i class="fas fa-arrow-left"></i>
+        </button>
         <div id="roomListTitle">
           <p id="headTitle">
             Chat List
