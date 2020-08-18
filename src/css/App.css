@@ -38,21 +38,21 @@ body, #contactBtn {
   height: 10%;
 }
 
-#contactText {
+#contactBtn{
   position: absolute;
   cursor : pointer;
-  top: 50%;
-  left : 72%;
-  transform: translateY(-50%);
+  top : 50%;
+  left: 75%;
+}
+
+#contactText {
+  position: relative;
 }
 
 #contactLine {
-  position: absolute;
-  top: 57%;
-  left : 72%;
+  position: relative;
   width : 49px;
   border: 1px solid #FFFFFF;
-  transform: translateY(-57%);
 }
 
 /*오른쪽 모바일박스*/
@@ -67,8 +67,8 @@ body, #contactBtn {
   top: 50%;
   left:35%;
   transform: translate(-35%,-50%);
-  width: 55%;
-  height: 100%;
+  width: 425px;
+  height: 760px;
   background: linear-gradient(180deg, #171521 0%, #171521 15.1%, rgba(41, 38, 47, 0) 48.96%, rgba(41, 38, 47, 0) 100%), #303345;
   border: 9px solid #2E3142;
   box-sizing: border-box;

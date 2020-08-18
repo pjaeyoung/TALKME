@@ -10,7 +10,13 @@ class Main extends React.Component {
   render() {
     return (
       <>
-        <div className="loadingAnimation">로딩 중 애니메이션</div>
+        <div className="loadingAnimationBox">
+          <div className="loadingStick"></div>
+          <div className="loadingStick"></div>
+          <div className="loadingStick"></div>
+          <div className="loadingStick"></div>
+          <div className="loadingStick"></div>
+        </div>
         <div id="startBtn" onClick={() => {
           this.props.history.push("/intro");
         }}>
