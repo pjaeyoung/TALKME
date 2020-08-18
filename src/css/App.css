@@ -35,21 +35,21 @@ body, #contactBtn {
 /*오른쪽 헤더*/
 #rightHeader {
   position: relative;
-  height: 15%;
+  height: 10%;
 }
 
 #contactText {
   position: absolute;
   cursor : pointer;
   top: 50%;
-  left : 75%;
+  left : 72%;
   transform: translateY(-50%);
 }
 
 #contactLine {
   position: absolute;
   top: 57%;
-  left : 75%;
+  left : 72%;
   width : 49px;
   border: 1px solid #FFFFFF;
   transform: translateY(-57%);
@@ -58,16 +58,16 @@ body, #contactBtn {
 /*오른쪽 모바일박스*/
 #mobileBox{
   position: relative;
-  height:70%;
+  height:80%;
 }
 
 /*모바일 레이아웃*/
 #mobile {
   position: absolute;
   top: 50%;
-  left:50%;
-  transform: translate(-50%,-50%);
-  width: 45%;
+  left:35%;
+  transform: translate(-35%,-50%);
+  width: 55%;
   height: 100%;
   background: linear-gradient(180deg, #171521 0%, #171521 15.1%, rgba(41, 38, 47, 0) 48.96%, rgba(41, 38, 47, 0) 100%), #303345;
   border: 9px solid #2E3142;
@@ -80,7 +80,7 @@ body, #contactBtn {
   position: absolute;
   left:50%;
   transform : translateX(-50%);
-  width: 60%;
+  width: 50%;
   height: 4%;
   background: #2E3142;
   border-radius: 0px 0px 15px 15px;
@@ -89,14 +89,14 @@ body, #contactBtn {
 /*오른쪽 바텀*/
 #rightBottom {
   position: relative;
-  height: 15%;
+  height: 10%;
 }
 
 #teamName {
   position: absolute;
   top :50%;
-  left :50%;
-  transform : translate(-50%,-50%);
+  left :35%;
+  transform : translate(-15%,-50%);
   font-family: cursive; 
 }
 
