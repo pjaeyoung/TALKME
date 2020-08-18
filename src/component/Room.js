@@ -29,17 +29,20 @@ class Room extends React.Component {
 
   render() {
     return (
-      <li className="roomList">
-        <div onClick={(e) => this.clickList(e.target.className)}>
-          <p className="roomTitle">
-            {this.state.title}
-          </p>
-          <p className="roomCount">
+      <li className="roomList" onClick={(e) => this.clickList(e.target.className)}>
+        <p className="roomTitle">
+          {this.state.title}
+        </p>
+        <p className="roomDesc">
+          <span className="checkBox">
+            v
+          </span>
+          <span className="roomCount">
             {`${this.state.count} count`}
-          </p>
+          </span>
           <img className="edit" src={edit} />
           <img className="delete" src={dlt} />
-        </div>
+        </p>
       </li>
     );
   }

@@ -80,7 +80,7 @@ class RoomList extends React.Component {
       <>
         <button id="roomListBack" onClick={() => this.backBtn()}>← </button>
         <div id="roomListTitle">
-          <p>
+          <p id="headTitle">
             Chat List
           </p>
         </div>
@@ -93,9 +93,7 @@ class RoomList extends React.Component {
             />
           )}
           <li id="createRoomBtn" onClick={() => this.redirectCreateRoom()}>
-            <p>
-              +
-            </p>
+            +
           </li>
         </ul>
       </>
