@@ -1,5 +1,6 @@
 import React from "react";
 import { withRouter } from "react-router-dom";
+import "../css/intro.css";
 
 class Intro extends React.Component {
   constructor(props) {
@@ -9,24 +10,29 @@ class Intro extends React.Component {
   render() {
     return (
       <>
-        <div>애니메이션</div>
-        <div>
-          <button onClick={() => {
+        <div className="shootingStarAnimationBox">
+          <div className="shootingStarAnimation">
+            <div className="star"></div>
+          </div>
+        </div>
+        <div id="btnBox">
+          <div id="guestBtn" onClick={() => {
             this.props.handlingIsLogin("isGuest");
             this.props.history.push("/createroom");
           }}>
-            GUEST
-          </button>
-          <button onClick={() => {
+            <div id="guestText">GUEST</div>
+          </div>
+          <div id="loginBtn" onClick={() => {
             this.props.history.push("/login");
           }}>
-            LOGIN
-            </button>
-          <button onClick={() => {
+            <div id="loginText">LOGIN</div>
+          </div>
+          <div id="signupBtn" onClick={() => {
             this.props.history.push("/signup");
           }}>
-            signup
-            </button>
+            <div id="signupText">signup</div>
+            <div id="signupLine"></div>
+          </div>
         </div>
       </>
     );
