@@ -20,32 +20,25 @@ class PasswordFst extends React.Component {
   }
   // send 버튼 클릭 시 secret key 발급 API 요청 후 passwordsnd page로 이동
   sendEmail() {
-    // fetch("/auth/pwinquiry/askkey", {
-    //   method: "POST",
-    //   headers: {
-    //     "Content-Type": "application/json"
-    //   },
-    //   body: JSON.stringify({
-    //     email: this.state.email
-    //   }),
-    //   credentials: "include"
-    // })
-    //   .then(res => {
-    //     if (res.ok) {
-    //       alert("Secret key가 정상적으로 발송되었습니다. email을 확인해 주세요");
-    //       this.props.history.push("/passwordsnd");
-    //     } else {
-    //       alert("해당 email을 찾을 수 없습니다.");
-    //     }
-    //   })
-    //   .catch(err => console.log(err));
-
-    let em = "inho";
-    if (this.state.email === em) {
-      this.props.history.push("/passwordsnd");
-    } else {
-      alert("email을 찾을 수 없습니다.");
-    }
+    fetch("/auth/pwinquiry/askkey", {
+      method: "POST",
+      headers: {
+        "Content-Type": "application/json"
+      },
+      body: JSON.stringify({
+        email: this.state.email
+      }),
+      credentials: "include"
+    })
+      .then(res => {
+        if (res.ok) {
+          alert("Secret key가 정상적으로 발송되었습니다. email을 확인해 주세요");
+          this.props.history.push("/passwordsnd");
+        } else {
+          alert("해당 email을 찾을 수 없습니다.");
+        }
+      })
+      .catch(err => console.log(err));
   }
 
   render() {
