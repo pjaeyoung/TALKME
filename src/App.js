@@ -19,7 +19,8 @@ class App extends React.Component {
   constructor(props) {
     super(props);
     this.state = {
-      isLogin: true,
+      isReady: false,
+      isLogin: false,
       isGuest: false
     };
     this.handlingIsLogin = this.handlingIsLogin.bind(this);
@@ -39,19 +40,18 @@ class App extends React.Component {
     })
       .then(res => {
         if (res.ok) {
-          console.log("isLogin", res.status);
           this.handlingIsLogin("isLogin");
         }
-        console.log(this.state.isLogin);
+        this.handlingIsLogin("isReady");
       })
       .catch(err => console.log(err));
   }
 
   render() {
-    const { isLogin, isGuest } = this.state;
+    const { isLogin, isGuest, isReady } = this.state;
+
     return (
       <div id="main">
-
         <div id="leftMain">
           <div id="starL"></div>
           <div id="title">TALK ME</div>
@@ -85,78 +85,83 @@ class App extends React.Component {
           <div id="mobileBox">
             <div id="mobile">
               <div id="mobileTop"></div>
-              <Switch>
-                <Route
-                  exact
-                  path="/intro"
-                  render={() => <Intro
-                    handlingIsLogin={this.handlingIsLogin} />}
-                />
-                <Route
-                  exact
-                  path="/login"
-                  render={() => <Login
-                    handlingIsLogin={this.handlingIsLogin} />}
-                />
-                <Route
-                  exact
-                  path="/signup"
-                  render={() => <Signup />}
-                />
-                <Route
-                  exact
-                  path="/sociallogin"
-                  render={() => <SocialLogin />}
-                />
-                <Route
-                  exact
-                  path="/passwordfst"
-                  render={() => <PasswordFst />}
-                />
-                <Route
-                  exact
-                  path="/passwordsnd"
-                  render={() => <PasswordSnd />}
-                />
-                <Route
-                  exact
-                  path="/passwordtrd"
-                  render={() => <PasswordTrd />}
-                />
-                <Route
-                  exact
-                  path="/roomlist"
-                  render={() => this.state.isLogin ?
-                    <RoomList /> :
-                    <Redirect to="/intro" />}
-                />
-                <Route
-                  exact
-                  path="/createroom"
-                  render={() => this.state.isLogin || this.state.isGuest ?
-                    <CreateRoom
-                      isLogin={isLogin} /> :
-                    <Redirect to="/intro" />}
-                />
-                <Route
-                  exact
-                  path="/updateroom/:roomId"
-                  render={() => this.state.isLogin ?
-                    <UpdateRoom /> :
-                    <Redirect to="/intro" />}
-                />
-                <Route
-                  exact
-                  path="/chattingroom"
-                  render={() => this.state.isLogin || this.state.isGuest ?
-                    <ChattingRoom isLogin={isLogin} isGuest={isGuest} /> :
-                    <Redirect to="/intro" />}
-                />
-                <Route
-                  path="/"
-                  render={() => <Main />}
-                />
-              </Switch>
+              {isReady ?
+                <Switch>
+                  <Route
+                    exact
+                    path="/intro"
+                    render={() => <Intro
+                      handlingIsLogin={this.handlingIsLogin} />}
+                  />
+                  <Route
+                    exact
+                    path="/login"
+                    render={() => <Login
+                      handlingIsLogin={this.handlingIsLogin} />}
+                  />
+                  <Route
+                    exact
+                    path="/signup"
+                    render={() => <Signup />}
+                  />
+                  <Route
+                    exact
+                    path="/sociallogin"
+                    render={() => <SocialLogin />}
+                  />
+                  <Route
+                    exact
+                    path="/passwordfst"
+                    render={() => <PasswordFst />}
+                  />
+                  <Route
+                    exact
+                    path="/passwordsnd"
+                    render={() => <PasswordSnd />}
+                  />
+                  <Route
+                    exact
+                    path="/passwordtrd"
+                    render={() => <PasswordTrd />}
+                  />
+                  <Route
+                    exact
+                    path="/roomlist"
+                    render={() => this.state.isLogin ?
+                      <RoomList /> :
+                      <Redirect to="/intro" />}
+                  />
+                  <Route
+                    exact
+                    path="/createroom"
+                    render={() => this.state.isLogin || this.state.isGuest ?
+                      <CreateRoom
+                        isLogin={isLogin} /> :
+                      <Redirect to="/intro" />}
+                  />
+                  <Route
+                    exact
+                    path="/updateroom/:roomId"
+                    render={() => this.state.isLogin ?
+                      <UpdateRoom /> :
+                      <Redirect to="/intro" />}
+                  />
+                  <Route
+                    exact
+                    path="/chattingroom"
+                    render={() => this.state.isLogin || this.state.isGuest ?
+                      <ChattingRoom isLogin={isLogin} isGuest={isGuest} /> :
+                      <Redirect to="/intro" />}
+                  />
+                  <Route
+                    path="/"
+                    render={() => <Main />}
+                  />
+                </Switch>
+                :
+                <div>
+                  로딩 중...
+                </div>}
             </div>
           </div>
 
@@ -164,7 +169,6 @@ class App extends React.Component {
             <div id="teamName">
               © 2020 Sensual people
           </div>
-
           </div>
         </div>
       </div >

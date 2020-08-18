@@ -96,7 +96,7 @@
   position: absolute;
   top: -3px;
   width: 1.8em;
-  left: 11.5em;
+  right: 3.5em;
   cursor : pointer;
 }
 
@@ -104,6 +104,6 @@
   position: absolute;
   top: -5px;
   width: 1.8em;
-  left: 13.5em;
+  right: 1.5em;
   cursor : pointer;
 }
