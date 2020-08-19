@@ -1,6 +1,7 @@
 import React from "react";
 import Question from "../component/Question";
 import { withRouter } from "react-router-dom";
+import "../css/CreateAndUpdate.css";
 
 class UpdateRoom extends React.Component {
   constructor(props) {
@@ -10,6 +11,7 @@ class UpdateRoom extends React.Component {
       title: "",
       description: "",
       questions: [],
+      descByte: 0
     };
   }
   // 뒤로가기 클릭 시 roomlist page로 이동
@@ -47,6 +49,23 @@ class UpdateRoom extends React.Component {
     this.setState({
       questions: questions
     });
+  }
+  // string을 입력 받아 byte를 return
+  byteCheck(target) {
+    let byte = 0;
+    target.value.split("").forEach(char => {
+      if (char.charCodeAt(0) <= 0x00007F) {
+        byte = byte + 1;
+      } else if (char.charCodeAt(0) <= 0x00FFFF) {
+        byte = byte + 2;
+      }
+    });
+    if (target.id === "descBox") {
+      this.setState({
+        descByte: byte
+      })
+    }
+    return byte;
   }
   // save 버튼 클릭 시 해당 방의 정보를 수정하는 API 요청 후 roomlist page로 이동
   saveBtn() {
@@ -99,45 +118,76 @@ class UpdateRoom extends React.Component {
 
   render() {
     return (
-      <div>
+      <>
         <div>
-          <button onClick={() => this.backBtn()}>뒤로가기</button>
-          <span>Questions</span>
+          <button id="roomBack"
+            onClick={() => this.backBtn()}>
+            <i className="fas fa-arrow-left"></i>
+          </button>
+          <div id="roomTitle">
+            <p id="headTitle">
+              Questions
+            </p>
+          </div>
         </div>
-        <div>
-          <span>title: </span>
-          <input
-            type="text"
-            value={this.state.title}
-            onChange={e => this.changeState("title", e.target.value)}></input>
+        <div id="roomBottom">
+          <div id="inputTitle">
+            <span >title: </span>
+            <input id="titleBox"
+              type="text"
+              value={this.state.title}
+              onChange={e => {
+                if (this.byteCheck(e.target) <= 50) {
+                  this.changeState("title", e.target.value);
+                } else {
+                  e.target.value = this.state.title;
+                }
+              }}>
+            </input>
+          </div>
+          <div id="inputDesc">
+            <div>description: </div>
+            <textarea id="descBox"
+              value={this.state.description}
+              onChange={e => {
+                if (this.byteCheck(e.target) < 100) {
+                  this.changeState("description", e.target.value);
+                } else {
+                  e.target.value = this.state.description;
+                }
+              }}>
+            </textarea>
+          </div>
+          <div id="descCount">
+            {this.state.descByte}/100
+          </div>
+          <div>
+            <ul id="questionList">
+              {this.state.questions.map(question =>
+                <Question
+                  key={question.id}
+                  question={question}
+                  deleteQuestion={this.deleteQuestion.bind(this)}
+                />
+              )}
+            </ul>
+            <input id="inputQuestion"
+              type="text"
+              placeholder="+ add question"
+              onKeyPress={e => {
+                if (e.key === "Enter") {
+                  this.addQuestion(e.target.value);
+                  e.target.value = "";
+                }
+              }}>
+            </input>
+          </div>
+          <button id="startBtn"
+            onClick={() => this.saveBtn()}>
+            save
+          </button>
         </div>
-        <div>
-          <div>description: </div>
-          <input
-            type="text"
-            value={this.state.description}
-            onChange={e => this.changeState("description", e.target.value)}></input>
-        </div>
-        <div>
-          <ul >
-            {this.state.questions.map(question =>
-              <Question
-                key={question.id}
-                question={question}
-                deleteQuestion={this.deleteQuestion.bind(this)}
-              />
-            )}
-          </ul>
-          <input type="text" placeholder="+ add question"
-            onKeyPress={e => {
-              if (e.key === "Enter") {
-                this.addQuestion(e.target.value);
-                e.target.value = "";
-              }
-            }}></input>
-        </div>
-        <button onClick={() => this.saveBtn()}>save</button>
-      </div>
+      </>
     );
   }
 }

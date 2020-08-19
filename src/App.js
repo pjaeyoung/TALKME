@@ -37,8 +37,9 @@ class App extends React.Component {
       },
       credentials: "include"
     })
+      .then(res => res.json())
       .then(res => {
-        if (res.ok) {
+        if (res.message === "authorized") {
           this.handlingIsLogin("isLogin");
         }
         this.setState({
@@ -56,10 +57,10 @@ class App extends React.Component {
         <div id="leftMain">
           <div id="leftTop">
             <div id="starL"></div>
-            <i id = "bigStar" class="fas fa-star fa-lg">
-              <div id="bigStarBack"></div> 
+            <i id="bigStar" className="fas fa-star fa-lg">
+              <div id="bigStarBack"></div>
             </i>
-            <i id= "smallStar" class="fas fa-star ">
+            <i id="smallStar" className="fas fa-star ">
               <div id="smallStarBack"></div>
             </i>
             <div id="title">TALK ME</div>
@@ -67,8 +68,8 @@ class App extends React.Component {
               <div id="satellite"></div>
             </div>
             <div id="moon">
-                <img id="moonImg" src={moon} />
-              </div>
+              <img id="moonImg" src={moon} />
+            </div>
           </div>
           <div id="leftBottom">
             <div id="description">
