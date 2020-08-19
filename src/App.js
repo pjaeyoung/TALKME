@@ -55,7 +55,6 @@ class App extends React.Component {
       <div id="main">
         <div id="leftMain">
           <div id="leftTop">
-            <div id="starL"></div>
             <i id = "bigStar" class="fas fa-star fa-lg">
               <div id="bigStarBack"></div> 
             </i>
