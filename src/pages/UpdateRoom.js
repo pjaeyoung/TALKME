@@ -50,9 +50,8 @@ class UpdateRoom extends React.Component {
   }
   // save 버튼 클릭 시 해당 방의 정보를 수정하는 API 요청 후 roomlist page로 이동
   saveBtn() {
-    if (this.state.title) {
+    if (this.state.title && this.state.questions.length) {
       let questionsText = this.state.questions.map(question => question.text);
-
       fetch("/room", {
         method: "PATCH",
         headers: {
@@ -71,8 +70,10 @@ class UpdateRoom extends React.Component {
         }
       })
         .catch(err => console.log(err));
-    } else {
+    } else if (!this.state.title) {
       alert("title을 입력해 주세요.");
+    } else if (!this.state.questions.length) {
+      alert("질문을 입력해 주세요.");
     }
   }
   // path의 params를 확인하여 해당 방의 정보를 가져오는 API 요청

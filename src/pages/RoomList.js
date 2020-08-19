@@ -22,7 +22,8 @@ class RoomList extends React.Component {
     })
       .then(res => {
         if (res.ok) {
-          this.props.history.push('/login');
+          this.props.handlingIsLogin("isLogin");
+          this.props.history.push("/login");
         }
       })
       .catch(err => console.log(err));
@@ -79,7 +80,7 @@ class RoomList extends React.Component {
     return (
       <>
         <button id="roomListBack" onClick={() => this.backBtn()}>
-          <i class="fas fa-arrow-left"></i>
+          <i className="fas fa-arrow-left"></i>
         </button>
         <div id="roomListTitle">
           <p id="headTitle">
