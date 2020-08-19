@@ -1,5 +1,8 @@
 import React from "react";
 import { withRouter } from "react-router-dom";
+import "../css/Login.css"
+import lock from "../img/lock.png"
+import mail from "../img/mail.png"
 
 class Login extends React.Component {
   constructor(props) {
@@ -39,11 +42,17 @@ class Login extends React.Component {
 
   render() {
     return (
-      <div>
-        <button onClick={() => this.props.history.push("/intro")}>뒤로가기</button >
-        <div>애니메이션</div>
-        <div>
+      <>
+        <button id="loginBack" onClick={() => this.props.history.push("/intro")}>
+        <i className="fas fa-arrow-left"></i>
+        </button >
+        <div className="newShootingStarAnimationBox">
+          <div className="shootingStarAnimation">
+          </div>
+        </div>
+        <div className="signInputBox">
           <input
+            className="IDBOX"
             type="text"
             onChange={(e) => this.handlingInputValue("email", e)}
             onKeyPress={e => {
@@ -53,7 +62,9 @@ class Login extends React.Component {
               }
             }}>
           </input>
+          <img className="mail" src={mail}></img>
           <input
+            className="PWBOX"
             type="password"
             onChange={(e) => this.handlingInputValue("password", e)}
             onKeyPress={e => {
@@ -61,20 +72,22 @@ class Login extends React.Component {
                 this.handlingUserInformation()
                 e.target.value = "";
               }
-            }}></input>
+            }}>
+            </input>
+            <img className="lock" src={lock}></img>
         </div>
-        <div>
-          <button onClick={() => this.props.history.push("/passwordfst")}>forgot password</button>
-          <button onClick={() => this.handlingUserInformation()}>
-            Login
+        <div className="signBox">
+          <button id="forgotBtn" onClick={() => this.props.history.push("/passwordfst")}>forgot password</button>
+          <button id="newLoginBtn" onClick={() => this.handlingUserInformation()}>
+            <div id="newLoginText">Login</div>
           </button>
-          <button onClick={() =>
+          <button id="socialLoginBtn" onClick={() =>
             window.location.href = 'https://accounts.google.com/o/oauth2/v2/auth?response_type=code&client_id=573943257082-7st2e4102s4unen44o7794ooiimbm97u.apps.googleusercontent.com&scope=openid%20profile%20email&redirect_uri=http://localhost:4000/auth/social'
           }>
             Continue with Google
             </button>
         </div>
-      </div>
+      </>
     );
   }
 }

@@ -1,13 +1,17 @@
 /*뒤로가기 버튼*/
 #chattingRoomBack {
   position: relative;
-  height:5%;
   color: white;
   font-size: 2em;
+  top: 15px;
+  left: 10px;
   background-color: rgba( 255, 255, 255, 0 );
   cursor : pointer;
   border: none;
   margin-left: 0.6em;
+  border-radius: 70%;
+  z-index: 1;
+  outline:0;
 }
 /*타이틀*/
 #chattingRoomTitle {

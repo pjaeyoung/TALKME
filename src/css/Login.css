@@ -1,0 +1,106 @@
+/*뒤로가기*/
+#loginBack {
+  position: absolute;
+  color: white;
+  font-size: 2em;
+  top: 15px;
+  left: 10px;
+  background-color: rgba( 255, 255, 255, 0 );
+  cursor : pointer;
+  border: none;
+  margin-left: 0.6em;
+  z-index: 1;
+  outline: 0;
+}
+
+/*애니메이션박스*/
+.newShootingStarAnimationBox {
+  position: relative;
+  height:30%
+}
+
+/*인풋박스*/
+.signInputBox{
+  position: relative;
+  height: 20%;
+}
+
+.IDBOX {
+  position: absolute;
+  width: 90%;
+  top:20%;
+  left:50%;
+  transform: translateX(-50%);
+  font-size: 0.8em;
+  border: none;
+  border-bottom: 1px solid #AFB8CE;
+  background: transparent;
+  color: white;
+  outline : 0;
+  text-align: center;
+}
+
+.PWBOX{
+  position: absolute;
+  top:60%;
+  width: 90%;
+  left:50%;
+  transform: translateX(-50%);
+  font-size: 0.8em;
+  border: none;
+  border-bottom: 1px solid #AFB8CE;
+  background: transparent;
+  color: white;
+  outline : 0;
+  text-align: center;
+}
+
+.mail{
+  position: absolute;
+  width: 35px;
+  height: 25px;
+  top:15%;
+  left:5%;
+}
+
+.lock{
+  position: absolute;
+  width: 35px;
+  height: 35px;
+  top:50%;
+  left:5%;
+}
+
+/*버튼 박스*/
+.signBox{
+  position: relative;
+  height: 50%;
+}
+
+#forgotBtn{
+  position: absolute;
+}
+
+#newLoginBtn{
+  position: absolute;
+  left:50%;
+  transform: translateX(-50%);
+  height:20%;
+  width: 80%;
+  background: #AFB8CE;
+  border-radius: 34.5px;
+  cursor : pointer;
+}
+
+#newLoginText{
+  position: absolute;
+  color: #303345;
+  top:50%;
+  left:50%;
+  transform: translate(-50%,-50%);
+  font-size: 1.3em;
+}
+
+#socialLoginBtn{
+  position: absolute;
+}
