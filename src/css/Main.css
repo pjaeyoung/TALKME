@@ -104,7 +104,7 @@
 
 
 /*스타트 버튼*/
-#startBtn {
+#mainStartBtn {
   position: absolute;
   top:60%;
   left:50%;
@@ -118,11 +118,11 @@
   font-size: 1.3em;
 }
 
-#startBtn:hover {
+#mainStartBtn:hover {
   opacity: 0.8;
 }
 
-#startText {
+#mainStartText {
   position: absolute;
   top: 50%;
   left:50%;
