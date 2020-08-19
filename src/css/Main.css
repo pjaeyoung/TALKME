@@ -23,9 +23,10 @@
   height: 20px;
   animation-name: stick1;
   animation-iteration-count:infinite;
-  animation-duration: 1s;
+  animation-duration: 0.5s;
   animation-direction: alternate;
   animation-timing-function: linear;
+  animation-delay:-0.2s;
 }
 
 @keyframes stick1{
@@ -39,9 +40,10 @@
   height: 30px;
   animation-name: stick2;
   animation-iteration-count:infinite;
-  animation-duration: 1s;
+  animation-duration: 0.5s;
   animation-direction: alternate;
   animation-timing-function: linear;
+  animation-delay:-0.1s;
 }
 
 @keyframes stick2 {
@@ -54,9 +56,10 @@
   height: 40px;
   animation-name: stick3;
   animation-iteration-count:infinite;
-  animation-duration: 1s;
+  animation-duration: 0.5s;
   animation-direction: alternate;
   animation-timing-function: linear;
+  animation-delay:0s;
 }
 
 @keyframes stick3 {
@@ -70,9 +73,10 @@
   height: 30px;
   animation-name: stick4;
   animation-iteration-count:infinite;
-  animation-duration: 1s;
+  animation-duration: 0.5s;
   animation-direction: alternate;
   animation-timing-function: linear;
+  animation-delay:0.1s;
 }
 
 @keyframes stick4 {
@@ -86,9 +90,10 @@
   height: 20px;
   animation-name: stick5;
   animation-iteration-count:infinite;
-  animation-duration: 1s;
+  animation-duration: 0.5s;
   animation-direction: alternate;
   animation-timing-function: linear;
+  animation-delay:0.2s;
 }
 
 @keyframes stick5 {
@@ -99,7 +104,7 @@
 
 
 /*스타트 버튼*/
-#startBtn {
+#mainStartBtn {
   position: absolute;
   top:60%;
   left:50%;
@@ -113,7 +118,11 @@
   font-size: 1.3em;
 }
 
-#startText {
+#mainStartBtn:hover {
+  opacity: 0.8;
+}
+
+#mainStartText {
   position: absolute;
   top: 50%;
   left:50%;
