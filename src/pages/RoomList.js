@@ -21,7 +21,6 @@ class RoomList extends React.Component {
       credentials: "include"
     })
       .then(res => {
-        console.log("roomlist", res.status)
         if (res.ok) {
           this.props.handlingIsLogin("isLogin");
           this.props.history.push("/login");
