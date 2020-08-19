@@ -26,7 +26,7 @@ class App extends React.Component {
   }
 
   handlingIsLogin(key) {
-    this.setState({ [key]: true });
+    this.setState({ [key]: !this.state.isLogin });
   }
 
   componentDidMount() {
@@ -41,7 +41,9 @@ class App extends React.Component {
         if (res.ok) {
           this.handlingIsLogin("isLogin");
         }
-        this.handlingIsLogin("isReady");
+        this.setState({
+          isReady: true
+        })
       })
       .catch(err => console.log(err));
   }
@@ -122,7 +124,7 @@ class App extends React.Component {
                     exact
                     path="/roomlist"
                     render={() => this.state.isLogin ?
-                      <RoomList /> :
+                      <RoomList handlingIsLogin={this.handlingIsLogin} /> :
                       <Redirect to="/intro" />}
                   />
                   <Route

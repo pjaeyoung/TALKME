@@ -3,6 +3,7 @@ import { withRouter } from "react-router-dom";
 import "../css/RoomList.css";
 import edit from "../img/edit.png";
 import dlt from "../img/delete.png";
+import count from "../img/count.png";
 
 class Room extends React.Component {
   constructor(props) {
@@ -34,9 +35,7 @@ class Room extends React.Component {
           {this.state.title}
         </p>
         <p className="roomDesc">
-          <span className="checkBox">
-            v
-          </span>
+          <img className="checkBox" src={count} />
           <span className="roomCount">
             {`${this.state.count} count`}
           </span>
