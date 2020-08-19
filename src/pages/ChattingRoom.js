@@ -1,6 +1,8 @@
 import React from "react";
 import QuestionAnswerPair from "../component/QuestionAnswerPair";
 import { withRouter } from "react-router-dom";
+import "../css/ChattingRoom.css";
+import plane from "../img/plane.png"
 
 class ChattingRoom extends React.Component {
   constructor(props) {
@@ -99,26 +101,30 @@ class ChattingRoom extends React.Component {
     return (
       <>
         {/*뒤로가기 버튼을 누르면 질문작성화면으로 이동*/}
-        <button onClick={() => {
-          if (this.props.isLogin) {
-            this.props.history.push("/roomlist");
-          } else if (this.props.isGuest) {
-            this.props.history.push("/createroom");
-          } else {
-            this.props.history.push("/intro");
-          }
-        }}>
-          뒤로가기
+        <button
+          id="chattingRoomBack"
+          onClick={() => {
+            if (this.props.isLogin) {
+              this.props.history.push("/roomlist");
+            } else if (this.props.isGuest) {
+              this.props.history.push("/createroom");
+            } else {
+              this.props.history.push("/intro");
+            }
+          }}>
+          ←
         </button>
         {/*Room의 title 뿌려주기*/}
         {title ?
-          <div>{title}</div>
+          <div id="chattingRoomTitle">
+            <p id="headTitle">{title}</p>
+          </div>
           :
           ""
         }
 
         {/*Questions_Answers 뿌려주기*/}
-        <div>
+        <div id="messageBox">
           {questions_answers.length ?
             questions_answers.map(el =>
               <QuestionAnswerPair
@@ -132,14 +138,28 @@ class ChattingRoom extends React.Component {
         </div>
 
         {/*입력받은 값을을 state에 저장하고 보내기버튼 클릭시 메시지 생성*/}
-        <div>
-          <input onChange={(e) => this.handlingInputValue(e)} type="text"></input>
-          <button onClick={() => {
-            this.handlingAnswers();
-            window.setTimeout(this.handlingQuestions, 1000);
-          }}>
-            보내기
-              </button>
+        <div id="inputBox">
+          <input
+            type="text"
+            id="answerInput"
+            placeholder="send messages...."
+            onChange={(e) => this.handlingInputValue(e)}
+            onKeyPress={e => {
+              if (e.key === "Enter") {
+                this.handlingAnswers();
+                window.setTimeout(this.handlingQuestions, 1000);
+                e.target.value = "";
+              }
+            }}>
+          </input>
+          <div
+            id="submitBtn"
+            onClick={() => {
+              this.handlingAnswers();
+              window.setTimeout(this.handlingQuestions, 1000);
+            }}>
+            <img id="img" src={plane}></img>
+          </div>
         </div>
       </>
     );

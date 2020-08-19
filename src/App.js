@@ -7,7 +7,6 @@ import RoomList from "./pages/RoomList";
 import CreateRoom from "./pages/CreateRoom";
 import UpdateRoom from "./pages/UpdateRoom";
 import ChattingRoom from "./pages/ChattingRoom";
-import SocialLogin from "./pages/SocialLogin";
 import PasswordFst from "./pages/PasswordFst";
 import PasswordSnd from "./pages/PasswordSnd";
 import PasswordTrd from "./pages/PasswordTrd";
@@ -105,11 +104,6 @@ class App extends React.Component {
                     exact
                     path="/signup"
                     render={() => <Signup />}
-                  />
-                  <Route
-                    exact
-                    path="/sociallogin"
-                    render={() => <SocialLogin />}
                   />
                   <Route
                     exact

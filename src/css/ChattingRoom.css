@@ -1,0 +1,145 @@
+/*뒤로가기 버튼*/
+#chattingRoomBack {
+  position: relative;
+  height:5%;
+  color: white;
+  font-size: 2em;
+  background-color: rgba( 255, 255, 255, 0 );
+  cursor : pointer;
+  border: none;
+  margin-left: 0.6em;
+}
+/*타이틀*/
+#chattingRoomTitle {
+  position: relative;
+  width: 100%;
+  height: 10%;
+  background-color: #171521;
+  box-shadow: 0px 10px 4px rgba(18, 18, 18, 0.25);
+}
+
+#headTitle {
+  position: absolute;
+  width: 100%;
+  text-align: center;
+  font-size: 2em;
+  margin-top: 10px;
+}
+
+/*메시지*/
+#messageBox {
+  position: relative;
+  height:75%;
+  overflow:auto;
+}
+
+#messageBox::-webkit-scrollbar {
+  display: none;
+}
+
+/*질문 메시지*/
+.questionBox {
+  position: relative;
+  height:15%;
+}
+
+.questionMessage {
+  position: absolute;
+  left:10%;
+  width:65%;
+  height:70%;
+  background: #4A4F6C;
+  border-radius: 13px;
+  filter: drop-shadow(0px 4px 4px rgba(0, 0, 0, 0.25));
+}
+
+.questionText {
+  position: absolute;
+  top:50%;
+  left:50%;
+  width:85%;
+  transform: translate(-50%,-50%);
+  font-size: 1.3em;
+}
+
+.questionBottom {
+  position: absolute;
+  top:100%;
+  left:-5%;
+  transform: translateY(-100%);
+  width: 0px;
+  height: 0px;
+  border-top: 30px solid transparent;
+  border-right: 30px solid #4A4F6C;
+}
+
+/*답변 메시지*/
+.answerBox {
+  position: relative;
+  height:15%;
+}
+.answerMessage {
+  position: absolute;
+  right:10%;
+  width:65%;
+  height:70%;
+  background: #D1D1D3;
+  border-radius: 13px;
+  filter: drop-shadow(0px 4px 4px rgba(0, 0, 0, 0.25));
+}
+
+.answerText {
+  position: absolute;
+  top:50%;
+  left:50%;
+  width:85%;
+  transform: translate(-50%,-50%);
+  font-size: 1.3em;
+  color: #4A4F6C;
+}
+
+.answerBottom {
+  position: absolute;
+  top:100%;
+  right:-5%;
+  transform: translateY(-100%);
+  width: 0px;
+  height: 0px;
+  border-top: 30px solid transparent;
+  border-left: 30px solid #D1D1D3;
+}
+
+/*입력 창*/
+#inputBox{
+  position: relative;
+  height:10%;
+}
+#answerInput {
+  position: absolute;
+  width:90%;
+  height:70%;
+  background: #D1D1D3;
+  box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
+  border-radius: 31.5px;
+  outline: 0;
+  left:50%;
+  transform: translateX(-50%);
+  color: #4A4F6C;
+  font-size: 1.2em;
+  text-align: center;
+}
+
+#submitBtn{
+  position: absolute;
+  width:15%;
+  height: 70%;
+  left: 80%;
+  cursor: pointer;
+}
+#img{
+  position: absolute;
+  width:100%;
+  height: 100%;
+  filter: drop-shadow(0px 4px 4px rgba(0, 0, 0, 0.25));
+}
+
