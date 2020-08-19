@@ -1,7 +1,7 @@
 import React from "react";
 import Question from "../component/Question";
 import { withRouter } from "react-router-dom";
-import "../css/CreateRoom.css";
+import "../css/CreateAndUpdate.css";
 
 class CreateRoom extends React.Component {
   constructor(props) {
@@ -9,7 +9,8 @@ class CreateRoom extends React.Component {
     this.state = {
       title: "",
       description: "",
-      questions: []
+      questions: [],
+      descByte: 0
     };
   }
   // 뒤로가기 클릭 시 intro page로 이동
@@ -53,15 +54,20 @@ class CreateRoom extends React.Component {
     });
   }
   // string을 입력 받아 byte를 return
-  byteCheck(string) {
+  byteCheck(target) {
     let byte = 0;
-    string.split("").forEach(char => {
+    target.value.split("").forEach(char => {
       if (char.charCodeAt(0) <= 0x00007F) {
         byte = byte + 1;
       } else if (char.charCodeAt(0) <= 0x00FFFF) {
         byte = byte + 2;
       }
     });
+    if (target.id === "descBox") {
+      this.setState({
+        descByte: byte
+      })
+    }
     return byte;
   }
   // 질문의 id값을 순서대로 재할당 후 chttingroom에 title과 questions를 보내고 이동
@@ -117,23 +123,23 @@ class CreateRoom extends React.Component {
     return (
       <>
         <div>
-          <button id="createRoomBack" onClick={() => this.backBtn()}>
+          <button id="roomBack"
+            onClick={() => this.backBtn()}>
             <i className="fas fa-arrow-left"></i>
           </button>
-          <div id="createRoomTitle">
+          <div id="roomTitle">
             <p id="headTitle">
               Questions
             </p>
           </div>
         </div>
-        <div id="createRoomBottom">
+        <div id="roomBottom">
           <div id="inputTitle">
             <span>title : </span>
-            <input
-              id="titleBox"
+            <input id="titleBox"
               type="text"
               onChange={e => {
-                if (this.byteCheck(e.target.value) <= 10) {
+                if (this.byteCheck(e.target) <= 50) {
                   this.changeState("title", e.target.value);
                 } else {
                   e.target.value = this.state.title;
@@ -141,21 +147,23 @@ class CreateRoom extends React.Component {
               }}>
             </input>
           </div>
-          <div>
+          <div id="inputDesc">
             <div>description : </div>
-            <input
-              type="text"
+            <textarea id="descBox"
               onChange={e => {
-                if (this.byteCheck(e.target.value) <= 100) {
+                if (this.byteCheck(e.target) < 100) {
                   this.changeState("description", e.target.value);
                 } else {
                   e.target.value = this.state.description;
                 }
               }}>
-            </input>
+            </textarea>
+          </div>
+          <div id="descCount">
+            {this.state.descByte}/100
           </div>
           <div>
-            <ul >
+            <ul id="questionList">
               {this.state.questions.map(question =>
                 <Question
                   key={question.id}
@@ -163,15 +171,21 @@ class CreateRoom extends React.Component {
                   deleteQuestion={this.deleteQuestion.bind(this)}
                 />)}
             </ul>
-            <input type="text" placeholder="+ add question"
+            <input id="inputQuestion"
+              type="text"
+              placeholder="+ add question"
               onKeyPress={e => {
                 if (e.key === "Enter") {
                   this.addQuestion(e.target.value);
                   e.target.value = "";
                 }
-              }}></input>
+              }}>
+            </input>
           </div>
-          <button onClick={() => this.startBtn()}>start</button>
+          <button id="startBtn"
+            onClick={() => this.startBtn()}>
+            start
+          </button>
         </div>
       </>
     );

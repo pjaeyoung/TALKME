@@ -1,4 +1,5 @@
 import React from "react";
+import "../css/CreateAndUpdate.css";
 
 class Question extends React.Component {
   constructor(props) {
@@ -32,23 +33,50 @@ class Question extends React.Component {
 
   render() {
     return (
-      <div
+      <li className="question"
         onMouseLeave={this.handleButtonLeave}>
-        <li
+        <div className="ring">
+        </div>
+        <div className="text"
           onMouseDown={this.handleButtonPress}
           onMouseUp={this.handleButtonRelease}>
           {this.state.question.text}
-        </li>
-        <button style={{ display: this.state.deleteDisplay ? "none" : "block" }}>
-          삼선
-        </button>
-        <button onClick={() => this.props.deleteQuestion(this.state.question.id)}
-          style={{ display: this.state.deleteDisplay ? "block" : "none" }}>
-          삭제
-        </button>
-      </div>
+        </div>
+        <div className="button">
+          <button className="dndBtn"
+            style={{ display: this.state.deleteDisplay ? "none" : "block" }}>
+            <div className="dndStick"></div>
+            <div className="dndStick"></div>
+            <div className="dndStick"></div>
+          </button>
+          <button className="deleteBtn"
+            onClick={() => this.props.deleteQuestion(this.state.question.id)}
+            style={{ display: this.state.deleteDisplay ? "block" : "none" }}>
+            삭제
+          </button>
+        </div>
+      </li>
     );
   }
 }
 
 export default Question;
+
+// return (
+//   <div
+//     onMouseLeave={this.handleButtonLeave}>
+//     <div className="ring"></div>
+//     <li
+//       onMouseDown={this.handleButtonPress}
+//       onMouseUp={this.handleButtonRelease}>
+//       {this.state.question.text}
+//     </li>
+//     <button style={{ display: this.state.deleteDisplay ? "none" : "block" }}>
+//       삼선
+//     </button>
+//     <button onClick={() => this.props.deleteQuestion(this.state.question.id)}
+//       style={{ display: this.state.deleteDisplay ? "block" : "none" }}>
+//       삭제
+//     </button>
+//   </div>
+// );

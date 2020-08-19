@@ -37,8 +37,9 @@ class App extends React.Component {
       },
       credentials: "include"
     })
+      .then(res => res.json())
       .then(res => {
-        if (res.ok) {
+        if (res.message === "authorized") {
           this.handlingIsLogin("isLogin");
         }
         this.setState({
