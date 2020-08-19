@@ -1,5 +1,9 @@
 import React from "react";
 import { withRouter } from "react-router-dom";
+import "../css/LoginAndSignup.css"
+import lock from "../img/lock.png"
+import mail from "../img/mail.png"
+
 
 
 class Signup extends React.Component {
@@ -20,15 +24,48 @@ class Signup extends React.Component {
 
   render() {
     return (
-      <div>
-        <button onClick={() => this.props.history.push("/intro")}>뒤로가기</button >
-        <div>애니메이션</div>
-        <div>
-          <input onChange={(e) => this.handlingInputValue("email", e)} type="text"></input>
-          <input onChange={(e) => this.handlingInputValue("password", e)} type="text"></input>
+      <>
+        <button className="signBack" onClick={() => this.props.history.push("/intro")}>
+        <i className="fas fa-arrow-left"></i>
+          </button >
+          <div className="newShootingStarAnimationBox">
+          <div className="shootingStarAnimation">
+          </div>
         </div>
-        <div>
-          <button onClick={() => {
+        <div className="signInputBox">
+          <input
+            onFocus={(e)=>e.target.placeholder=""}
+            onBlur={(e)=>e.target.placeholder="Please Enter Your Desired ID"}
+            placeholder="Please Enter Your Desired ID"
+            className="IDBOX"
+            type="text"
+            onChange={(e) => this.handlingInputValue("email", e)}
+            onKeyPress={e => {
+              if (e.key === "Enter") {
+                this.handlingUserInformation()
+                e.target.value = "";
+              }
+            }}>
+          </input>
+          <img className="mail" src={mail}></img>
+          <input
+            onFocus={(e)=>e.target.placeholder=""}
+            onBlur={(e)=>e.target.placeholder="Please Enter Your Desired Password"}
+            placeholder="Please Enter Your Desired Password"
+            className="PWBOX"
+            type="password"
+            onChange={(e) => this.handlingInputValue("password", e)}
+            onKeyPress={e => {
+              if (e.key === "Enter") {
+                this.handlingUserInformation()
+                e.target.value = "";
+              }
+            }}>
+            </input>
+            <img className="lock" src={lock}></img>
+        </div>
+        <div className="signBox">
+          <div className="newLoginBtn" onClick={() => {
             const { email, password } = this.state;
             //입력받은 값을 바탕으로 포스트 요청
             fetch("/auth/signup", {
@@ -49,15 +86,15 @@ class Signup extends React.Component {
                 }
               });
           }}>
-            Sign up
-          </button>
-          <button onClick={() =>
+            <div className="newLoginText">Sign up</div>
+          </div>
+          <div className="socialLoginBtn" onClick={() =>
             window.location.href = 'https://accounts.google.com/o/oauth2/v2/auth?response_type=code&client_id=573943257082-7st2e4102s4unen44o7794ooiimbm97u.apps.googleusercontent.com&scope=openid%20profile%20email&redirect_uri=http://localhost:4000/auth/social'
           }>
-            소셜회원가입
-          </button>
+            <div className="socialLoginText">Sign up with Google</div>
+          </div>
         </div>
-      </div >
+      </>
     );
   }
 }

@@ -141,6 +141,11 @@
   background: #AFB8CE;
   border-radius: 34.5px;
   cursor : pointer;
+  box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
+}
+
+#guestBtn:hover{
+  opacity: 80%;
 }
 
 #guestText{
@@ -162,6 +167,11 @@
   background: #4B4F6C;
   border-radius: 34.5px;
   cursor : pointer;
+  box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
+}
+
+#loginBtn:hover{
+  opacity: 80%;
 }
 
 #loginText{
@@ -180,6 +190,10 @@
   left :50%;
   transform: translateX(-50%);
   cursor : pointer;
+}
+
+#signupBtn:hover{
+  opacity: 80%;
 }
 
 #signupText {
