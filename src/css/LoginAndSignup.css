@@ -1,5 +1,5 @@
 /*뒤로가기*/
-#loginBack {
+.signBack {
   position: absolute;
   color: white;
   font-size: 2em;
@@ -11,6 +11,10 @@
   margin-left: 0.6em;
   z-index: 1;
   outline: 0;
+}
+
+.signBack:hover{
+  opacity: 80%;
 }
 
 /*애니메이션박스*/
@@ -31,13 +35,15 @@
   top:20%;
   left:50%;
   transform: translateX(-50%);
-  font-size: 0.8em;
+  font-size: 1em;
   border: none;
   border-bottom: 1px solid #AFB8CE;
   background: transparent;
   color: white;
   outline : 0;
-  text-align: center;
+  box-sizing: border-box;
+  padding-bottom: 10px;
+  padding-left: 50px;
 }
 
 .PWBOX{
@@ -46,20 +52,29 @@
   width: 90%;
   left:50%;
   transform: translateX(-50%);
-  font-size: 0.8em;
+  font-size: 1em;
   border: none;
   border-bottom: 1px solid #AFB8CE;
   background: transparent;
   color: white;
   outline : 0;
-  text-align: center;
+  box-sizing: border-box;
+  padding-bottom: 10px;
+  padding-left: 50px;
+}
+
+.IDBOX::placeholder, .PWBOX::placeholder{
+  font-style: italic;
+  font-size: 0.9em;
+  opacity: 20%;
+  color: white
 }
 
 .mail{
   position: absolute;
   width: 35px;
   height: 25px;
-  top:15%;
+  top:18%;
   left:5%;
 }
 
@@ -67,7 +82,7 @@
   position: absolute;
   width: 35px;
   height: 35px;
-  top:50%;
+  top:53%;
   left:5%;
 }
 
@@ -79,10 +94,19 @@
 
 #forgotBtn{
   position: absolute;
+  left :50%;
+  transform: translateX(-50%);
+  cursor : pointer;
+  color: rgba(175, 184, 206, 0.5);
 }
 
-#newLoginBtn{
+#forgotBtn:hover{
+  opacity: 80%;
+}
+
+.newLoginBtn{
   position: absolute;
+  top:15%;
   left:50%;
   transform: translateX(-50%);
   height:20%;
@@ -90,9 +114,14 @@
   background: #AFB8CE;
   border-radius: 34.5px;
   cursor : pointer;
+  box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
 }
 
-#newLoginText{
+.newLoginBtn:hover{
+  opacity: 80%;
+}
+
+.newLoginText{
   position: absolute;
   color: #303345;
   top:50%;
@@ -101,6 +130,29 @@
   font-size: 1.3em;
 }
 
-#socialLoginBtn{
+.socialLoginBtn{
   position: absolute;
+  top: 45%;
+  left:50%;
+  transform: translateX(-50%);
+  height:20%;
+  width: 80%;
+  background: #1C69FF;
+  border-radius: 34.5px;
+  cursor : pointer;
+  box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
+}
+
+.socialLoginBtn:hover{
+  opacity: 80%;
+}
+
+.socialLoginText{
+  position: absolute;
+  width:80%;
+  top:50%;
+  left:50%;
+  transform: translate(-50%,-50%);
+  font-size: 1.3em;
+  text-align: center;
 }
