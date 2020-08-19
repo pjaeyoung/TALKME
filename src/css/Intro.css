@@ -13,12 +13,117 @@
   transform: translate(-50%,-50%);
 }
 
-.star { 
-  width: 22px;
-  height: 22px;
+#star { 
+  position: absolute;
+  top: 80%;
+  left: 10%;
+  z-index: 1;
+}
 
-  background: #DDDDDD;
-  box-shadow: 0px 2px 10px rgba(255, 255, 255, 0.15);
+/* #bigStarBack {
+
+} */
+
+.allSatellite {
+  position: absolute;
+  background: #FFFFFF;
+  box-shadow: 0px 0px 5px 5px rgba(255, 255, 255, 0.25);
+  border-radius: 70%;
+  animation-name: satellite;
+  animation-iteration-count:infinite;
+  animation-duration: 1s ;
+  animation-direction: alternate;
+}
+
+.s1 {
+  width: 9px;
+  height: 9px;
+  top: 75%;
+  left: 50%;
+}
+
+.s2 {
+  width: 7px;
+  height: 7px;
+  top: 10%;
+  left: 25%;
+  animation-delay: 800ms;
+}
+
+.s3 {
+  width: 5px;
+  height: 5px;
+  top: 40%;
+  left: 35%;
+  animation-delay: 500ms;
+}
+
+.s4 {
+  width: 5px;
+  height: 5px;
+  top: 50%;
+  left: 10%;
+  animation-delay: 400ms;
+}
+
+.s5 {
+  width: 5px;
+  height: 5px;
+  top: 85%;
+  left: 80%;
+  animation-delay: 200ms;
+}
+
+@keyframes allSatellite{
+  0% {
+    box-shadow: 0px 0px 10px 1px rgba(255, 255, 255, 0.25);
+  }
+
+  20% {
+    box-shadow: 0px 0px 10px 2px rgba(255, 255, 255, 0.25);
+  }
+
+  40% {
+    box-shadow: 0px 0px 10px 3px rgba(255, 255, 255, 0.25);
+  }
+
+  60% {
+    box-shadow: 0px 0px 10px 4px rgba(255, 255, 255, 0.25);
+  }
+
+  80% {
+    box-shadow: 0px 0px 10px 5px rgba(255, 255, 255, 0.25);
+  }
+
+  100%{
+    box-shadow: 0px 0px 10px 6px rgba(255, 255, 255, 0.25);
+  }
+}
+
+.satelliteLine {
+  position: absolute;
+  border: none;
+  border-top: 0.1px solid #DDDDDD;
+  transform: rotate(131.88deg);
+  animation-name: satelliteLine;
+  animation-iteration-count:infinite;
+  animation-duration: 1s;
+  animation-direction: alternate;
+  animation-timing-function: linear;
+}
+
+.starLightLine {
+  width: 85%;
+  height: 0px;
+  top: 48%;
+  left: 4%;
+}
+
+.satelliteLightLine {
+  width: 50%;
+  height: 0px;
+  top: 57%;
+  left: 46%;
 }
 
 /*버튼박스*/

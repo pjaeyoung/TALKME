@@ -12,7 +12,16 @@ class Intro extends React.Component {
       <>
         <div className="shootingStarAnimationBox">
           <div className="shootingStarAnimation">
-            <div className="star"></div>
+            <i id="star" className="fas fa-star fa-lg">
+              <div id="bigStarBack"></div>
+            </i>
+            <div className="satelliteLine starLightLine"></div>
+            <div className="satelliteLine satelliteLightLine"></div>
+            <div className="allSatellite s1"></div>
+            <div className="allSatellite s2"></div>
+            <div className="allSatellite s3"></div>
+            <div className="allSatellite s4"></div>
+            <div className="allSatellite s5"></div>
           </div>
         </div>
         <div id="btnBox">
