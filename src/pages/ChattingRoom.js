@@ -142,6 +142,7 @@ class ChattingRoom extends React.Component {
           <input
             type="text"
             id="answerInput"
+            placeholder="send messages...."
             onChange={(e) => this.handlingInputValue(e)}
             onKeyPress={e => {
               if (e.key === "Enter") {

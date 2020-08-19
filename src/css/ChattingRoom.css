@@ -126,6 +126,7 @@
   transform: translateX(-50%);
   color: #4A4F6C;
   font-size: 1.2em;
+  text-align: center;
 }
 
 #submitBtn{
