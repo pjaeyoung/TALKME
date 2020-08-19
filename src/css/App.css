@@ -45,6 +45,10 @@ body, #contactBtn {
   left: 75%;
 }
 
+#contactBtn:hover {
+  opacity: 0.8;
+}
+
 #contactText {
   position: relative;
 }

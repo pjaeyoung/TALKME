@@ -17,10 +17,10 @@ class Main extends React.Component {
           <div id="loadingStick4" className="loadingStick"></div>
           <div id="loadingStick5" className="loadingStick"></div>
         </div>
-        <div id="startBtn" onClick={() => {
+        <div id="mainStartBtn" onClick={() => {
           this.props.history.push("/intro");
         }}>
-          <div id="startText">start</div>
+          <div id="mainStartText">start</div>
         </div>
       </>
     );

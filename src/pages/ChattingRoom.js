@@ -112,7 +112,7 @@ class ChattingRoom extends React.Component {
               this.props.history.push("/intro");
             }
           }}>
-          ←
+          <i className="fas fa-arrow-left"></i>
         </button>
         {/*Room의 title 뿌려주기*/}
         {title ?
