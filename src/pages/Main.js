@@ -11,11 +11,11 @@ class Main extends React.Component {
     return (
       <>
         <div className="loadingAnimationBox">
-          <div className="loadingStick"></div>
-          <div className="loadingStick"></div>
-          <div className="loadingStick"></div>
-          <div className="loadingStick"></div>
-          <div className="loadingStick"></div>
+          <div id="loadingStick1" className="loadingStick"></div>
+          <div id="loadingStick2" className="loadingStick"></div>
+          <div id="loadingStick3" className="loadingStick"></div>
+          <div id="loadingStick4" className="loadingStick"></div>
+          <div id="loadingStick5" className="loadingStick"></div>
         </div>
         <div id="startBtn" onClick={() => {
           this.props.history.push("/intro");
