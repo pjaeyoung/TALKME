@@ -1,7 +1,7 @@
 /*로딩 애니메이션*/
 .loadingAnimationBox {
   display : flex;
-  position: absolute;
+  position: absolute ;
   top:40%;
   left:50%;
   transform: translateX(-50%);
@@ -9,12 +9,94 @@
 
 .loadingStick {
   position: relative;
-  width: 7px;
-  height: 36px;
+  top:50%;
+  transform: translateY(-50%);
   background: #E7E7E7;
   margin:3px;
-  box-shadow: 0px 4px 1px rgba(156, 156, 156, 0.25);
+  box-shadow: 0px 2px 1px rgba(156, 156, 156, 0.25);
 }
+
+
+
+#loadingStick1{
+  width: 7px;
+  height: 20px;
+  animation-name: stick1;
+  animation-iteration-count:infinite;
+  animation-duration: 1s;
+  animation-direction: alternate;
+  animation-timing-function: linear;
+}
+
+@keyframes stick1{
+  to {
+    height: 30px;
+  }
+}
+
+#loadingStick2{
+  width: 7px;
+  height: 30px;
+  animation-name: stick2;
+  animation-iteration-count:infinite;
+  animation-duration: 1s;
+  animation-direction: alternate;
+  animation-timing-function: linear;
+}
+
+@keyframes stick2 {
+  to {
+    height: 45px;
+  }
+}
+#loadingStick3{
+  width: 7px;
+  height: 40px;
+  animation-name: stick3;
+  animation-iteration-count:infinite;
+  animation-duration: 1s;
+  animation-direction: alternate;
+  animation-timing-function: linear;
+}
+
+@keyframes stick3 {
+  to {
+    height: 60px;
+  }
+}
+
+#loadingStick4{
+  width: 7px;
+  height: 30px;
+  animation-name: stick4;
+  animation-iteration-count:infinite;
+  animation-duration: 1s;
+  animation-direction: alternate;
+  animation-timing-function: linear;
+}
+
+@keyframes stick4 {
+  to {
+    height: 45px;
+  }
+}
+
+#loadingStick5{
+  width: 7px;
+  height: 20px;
+  animation-name: stick5;
+  animation-iteration-count:infinite;
+  animation-duration: 1s;
+  animation-direction: alternate;
+  animation-timing-function: linear;
+}
+
+@keyframes stick5 {
+  to {
+    height: 30px;
+  }
+}
+
 
 /*스타트 버튼*/
 #startBtn {

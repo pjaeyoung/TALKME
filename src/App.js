@@ -54,24 +54,34 @@ class App extends React.Component {
     return (
       <div id="main">
         <div id="leftMain">
-          <div id="starL"></div>
-          <div id="title">TALK ME</div>
-          <div id="circle">
-            <div id="moon">
-              <img id="moonImg" src={moon} />
+          <div id="leftTop">
+            <div id="starL"></div>
+            <i id = "bigStar" class="fas fa-star fa-lg">
+              <div id="bigStarBack"></div> 
+            </i>
+            <i id= "smallStar" class="fas fa-star ">
+              <div id="smallStarBack"></div>
+            </i>
+            <div id="title">TALK ME</div>
+            <div id="circle">
+              <div id="satellite"></div>
             </div>
-            <div id="satellite"></div>
+            <div id="moon">
+                <img id="moonImg" src={moon} />
+              </div>
           </div>
-          <div id="description">
-            Wasn't it difficult to tell other people your concerns? <br />
-            But don't you wait for someone to ask? <br />
-            Write down your concerns here. <br />
-            We will ask you about your concerns instead. <br />
-            <br />
-            <br />
-            Please write down your concerns in the question list. <br />
-            Try to answer the questions in order. <br />
-            This site helps you face yourself and organize your thoughts!
+          <div id="leftBottom">
+            <div id="description">
+              Wasn't it difficult to tell other people your concerns? <br />
+              But don't you wait for someone to ask? <br />
+              Write down your concerns here. <br />
+              We will ask you about your concerns instead. <br />
+              <br />
+              <br />
+              Please write down your concerns in the question list. <br />
+              Try to answer the questions in order. <br />
+              This site helps you face yourself and organize your thoughts!
+            </div>
           </div>
         </div>
 
