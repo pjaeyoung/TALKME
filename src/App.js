@@ -102,25 +102,25 @@ class App extends React.Component {
                     exact
                     path="/intro"
                     render={() => this.state.isLogin ?
-                      <Redirect to="/roomlist" /> 
+                      <Redirect to="/roomlist" />
                       :
-                    <Intro handlingIsLogin={this.handlingIsLogin} />}
+                      <Intro handlingIsLogin={this.handlingIsLogin} />}
                   />
                   <Route
                     exact
                     path="/login"
                     render={() => this.state.isLogin ?
-                    <Redirect to="/roomlist" /> 
-                    :
-                    <Login handlingIsLogin={this.handlingIsLogin} />
+                      <Redirect to="/roomlist" />
+                      :
+                      <Login handlingIsLogin={this.handlingIsLogin} />
                     }
-                    
+
                   />
                   <Route
                     exact
                     path="/signup"
                     render={() => this.state.isLogin ?
-                      <Redirect to="/roomlist" /> 
+                      <Redirect to="/roomlist" />
                       :
                       <Signup />}
                   />
@@ -128,15 +128,15 @@ class App extends React.Component {
                     exact
                     path="/passwordfst"
                     render={() => this.state.isLogin ?
-                    <Redirect to="/roomlist" /> 
-                    :
-                    <PasswordFst />}
+                      <Redirect to="/roomlist" />
+                      :
+                      <PasswordFst />}
                   />
                   <Route
                     exact
                     path="/passwordsnd"
                     render={() => this.state.isLogin ?
-                      <Redirect to="/roomlist" /> 
+                      <Redirect to="/roomlist" />
                       :
                       <PasswordSnd />}
                   />
@@ -144,7 +144,7 @@ class App extends React.Component {
                     exact
                     path="/passwordtrd"
                     render={() => this.state.isLogin ?
-                      <Redirect to="/roomlist" /> 
+                      <Redirect to="/roomlist" />
                       :
                       <PasswordTrd />}
                   />
@@ -183,8 +183,12 @@ class App extends React.Component {
                   />
                 </Switch>
                 :
-                <div>
-                  로딩 중...
+                <div className="loadingAnimationBox">
+                  <div id="loadingStick1" className="loadingStick"></div>
+                  <div id="loadingStick2" className="loadingStick"></div>
+                  <div id="loadingStick3" className="loadingStick"></div>
+                  <div id="loadingStick4" className="loadingStick"></div>
+                  <div id="loadingStick5" className="loadingStick"></div>
                 </div>}
             </div>
           </div>
