@@ -21,7 +21,7 @@ class Login extends React.Component {
     const { email, password } = this.state;
     const { handlingIsLogin } = this.props;
     //입력받은 값을 바탕으로 포스트 요청
-    fetch("http://ec2-13-124-126-40.ap-northeast-2.compute.amazonaws.com:4000/auth/login", {
+    fetch("/auth/login", {
       method: "POST",
       headers: {
         "Content-Type": "application/json",
@@ -53,12 +53,10 @@ class Login extends React.Component {
           <i className="fas fa-arrow-left"></i>
         </button >
         <div className="newShootingStarAnimationBox1">
-          <div className="shootingStarAnimation">
+          <div className="shootingStarAnimation loginShootingStar">
             <i id="star" className="fas fa-star fa-lg">
               <div id="bigStarBack"></div>
             </i>
-            <div className="satelliteLine starLightLine"></div>
-            <div className="satelliteLine satelliteLightLine"></div>
             <div className="allSatellite s1"></div>
             <div className="allSatellite s2"></div>
             <div className="allSatellite s3"></div>
