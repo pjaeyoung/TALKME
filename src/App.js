@@ -56,8 +56,8 @@ class App extends React.Component {
       <div id="main">
         <div id="leftMain">
           <div id="leftTop">
-            <i id = "bigStar" class="fas fa-star fa-lg">
-              <div id="bigStarBack"></div> 
+            <i id="bigStar" className="fas fa-star fa-lg">
+              <div id="bigStarBack"></div>
             </i>
             <i id="smallStar" className="fas fa-star ">
               <div id="smallStarBack"></div>
