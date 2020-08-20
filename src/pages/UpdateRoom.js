@@ -91,9 +91,15 @@ class UpdateRoom extends React.Component {
         })
         .catch((err) => console.log(err));
     } else if (!this.state.title) {
-      alert("title을 입력해 주세요.");
+      document.querySelector("#mobile").classList.add("wobble-horizontal")
+      window.setTimeout(() => {
+        document.querySelector("#mobile").classList.remove("wobble-horizontal")
+      }, 1000);
     } else if (!this.state.questions.length) {
-      alert("질문을 입력해 주세요.");
+      document.querySelector("#mobile").classList.add("wobble-horizontal")
+      window.setTimeout(() => {
+        document.querySelector("#mobile").classList.remove("wobble-horizontal")
+      }, 1000);
     }
   }
   // path의 params를 확인하여 해당 방의 정보를 가져오는 API 요청

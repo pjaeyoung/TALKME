@@ -188,7 +188,7 @@ class App extends React.Component {
                     path="/createroom"
                     render={() =>
                       this.state.isLogin || this.state.isGuest ? (
-                        <CreateRoom isLogin={isLogin} />
+                        <CreateRoom handlingIsLogin={this.handlingIsLogin} isLogin={isLogin} />
                       ) : (
                           <Redirect to="/intro" />
                         )
