@@ -11,7 +11,7 @@ import PasswordFst from "./pages/PasswordFst";
 import PasswordSnd from "./pages/PasswordSnd";
 import PasswordTrd from "./pages/PasswordTrd";
 import { Switch, Route, Redirect } from "react-router-dom";
-import moon from "./img/moon.png"
+import moon from "./img/moon.png";
 import "./css/App.css";
 
 class App extends React.Component {
@@ -20,33 +20,33 @@ class App extends React.Component {
     this.state = {
       isReady: false,
       isLogin: false,
-      isGuest: false
+      isGuest: false,
     };
     this.handlingIsLogin = this.handlingIsLogin.bind(this);
   }
 
   handlingIsLogin(key) {
-    this.setState({ [key]: !this.state.isLogin });
+    this.setState({ [key]: true });
   }
 
   componentDidMount() {
     fetch("/auth/isLogin", {
       method: "GET",
       headers: {
-        "Content-Type": "application/json"
+        "Content-Type": "application/json",
       },
-      credentials: "include"
+      credentials: "include",
     })
-      .then(res => res.json())
-      .then(res => {
+      .then((res) => res.json())
+      .then((res) => {
         if (res.message === "authorized") {
           this.handlingIsLogin("isLogin");
         }
         this.setState({
-          isReady: true
-        })
+          isReady: true,
+        });
       })
-      .catch(err => console.log(err));
+      .catch((err) => console.log(err));
   }
 
   render() {
@@ -56,8 +56,8 @@ class App extends React.Component {
       <div id="main">
         <div id="leftMain">
           <div id="leftTop">
-            <i id = "bigStar" class="fas fa-star fa-lg">
-              <div id="bigStarBack"></div> 
+            <i id="bigStar" className="fas fa-star fa-lg">
+              <div id="bigStarBack"></div>
             </i>
             <i id="smallStar" className="fas fa-star ">
               <div id="smallStarBack"></div>
@@ -96,25 +96,23 @@ class App extends React.Component {
           <div id="mobileBox">
             <div id="mobile">
               <div id="mobileTop"></div>
-              {isReady ?
+              {isReady ? (
                 <Switch>
                   <Route
                     exact
                     path="/intro"
-                    render={() => <Intro
-                      handlingIsLogin={this.handlingIsLogin} />}
+                    render={() => (
+                      <Intro handlingIsLogin={this.handlingIsLogin} />
+                    )}
                   />
                   <Route
                     exact
                     path="/login"
-                    render={() => <Login
-                      handlingIsLogin={this.handlingIsLogin} />}
+                    render={() => (
+                      <Login handlingIsLogin={this.handlingIsLogin} />
+                    )}
                   />
-                  <Route
-                    exact
-                    path="/signup"
-                    render={() => <Signup />}
-                  />
+                  <Route exact path="/signup" render={() => <Signup />} />
                   <Route
                     exact
                     path="/passwordfst"
@@ -133,51 +131,60 @@ class App extends React.Component {
                   <Route
                     exact
                     path="/roomlist"
-                    render={() => this.state.isLogin ?
-                      <RoomList handlingIsLogin={this.handlingIsLogin} /> :
-                      <Redirect to="/intro" />}
+                    render={() =>
+                      this.state.isLogin ? (
+                        <RoomList handlingIsLogin={this.handlingIsLogin} />
+                      ) : (
+                        <Redirect to="/intro" />
+                      )
+                    }
                   />
                   <Route
                     exact
                     path="/createroom"
-                    render={() => this.state.isLogin || this.state.isGuest ?
-                      <CreateRoom
-                        isLogin={isLogin} /> :
-                      <Redirect to="/intro" />}
+                    render={() =>
+                      this.state.isLogin || this.state.isGuest ? (
+                        <CreateRoom isLogin={isLogin} />
+                      ) : (
+                        <Redirect to="/intro" />
+                      )
+                    }
                   />
                   <Route
                     exact
                     path="/updateroom/:roomId"
-                    render={() => this.state.isLogin ?
-                      <UpdateRoom /> :
-                      <Redirect to="/intro" />}
+                    render={() =>
+                      this.state.isLogin ? (
+                        <UpdateRoom />
+                      ) : (
+                        <Redirect to="/intro" />
+                      )
+                    }
                   />
                   <Route
                     exact
                     path="/chattingroom"
-                    render={() => this.state.isLogin || this.state.isGuest ?
-                      <ChattingRoom isLogin={isLogin} isGuest={isGuest} /> :
-                      <Redirect to="/intro" />}
+                    render={() =>
+                      this.state.isLogin || this.state.isGuest ? (
+                        <ChattingRoom isLogin={isLogin} isGuest={isGuest} />
+                      ) : (
+                        <Redirect to="/intro" />
+                      )
+                    }
                   />
-                  <Route
-                    path="/"
-                    render={() => <Main />}
-                  />
+                  <Route path="/" render={() => <Main />} />
                 </Switch>
-                :
-                <div>
-                  로딩 중...
-                </div>}
+              ) : (
+                <div>로딩 중...</div>
+              )}
             </div>
           </div>
 
           <div id="rightBottom">
-            <div id="teamName">
-              © 2020 Sensual people
-          </div>
+            <div id="teamName">© 2020 Sensual people</div>
           </div>
         </div>
-      </div >
+      </div>
     );
   }
 }
