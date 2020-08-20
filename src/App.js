@@ -101,65 +101,69 @@ class App extends React.Component {
                   <Route
                     exact
                     path="/intro"
-<<<<<<< HEAD
-                    render={() => (
-                      <Intro handlingIsLogin={this.handlingIsLogin} />
-                    )}
-=======
-                    render={() => this.state.isLogin ?
-                      <Redirect to="/roomlist" />
-                      :
-                      <Intro handlingIsLogin={this.handlingIsLogin} />}
->>>>>>> b146f39ec0b019bf459d6da88b8db81ce7807ae4
+                    render={() =>
+                      this.state.isLogin ? (
+                        <Redirect to="/roomlist" />
+                      ) : (
+                        <Intro handlingIsLogin={this.handlingIsLogin} />
+                      )
+                    }
                   />
                   <Route
                     exact
                     path="/login"
-<<<<<<< HEAD
-                    render={() => (
-                      <Login handlingIsLogin={this.handlingIsLogin} />
-                    )}
-=======
-                    render={() => this.state.isLogin ?
-                      <Redirect to="/roomlist" />
-                      :
-                      <Login handlingIsLogin={this.handlingIsLogin} />
+                    render={() =>
+                      this.state.isLogin ? (
+                        <Redirect to="/roomlist" />
+                      ) : (
+                        <Login handlingIsLogin={this.handlingIsLogin} />
+                      )
                     }
-
                   />
                   <Route
                     exact
                     path="/signup"
-                    render={() => this.state.isLogin ?
-                      <Redirect to="/roomlist" />
-                      :
-                      <Signup />}
->>>>>>> b146f39ec0b019bf459d6da88b8db81ce7807ae4
+                    render={() =>
+                      this.state.isLogin ? (
+                        <Redirect to="/roomlist" />
+                      ) : (
+                        <Signup />
+                      )
+                    }
                   />
                   <Route exact path="/signup" render={() => <Signup />} />
                   <Route
                     exact
                     path="/passwordfst"
-                    render={() => this.state.isLogin ?
-                      <Redirect to="/roomlist" />
-                      :
-                      <PasswordFst />}
+                    render={() =>
+                      this.state.isLogin ? (
+                        <Redirect to="/roomlist" />
+                      ) : (
+                        <PasswordFst />
+                      )
+                    }
                   />
                   <Route
                     exact
                     path="/passwordsnd"
-                    render={() => this.state.isLogin ?
-                      <Redirect to="/roomlist" />
-                      :
-                      <PasswordSnd />}
+                    render={() =>
+                      this.state.isLogin ? (
+                        <Redirect to="/roomlist" />
+                      ) : (
+                        <PasswordSnd />
+                      )
+                    }
                   />
                   <Route
                     exact
                     path="/passwordtrd"
-                    render={() => this.state.isLogin ?
-                      <Redirect to="/roomlist" />
-                      :
-                      <PasswordTrd />}
+                    render={() =>
+                      this.state.isLogin ? (
+                        <Redirect to="/roomlist" />
+                      ) : (
+                        <PasswordTrd />
+                      )
+                    }
                   />
                   <Route
                     exact
@@ -207,13 +211,15 @@ class App extends React.Component {
                   />
                   <Route path="/" render={() => <Main />} />
                 </Switch>
+              ) : (
                 <div className="loadingAnimationBox">
                   <div id="loadingStick1" className="loadingStick"></div>
                   <div id="loadingStick2" className="loadingStick"></div>
                   <div id="loadingStick3" className="loadingStick"></div>
                   <div id="loadingStick4" className="loadingStick"></div>
                   <div id="loadingStick5" className="loadingStick"></div>
-                </div>}
+                </div>
+              )}
             </div>
           </div>
 
