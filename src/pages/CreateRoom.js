@@ -117,9 +117,15 @@ class CreateRoom extends React.Component {
         });
       }
     } else if (!this.state.title) {
-      alert("title을 입력해 주세요.");
+      document.querySelector("#mobile").classList.add("wobble-horizontal")
+      window.setTimeout(() => {
+        document.querySelector("#mobile").classList.remove("wobble-horizontal")
+      }, 1000);
     } else if (!this.state.questions.length) {
-      alert("질문을 입력해 주세요.");
+      document.querySelector("#mobile").classList.add("wobble-horizontal")
+      window.setTimeout(() => {
+        document.querySelector("#mobile").classList.remove("wobble-horizontal")
+      }, 1000);
     }
   }
 

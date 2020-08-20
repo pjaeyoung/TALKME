@@ -99,7 +99,7 @@
 .wobble-horizontal {
   display: inline-block;
   animation-name: wobble-horizontal;
-  animation-duration: 1s;
+  animation-duration: 0.7s;
   animation-timing-function: ease-in;
   animation-iteration-count: 1;
 }
