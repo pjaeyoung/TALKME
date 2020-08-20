@@ -41,12 +41,18 @@ class PasswordTrd extends React.Component {
             alert("비밀번호가 정상적으로 변경되었습니다.");
             this.props.history.push("/login");
           } else {
-            alert("Secret Key가 일치하지 않습니다.");
+            document.querySelector("#mobile").classList.add("wobble-horizontal")
+            window.setTimeout(() => {
+              document.querySelector("#mobile").classList.remove("wobble-horizontal")
+            }, 1000);
           }
         })
         .catch((err) => console.log(err));
     } else {
-      alert("비밀번호가 일지하지 않습니다.");
+      document.querySelector("#mobile").classList.add("wobble-horizontal")
+      window.setTimeout(() => {
+        document.querySelector("#mobile").classList.remove("wobble-horizontal")
+      }, 1000);
     }
   }
 
@@ -96,7 +102,9 @@ class PasswordTrd extends React.Component {
             }
             onKeyPress={(e) => {
               if (e.key === "Enter") {
-                this.handlingUserInformation();
+                this.saveBtn();
+                this.changePassword("newPassword", "");
+                this.changePassword("confirmPassword", "");
                 e.target.value = "";
               }
             }}

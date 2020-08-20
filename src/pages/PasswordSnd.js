@@ -35,7 +35,10 @@ class PasswordSnd extends React.Component {
         if (res.ok) {
           this.props.history.push("/passwordtrd");
         } else {
-          alert("Secret Key가 일치하지 않습니다.");
+          document.querySelector("#mobile").classList.add("wobble-horizontal")
+          window.setTimeout(() => {
+            document.querySelector("#mobile").classList.remove("wobble-horizontal")
+          }, 1000);
         }
       })
       .catch((err) => console.log(err));
@@ -71,7 +74,7 @@ class PasswordSnd extends React.Component {
             onChange={(e) => this.changeSecretKey(e.target.value)}
             onKeyPress={(e) => {
               if (e.key === "Enter") {
-                this.handlingUserInformation();
+                this.submitSecretKey();
                 e.target.value = "";
               }
             }}

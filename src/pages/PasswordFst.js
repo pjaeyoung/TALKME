@@ -39,7 +39,10 @@ class PasswordFst extends React.Component {
           );
           this.props.history.push("/passwordsnd");
         } else {
-          alert("해당 email을 찾을 수 없습니다.");
+          document.querySelector("#mobile").classList.add("wobble-horizontal")
+          window.setTimeout(() => {
+            document.querySelector("#mobile").classList.remove("wobble-horizontal")
+          }, 1000);
         }
       })
       .catch((err) => console.log(err));
@@ -68,7 +71,7 @@ class PasswordFst extends React.Component {
             onChange={(e) => this.changeEmail(e.target.value)}
             onKeyPress={(e) => {
               if (e.key === "Enter") {
-                this.handlingUserInformation();
+                this.sendEmail();
                 e.target.value = "";
               }
             }}

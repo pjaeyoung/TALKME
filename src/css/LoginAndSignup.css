@@ -18,7 +18,7 @@
 }
 
 /*애니메이션박스*/
-.newShootingStarAnimationBox {
+.newShootingStarAnimationBox1 {
   position: relative;
   height:35%
 }
@@ -100,7 +100,7 @@
   display: inline-block;
   animation-name: wobble-horizontal;
   animation-duration: 1s;
-  animation-timing-function: linear;
+  animation-timing-function: ease-in;
   animation-iteration-count: 1;
 }
 
@@ -128,7 +128,6 @@
 
 #forgotBtn{
   position: absolute;
-  top:5%;
   left :50%;
   transform: translateX(-50%);
   cursor : pointer;
@@ -141,7 +140,7 @@
 
 .newLoginBtn{
   position: absolute;
-  top:20%;
+  top:15%;
   left:50%;
   transform: translateX(-50%);
   height:20%;
@@ -167,7 +166,7 @@
 
 .socialLoginBtn{
   position: absolute;
-  top: 48%;
+  top: 42%;
   left:50%;
   transform: translateX(-50%);
   height:20%;

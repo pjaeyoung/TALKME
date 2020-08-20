@@ -50,7 +50,7 @@ class Login extends React.Component {
         <button className="signBack" onClick={() => this.props.history.push("/intro")}>
           <i className="fas fa-arrow-left"></i>
         </button >
-        <div className="newShootingStarAnimationBox">
+        <div className="newShootingStarAnimationBox1">
           <div className="shootingStarAnimation">
             <i id="star" className="fas fa-star fa-lg">
               <div id="bigStarBack"></div>
