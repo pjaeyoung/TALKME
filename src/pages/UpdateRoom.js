@@ -50,7 +50,7 @@ class UpdateRoom extends React.Component {
       questions: questions
     });
   }
-  // string을 입력 받아 byte를 return
+  // event target을 입력 받아 value의 byte 수를 return
   byteCheck(target) {
     let byte = 0;
     target.value.split("").forEach(char => {
@@ -112,6 +112,11 @@ class UpdateRoom extends React.Component {
           description: room.description,
           questions: room.questions
         });
+        let target = {
+          id: "descBox",
+          value: room.description
+        }
+        this.byteCheck(target);
       })
       .catch(err => console.log(err));
   }
@@ -137,7 +142,7 @@ class UpdateRoom extends React.Component {
               type="text"
               value={this.state.title}
               onChange={e => {
-                if (this.byteCheck(e.target) <= 50) {
+                if (this.byteCheck(e.target) <= 56) {
                   this.changeState("title", e.target.value);
                 } else {
                   e.target.value = this.state.title;
@@ -150,7 +155,7 @@ class UpdateRoom extends React.Component {
             <textarea id="descBox"
               value={this.state.description}
               onChange={e => {
-                if (this.byteCheck(e.target) < 100) {
+                if (this.byteCheck(e.target) < 200) {
                   this.changeState("description", e.target.value);
                 } else {
                   e.target.value = this.state.description;
@@ -159,7 +164,7 @@ class UpdateRoom extends React.Component {
             </textarea>
           </div>
           <div id="descCount">
-            {this.state.descByte}/100
+            {this.state.descByte}/200
           </div>
           <div>
             <ul id="questionList">
@@ -174,6 +179,8 @@ class UpdateRoom extends React.Component {
             <input id="inputQuestion"
               type="text"
               placeholder="+ add question"
+              onFocus={e => e.target.placeholder = ""}
+              onBlur={e => e.target.placeholder = "+ add question"}
               onKeyPress={e => {
                 if (e.key === "Enter") {
                   this.addQuestion(e.target.value);
@@ -182,7 +189,7 @@ class UpdateRoom extends React.Component {
               }}>
             </input>
           </div>
-          <button id="startBtn"
+          <button id="startEndSaveBtn"
             onClick={() => this.saveBtn()}>
             save
           </button>

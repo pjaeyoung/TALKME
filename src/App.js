@@ -21,12 +21,13 @@ class App extends React.Component {
       isReady: false,
       isLogin: false,
       isGuest: false,
+      findPassword: false,
     };
     this.handlingIsLogin = this.handlingIsLogin.bind(this);
   }
 
   handlingIsLogin(key) {
-    this.setState({ [key]: true });
+    this.setState({ [key]: !this.state[key] });
   }
 
   componentDidMount() {
@@ -101,32 +102,75 @@ class App extends React.Component {
                   <Route
                     exact
                     path="/intro"
-                    render={() => (
-                      <Intro handlingIsLogin={this.handlingIsLogin} />
-                    )}
+                    render={() =>
+                      this.state.isLogin ? (
+                        <Redirect to="/roomlist" />
+                      ) : (
+                        <Intro handlingIsLogin={this.handlingIsLogin} />
+                      )
+                    }
                   />
                   <Route
                     exact
                     path="/login"
-                    render={() => (
-                      <Login handlingIsLogin={this.handlingIsLogin} />
-                    )}
+                    render={() =>
+                      this.state.isLogin ? (
+                        <Redirect to="/roomlist" />
+                      ) : (
+                        <Login handlingIsLogin={this.handlingIsLogin} />
+                      )
+                    }
+                  />
+                  <Route
+                    exact
+                    path="/signup"
+                    render={() =>
+                      this.state.isLogin ? (
+                        <Redirect to="/roomlist" />
+                      ) : (
+                        <Signup />
+                      )
+                    }
                   />
                   <Route exact path="/signup" render={() => <Signup />} />
                   <Route
                     exact
                     path="/passwordfst"
-                    render={() => <PasswordFst />}
+                    render={() =>
+                      this.state.isLogin ? (
+                        <Redirect to="/roomlist" />
+                      ) : this.state.findPassword ? (
+                        <PasswordFst handlingIsLogin={this.handlingIsLogin} />
+                      ) : (
+                        <Redirect to="/login" />
+                      )
+                    }
                   />
                   <Route
                     exact
                     path="/passwordsnd"
-                    render={() => <PasswordSnd />}
+                    render={() =>
+                      this.state.isLogin ? (
+                        <Redirect to="/roomlist" />
+                      ) : this.state.findPassword ? (
+                        <PasswordSnd />
+                      ) : (
+                        <Redirect to="/login" />
+                      )
+                    }
                   />
                   <Route
                     exact
                     path="/passwordtrd"
-                    render={() => <PasswordTrd />}
+                    render={() =>
+                      this.state.isLogin ? (
+                        <Redirect to="/roomlist" />
+                      ) : this.state.findPassword ? (
+                        <PasswordTrd />
+                      ) : (
+                        <Redirect to="/login" />
+                      )
+                    }
                   />
                   <Route
                     exact
@@ -173,9 +217,16 @@ class App extends React.Component {
                     }
                   />
                   <Route path="/" render={() => <Main />} />
+                  <Route path="/" render={() => <Main />} />
                 </Switch>
               ) : (
-                <div>로딩 중...</div>
+                <div className="loadingAnimationBox">
+                  <div id="loadingStick1" className="loadingStick"></div>
+                  <div id="loadingStick2" className="loadingStick"></div>
+                  <div id="loadingStick3" className="loadingStick"></div>
+                  <div id="loadingStick4" className="loadingStick"></div>
+                  <div id="loadingStick5" className="loadingStick"></div>
+                </div>
               )}
             </div>
           </div>

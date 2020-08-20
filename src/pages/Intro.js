@@ -15,13 +15,15 @@ class Intro extends React.Component {
             <i id="star" className="fas fa-star fa-lg">
               <div id="bigStarBack"></div>
             </i>
-            <div className="satelliteLine starLightLine"></div>
-            <div className="satelliteLine satelliteLightLine"></div>
             <div className="allSatellite s1"></div>
             <div className="allSatellite s2"></div>
             <div className="allSatellite s3"></div>
             <div className="allSatellite s4"></div>
             <div className="allSatellite s5"></div>
+            <div className="meteor"></div>
+            <div className="meteor s6"></div>
+            <div className="meteor s7"></div>
+            <div className="meteor s8"></div>
           </div>
         </div>
         <div id="btnBox">
