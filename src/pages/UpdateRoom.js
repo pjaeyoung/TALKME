@@ -70,8 +70,8 @@ class UpdateRoom extends React.Component {
   // save 버튼 클릭 시 해당 방의 정보를 수정하는 API 요청 후 roomlist page로 이동
   saveBtn() {
     if (this.state.title && this.state.questions.length) {
-      let questionsText = this.state.questions.map((question) => question.text);
-      fetch("/room", {
+      let questionsText = this.state.questions.map(question => question.text);
+      fetch("http://ec2-13-124-126-40.ap-northeast-2.compute.amazonaws.com:4000/room", {
         method: "PATCH",
         headers: {
           "Content-Type": "application/json",
@@ -98,7 +98,7 @@ class UpdateRoom extends React.Component {
   }
   // path의 params를 확인하여 해당 방의 정보를 가져오는 API 요청
   componentDidMount() {
-    fetch(`/room/${this.props.match.params.roomId}`, {
+    fetch(`http://ec2-13-124-126-40.ap-northeast-2.compute.amazonaws.com:4000/room/${this.props.match.params.roomId}`, {
       method: "GET",
       headers: {
         "Content-Type": "application/json",
@@ -164,7 +164,6 @@ class UpdateRoom extends React.Component {
             ></textarea>
           </div>
           <div id="descCount">{this.state.descByte}/200</div>
-          <div id="descCount">{this.state.descByte}/100</div>
           <div>
             <ul id="questionList">
               {this.state.questions.map((question) => (

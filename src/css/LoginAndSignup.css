@@ -14,13 +14,13 @@
 }
 
 .signBack:hover{
-  opacity: 80%;
+  opacity: 0.8;
 }
 
 /*애니메이션박스*/
-.newShootingStarAnimationBox {
+.newShootingStarAnimationBox1 {
   position: relative;
-  height:30%
+  height:35%
 }
 
 /*인풋박스*/
@@ -100,7 +100,7 @@
   display: inline-block;
   animation-name: wobble-horizontal;
   animation-duration: 1s;
-  animation-timing-function: linear;
+  animation-timing-function: ease-in;
   animation-iteration-count: 1;
 }
 
@@ -123,7 +123,7 @@
 /*버튼 박스*/
 .signBox{
   position: relative;
-  height: 50%;
+  height: 45%;
 }
 
 #forgotBtn{
@@ -135,7 +135,7 @@
 }
 
 #forgotBtn:hover{
-  opacity: 80%;
+  opacity: 0.8;
 }
 
 .newLoginBtn{
@@ -152,7 +152,7 @@
 }
 
 .newLoginBtn:hover{
-  opacity: 80%;
+  opacity: 0.8;
 }
 
 .newLoginText{
@@ -166,7 +166,7 @@
 
 .socialLoginBtn{
   position: absolute;
-  top: 45%;
+  top: 42%;
   left:50%;
   transform: translateX(-50%);
   height:20%;
@@ -178,7 +178,7 @@
 }
 
 .socialLoginBtn:hover{
-  opacity: 80%;
+  opacity: 0.8;
 }
 
 .socialLoginText{

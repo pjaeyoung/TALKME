@@ -87,7 +87,7 @@ class CreateRoom extends React.Component {
 
       if (this.props.isLogin) {
         // 유저일 때
-        fetch("/room", {
+        fetch("http://ec2-13-124-126-40.ap-northeast-2.compute.amazonaws.com:4000/room", {
           method: "POST",
           headers: {
             "Content-Type": "application/json",
@@ -162,7 +162,6 @@ class CreateRoom extends React.Component {
             ></textarea>
           </div>
           <div id="descCount">{this.state.descByte}/200</div>
-          <div id="descCount">{this.state.descByte}/100</div>
           <div>
             <ul id="questionList">
               {this.state.questions.map((question) => (

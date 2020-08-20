@@ -22,7 +22,7 @@ class Signup extends React.Component {
   handlingUserInformation() {
     const { email, password } = this.state;
     //입력받은 값을 바탕으로 포스트 요청
-    fetch("/auth/signup", {
+    fetch("http://ec2-13-124-126-40.ap-northeast-2.compute.amazonaws.com:4000/auth/signup", {
       method: "POST",
       headers: {
         "Content-Type": "application/json"
@@ -50,16 +50,30 @@ class Signup extends React.Component {
     return (
       <>
         <button className="signBack" onClick={() => this.props.history.push("/intro")}>
-        <i className="fas fa-arrow-left"></i>
-          </button >
-          <div className="newShootingStarAnimationBox">
+          <i className="fas fa-arrow-left"></i>
+        </button >
+        <div className="newShootingStarAnimationBox1">
           <div className="shootingStarAnimation">
+            <i id="star" className="fas fa-star fa-lg">
+              <div id="bigStarBack"></div>
+            </i>
+            <div className="satelliteLine starLightLine"></div>
+            <div className="satelliteLine satelliteLightLine"></div>
+            <div className="allSatellite s1"></div>
+            <div className="allSatellite s2"></div>
+            <div className="allSatellite s3"></div>
+            <div className="allSatellite s4"></div>
+            <div className="allSatellite s5"></div>
+            <div className="meteor"></div>
+            <div className="meteor s6"></div>
+            <div className="meteor s7"></div>
+            <div className="meteor s8"></div>
           </div>
         </div>
         <div className="signInputBox">
           <input
-            onFocus={(e)=>e.target.placeholder=""}
-            onBlur={(e)=>e.target.placeholder="Please Enter Your Desired ID"}
+            onFocus={(e) => e.target.placeholder = ""}
+            onBlur={(e) => e.target.placeholder = "Please Enter Your Desired ID"}
             placeholder="Please Enter Your Desired ID"
             className="IDBOX"
             type="text"
@@ -73,8 +87,8 @@ class Signup extends React.Component {
           </input>
           <img className="mail" src={mail}></img>
           <input
-            onFocus={(e)=>e.target.placeholder=""}
-            onBlur={(e)=>e.target.placeholder="Please Enter Your Desired Password"}
+            onFocus={(e) => e.target.placeholder = ""}
+            onBlur={(e) => e.target.placeholder = "Please Enter Your Desired Password"}
             placeholder="Please Enter Your Desired Password"
             className="PWBOX"
             type="password"
@@ -85,8 +99,8 @@ class Signup extends React.Component {
                 e.target.value = "";
               }
             }}>
-            </input>
-            <img className="lock" src={lock}></img>
+          </input>
+          <img className="lock" src={lock}></img>
         </div>
         <div className="signBox">
           <div className="newLoginBtn" onClick={() => {

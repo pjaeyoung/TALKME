@@ -26,7 +26,7 @@ class PasswordTrd extends React.Component {
   saveBtn() {
     let { newPassword, confirmPassword } = this.state;
     if (newPassword === confirmPassword) {
-      fetch("/auth/pwinquiry/newpassword", {
+      fetch("http://ec2-13-124-126-40.ap-northeast-2.compute.amazonaws.com:4000/auth/pwinquiry/newpassword", {
         method: "PATCH",
         headers: {
           "Content-Type": "application/json",
@@ -41,12 +41,18 @@ class PasswordTrd extends React.Component {
             alert("비밀번호가 정상적으로 변경되었습니다.");
             this.props.history.push("/login");
           } else {
-            alert("Secret Key가 일치하지 않습니다.");
+            document.querySelector("#mobile").classList.add("wobble-horizontal")
+            window.setTimeout(() => {
+              document.querySelector("#mobile").classList.remove("wobble-horizontal")
+            }, 1000);
           }
         })
         .catch((err) => console.log(err));
     } else {
-      alert("비밀번호가 일지하지 않습니다.");
+      document.querySelector("#mobile").classList.add("wobble-horizontal")
+      window.setTimeout(() => {
+        document.querySelector("#mobile").classList.remove("wobble-horizontal")
+      }, 1000);
     }
   }
 

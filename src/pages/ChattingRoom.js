@@ -24,21 +24,20 @@ class ChattingRoom extends React.Component {
 
     //id가 있으면 유저 -> id가지고 api요청 setstate, this.props.location.id
     if (id) {
-      fetch(`/room/${id}/questions`)
-        .then((res) => res.json())
-        .then((data) =>
-          this.setState({
-            //타이틀과 첫번째 질문 셋팅
-            data: data.questions,
-            title: data.questions[0].Room.title,
-            questions_answers: [
-              {
-                id: data.questions[0].id,
-                text: data.questions[0].text,
-              },
-            ],
-          })
-        );
+      fetch(`http://ec2-13-124-126-40.ap-northeast-2.compute.amazonaws.com:4000/room/${id}/questions`)
+        .then(res => res.json())
+        .then(data => this.setState({
+          //타이틀과 첫번째 질문 셋팅
+          data: data.questions,
+          title: data.questions[0].Room.title,
+          questions_answers: [
+            {
+              id: data.questions[0].id,
+              text: data.questions[0].text
+            }
+          ]
+        }
+        ));
     }
     //없으면 게스트 -> props 다시 확인해서 setstate  this.props.location.title, this.props.location.questions[0]
     else if (questions) {
@@ -134,16 +133,16 @@ class ChattingRoom extends React.Component {
               <p id="headTitle">{title}</p>
             </div>
           ) : (
-            ""
-          )}
+              ""
+            )}
         </header>
 
         {/*Questions_Answers 뿌려주기*/}
         <div id="messageBox">
           {questions_answers.length
             ? questions_answers.map((el) => (
-                <QuestionAnswerPair key={el.id} data={el} />
-              ))
+              <QuestionAnswerPair key={el.id} data={el} />
+            ))
             : ""}
         </div>
 

@@ -23,7 +23,7 @@ class PasswordFst extends React.Component {
   }
   // send 버튼 클릭 시 secret key 발급 API 요청 후 passwordsnd page로 이동
   sendEmail() {
-    fetch("/auth/pwinquiry/askkey", {
+    fetch("http://ec2-13-124-126-40.ap-northeast-2.compute.amazonaws.com:4000/auth/pwinquiry/askkey", {
       method: "POST",
       headers: {
         "Content-Type": "application/json",
@@ -40,7 +40,10 @@ class PasswordFst extends React.Component {
           );
           this.props.history.push("/passwordsnd");
         } else {
-          alert("해당 email을 찾을 수 없습니다.");
+          document.querySelector("#mobile").classList.add("wobble-horizontal")
+          window.setTimeout(() => {
+            document.querySelector("#mobile").classList.remove("wobble-horizontal")
+          }, 1000);
         }
       })
       .catch((err) => console.log(err));

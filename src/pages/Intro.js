@@ -10,7 +10,7 @@ class Intro extends React.Component {
   render() {
     return (
       <>
-        <div className="shootingStarAnimationBox">
+        <div id="introShootingStarAnimationBox">
           <div className="shootingStarAnimation">
             <i id="star" className="fas fa-star fa-lg">
               <div id="bigStarBack"></div>
@@ -26,7 +26,7 @@ class Intro extends React.Component {
             <div className="meteor s8"></div>
           </div>
         </div>
-        <div id="btnBox">
+        <div id="introBtnBox">
           <div id="guestBtn" onClick={() => {
             this.props.handlingIsLogin("isGuest");
             this.props.history.push("/createroom");
