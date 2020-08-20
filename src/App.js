@@ -20,13 +20,14 @@ class App extends React.Component {
     this.state = {
       isReady: false,
       isLogin: false,
-      isGuest: false
+      isGuest: false,
+      findPassword: false
     };
     this.handlingIsLogin = this.handlingIsLogin.bind(this);
   }
 
   handlingIsLogin(key) {
-    this.setState({ [key]: !this.state.isLogin });
+    this.setState({ [key]: !this.state[key] });
   }
 
   componentDidMount() {
@@ -130,7 +131,11 @@ class App extends React.Component {
                     render={() => this.state.isLogin ?
                       <Redirect to="/roomlist" />
                       :
-                      <PasswordFst />}
+                      this.state.findPassword ?
+                        <PasswordFst handlingIsLogin={this.handlingIsLogin} />
+                        :
+                        <Redirect to="/login" />
+                    }
                   />
                   <Route
                     exact
@@ -138,7 +143,11 @@ class App extends React.Component {
                     render={() => this.state.isLogin ?
                       <Redirect to="/roomlist" />
                       :
-                      <PasswordSnd />}
+                      this.state.findPassword ?
+                        <PasswordSnd />
+                        :
+                        <Redirect to="/login" />
+                    }
                   />
                   <Route
                     exact
@@ -146,13 +155,18 @@ class App extends React.Component {
                     render={() => this.state.isLogin ?
                       <Redirect to="/roomlist" />
                       :
-                      <PasswordTrd />}
+                      this.state.findPassword ?
+                        <PasswordTrd />
+                        :
+                        <Redirect to="/login" />
+                    }
                   />
                   <Route
                     exact
                     path="/roomlist"
                     render={() => this.state.isLogin ?
-                      <RoomList handlingIsLogin={this.handlingIsLogin} /> :
+                      <RoomList handlingIsLogin={this.handlingIsLogin} />
+                      :
                       <Redirect to="/intro" />}
                   />
                   <Route
@@ -160,21 +174,24 @@ class App extends React.Component {
                     path="/createroom"
                     render={() => this.state.isLogin || this.state.isGuest ?
                       <CreateRoom
-                        isLogin={isLogin} /> :
+                        isLogin={isLogin} />
+                      :
                       <Redirect to="/intro" />}
                   />
                   <Route
                     exact
                     path="/updateroom/:roomId"
                     render={() => this.state.isLogin ?
-                      <UpdateRoom /> :
+                      <UpdateRoom />
+                      :
                       <Redirect to="/intro" />}
                   />
                   <Route
                     exact
                     path="/chattingroom"
                     render={() => this.state.isLogin || this.state.isGuest ?
-                      <ChattingRoom isLogin={isLogin} isGuest={isGuest} /> :
+                      <ChattingRoom isLogin={isLogin} isGuest={isGuest} />
+                      :
                       <Redirect to="/intro" />}
                   />
                   <Route

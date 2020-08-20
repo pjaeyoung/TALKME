@@ -70,7 +70,13 @@ class RoomList extends React.Component {
       },
       credentials: "include"
     })
-      .then(res => res.json())
+      .then(res => {
+        if (res.ok) {
+          return res.json();
+        } else {
+          this.props.history.push("/login");
+        }
+      })
       .then(data => {
         this.setState({
           rooms: data.rooms

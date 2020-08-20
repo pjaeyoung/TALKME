@@ -12,6 +12,7 @@ class PasswordFst extends React.Component {
   }
   // 뒤로가기 버튼 클릭 시 login page로 이동
   backBtn() {
+    this.props.handlingIsLogin("findPassword");
     this.props.history.push("/login");
   }
   // state의 email을 입력받은 email로 변경
