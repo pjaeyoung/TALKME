@@ -101,34 +101,52 @@ class App extends React.Component {
                   <Route
                     exact
                     path="/intro"
-                    render={() => <Intro
-                      handlingIsLogin={this.handlingIsLogin} />}
+                    render={() => this.state.isLogin ?
+                      <Redirect to="/roomlist" /> 
+                      :
+                    <Intro handlingIsLogin={this.handlingIsLogin} />}
                   />
                   <Route
                     exact
                     path="/login"
-                    render={() => <Login
-                      handlingIsLogin={this.handlingIsLogin} />}
+                    render={() => this.state.isLogin ?
+                    <Redirect to="/roomlist" /> 
+                    :
+                    <Login handlingIsLogin={this.handlingIsLogin} />
+                    }
+                    
                   />
                   <Route
                     exact
                     path="/signup"
-                    render={() => <Signup />}
+                    render={() => this.state.isLogin ?
+                      <Redirect to="/roomlist" /> 
+                      :
+                      <Signup />}
                   />
                   <Route
                     exact
                     path="/passwordfst"
-                    render={() => <PasswordFst />}
+                    render={() => this.state.isLogin ?
+                    <Redirect to="/roomlist" /> 
+                    :
+                    <PasswordFst />}
                   />
                   <Route
                     exact
                     path="/passwordsnd"
-                    render={() => <PasswordSnd />}
+                    render={() => this.state.isLogin ?
+                      <Redirect to="/roomlist" /> 
+                      :
+                      <PasswordSnd />}
                   />
                   <Route
                     exact
                     path="/passwordtrd"
-                    render={() => <PasswordTrd />}
+                    render={() => this.state.isLogin ?
+                      <Redirect to="/roomlist" /> 
+                      :
+                      <PasswordTrd />}
                   />
                   <Route
                     exact

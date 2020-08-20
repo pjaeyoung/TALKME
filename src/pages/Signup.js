@@ -19,6 +19,30 @@ class Signup extends React.Component {
     this.setState({ [key]: e.target.value });
   }
 
+  handlingUserInformation() {
+    const { email, password } = this.state;
+    //입력받은 값을 바탕으로 포스트 요청
+    fetch("/auth/signup", {
+      method: "POST",
+      headers: {
+        "Content-Type": "application/json"
+      },
+      body: JSON.stringify({ email: email, password: password }),
+      credentials: "include",
+    })
+      //response의 상태코드가 201이면 App의 state변경 메소드 실행
+      .then(res => {
+        if (res.status === 201) {
+          alert("회원가입이 완료되었습니다.");
+          this.props.history.push("/login");
+        } else {
+          document.querySelector("#mobile").classList.add("wobble-horizontal")
+          window.setTimeout(() => {
+            document.querySelector("#mobile").classList.remove("wobble-horizontal")
+          }, 1000);
+        }
+      });
+  }
 
 
 
@@ -66,25 +90,7 @@ class Signup extends React.Component {
         </div>
         <div className="signBox">
           <div className="newLoginBtn" onClick={() => {
-            const { email, password } = this.state;
-            //입력받은 값을 바탕으로 포스트 요청
-            fetch("/auth/signup", {
-              method: "POST",
-              headers: {
-                "Content-Type": "application/json"
-              },
-              body: JSON.stringify({ email: email, password: password }),
-              credentials: "include",
-            })
-              //response의 상태코드가 201이면 App의 state변경 메소드 실행
-              .then(res => {
-                if (res.status === 201) {
-                  alert("회원가입이 완료되었습니다.");
-                  this.props.history.push("/login");
-                } else {
-                  alert("이미 존재하는 email입니다.");
-                }
-              });
+            this.handlingUserInformation()
           }}>
             <div className="newLoginText">Sign up</div>
           </div>
