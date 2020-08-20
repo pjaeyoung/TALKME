@@ -96,7 +96,10 @@ class Login extends React.Component {
         <div className="signBox">
           <div
             id="forgotBtn"
-            onClick={() => this.props.history.push("/passwordfst")}
+            onClick={() => {
+              this.props.handlingIsLogin("findPassword");
+              this.props.history.push("/passwordfst");
+            }}
           >
             forgot password
           </div>

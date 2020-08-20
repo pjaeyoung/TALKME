@@ -21,12 +21,13 @@ class App extends React.Component {
       isReady: false,
       isLogin: false,
       isGuest: false,
+      findPassword: false,
     };
     this.handlingIsLogin = this.handlingIsLogin.bind(this);
   }
 
   handlingIsLogin(key) {
-    this.setState({ [key]: true });
+    this.setState({ [key]: !this.state[key] });
   }
 
   componentDidMount() {
@@ -138,8 +139,10 @@ class App extends React.Component {
                     render={() =>
                       this.state.isLogin ? (
                         <Redirect to="/roomlist" />
+                      ) : this.state.findPassword ? (
+                        <PasswordFst handlingIsLogin={this.handlingIsLogin} />
                       ) : (
-                        <PasswordFst />
+                        <Redirect to="/login" />
                       )
                     }
                   />
@@ -149,8 +152,10 @@ class App extends React.Component {
                     render={() =>
                       this.state.isLogin ? (
                         <Redirect to="/roomlist" />
-                      ) : (
+                      ) : this.state.findPassword ? (
                         <PasswordSnd />
+                      ) : (
+                        <Redirect to="/login" />
                       )
                     }
                   />
@@ -160,8 +165,10 @@ class App extends React.Component {
                     render={() =>
                       this.state.isLogin ? (
                         <Redirect to="/roomlist" />
-                      ) : (
+                      ) : this.state.findPassword ? (
                         <PasswordTrd />
+                      ) : (
+                        <Redirect to="/login" />
                       )
                     }
                   />
@@ -209,6 +216,7 @@ class App extends React.Component {
                       )
                     }
                   />
+                  <Route path="/" render={() => <Main />} />
                   <Route path="/" render={() => <Main />} />
                 </Switch>
               ) : (

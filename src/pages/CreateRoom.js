@@ -53,7 +53,7 @@ class CreateRoom extends React.Component {
       questions: questions,
     });
   }
-  // string을 입력 받아 byte를 return
+  // event target을 입력 받아 value의 byte 수를 return
   byteCheck(target) {
     let byte = 0;
     target.value.split("").forEach((char) => {
@@ -140,7 +140,7 @@ class CreateRoom extends React.Component {
               id="titleBox"
               type="text"
               onChange={(e) => {
-                if (this.byteCheck(e.target) <= 50) {
+                if (this.byteCheck(e.target) <= 56) {
                   this.changeState("title", e.target.value);
                 } else {
                   e.target.value = this.state.title;
@@ -153,7 +153,7 @@ class CreateRoom extends React.Component {
             <textarea
               id="descBox"
               onChange={(e) => {
-                if (this.byteCheck(e.target) < 100) {
+                if (this.byteCheck(e.target) < 200) {
                   this.changeState("description", e.target.value);
                 } else {
                   e.target.value = this.state.description;
@@ -161,6 +161,7 @@ class CreateRoom extends React.Component {
               }}
             ></textarea>
           </div>
+          <div id="descCount">{this.state.descByte}/200</div>
           <div id="descCount">{this.state.descByte}/100</div>
           <div>
             <ul id="questionList">
@@ -179,6 +180,8 @@ class CreateRoom extends React.Component {
               autoCorrect="off"
               spellCheck="off"
               placeholder="+ add question"
+              onFocus={(e) => (e.target.placeholder = "")}
+              onBlur={(e) => (e.target.placeholder = "+ add question")}
               onKeyPress={(e) => {
                 if (e.key === "Enter") {
                   this.addQuestion(e.target.value);
