@@ -10,7 +10,7 @@ class CreateRoom extends React.Component {
       title: "",
       description: "",
       questions: [],
-      descByte: 0
+      descByte: 0,
     };
   }
   // 뒤로가기 클릭 시 intro page로 이동
@@ -24,7 +24,7 @@ class CreateRoom extends React.Component {
   // state의 key와 value를 입력받아 변경
   changeState(key, value) {
     this.setState({
-      [key]: value
+      [key]: value,
     });
   }
   // state.questions 배열에 id와 question을 객체 형태로 추가
@@ -33,40 +33,40 @@ class CreateRoom extends React.Component {
 
     let question = {
       id: questions.length ? questions[questions.length - 1].id + 1 : 0,
-      text: value
+      text: value,
     };
 
     questions.push(question);
 
     this.setState({
-      questions: questions
+      questions: questions,
     });
   }
   // id를 입력 받아 해당 id를 key로 가지는 질문 삭제
   deleteQuestion(id) {
-    let questions = this.state.questions.filter(question => {
+    let questions = this.state.questions.filter((question) => {
       if (question.id !== id) {
         return question;
       }
     });
     this.setState({
-      questions: questions
+      questions: questions,
     });
   }
-  // string을 입력 받아 byte를 return
+  // event target을 입력 받아 value의 byte 수를 return
   byteCheck(target) {
     let byte = 0;
-    target.value.split("").forEach(char => {
-      if (char.charCodeAt(0) <= 0x00007F) {
+    target.value.split("").forEach((char) => {
+      if (char.charCodeAt(0) <= 0x00007f) {
         byte = byte + 1;
-      } else if (char.charCodeAt(0) <= 0x00FFFF) {
+      } else if (char.charCodeAt(0) <= 0x00ffff) {
         byte = byte + 2;
       }
     });
     if (target.id === "descBox") {
       this.setState({
-        descByte: byte
-      })
+        descByte: byte,
+      });
     }
     return byte;
   }
@@ -74,13 +74,16 @@ class CreateRoom extends React.Component {
   startBtn() {
     if (this.state.title && this.state.questions.length) {
       let count = 0;
-      let questions = this.state.questions.reduce((arr, cur) => {
-        cur.id = count;
-        count++;
-        arr[0].push(cur);
-        arr[1].push(cur.text);
-        return arr;
-      }, [[], []]);
+      let questions = this.state.questions.reduce(
+        (arr, cur) => {
+          cur.id = count;
+          count++;
+          arr[0].push(cur);
+          arr[1].push(cur.text);
+          return arr;
+        },
+        [[], []]
+      );
 
       if (this.props.isLogin) {
         // 유저일 때
@@ -92,24 +95,24 @@ class CreateRoom extends React.Component {
           body: JSON.stringify({
             title: this.state.title,
             description: this.state.description,
-            questions: questions[1]
+            questions: questions[1],
           }),
-          credentials: "include"
+          credentials: "include",
         })
-          .then(res => res.json())
-          .then(data => {
+          .then((res) => res.json())
+          .then((data) => {
             this.props.history.push({
               pathname: "/chattingroom",
-              id: data.room.id
+              id: data.room.id,
             });
           })
-          .catch(err => console.log(err));
+          .catch((err) => console.log(err));
       } else {
         // 게스트일 때
         this.props.history.push({
           pathname: "/chattingroom",
           title: this.state.title,
-          questions: questions[0]
+          questions: questions[0],
         });
       }
     } else if (!this.state.title) {
@@ -123,67 +126,70 @@ class CreateRoom extends React.Component {
     return (
       <>
         <div>
-          <button id="roomBack"
-            onClick={() => this.backBtn()}>
+          <button id="roomBack" onClick={() => this.backBtn()}>
             <i className="fas fa-arrow-left"></i>
           </button>
           <div id="roomTitle">
-            <p id="headTitle">
-              Questions
-            </p>
+            <p id="headTitle">Questions</p>
           </div>
         </div>
         <div id="roomBottom">
           <div id="inputTitle">
             <span>title : </span>
-            <input id="titleBox"
+            <input
+              id="titleBox"
               type="text"
-              onChange={e => {
-                if (this.byteCheck(e.target) <= 50) {
+              onChange={(e) => {
+                if (this.byteCheck(e.target) <= 56) {
                   this.changeState("title", e.target.value);
                 } else {
                   e.target.value = this.state.title;
                 }
-              }}>
-            </input>
+              }}
+            ></input>
           </div>
           <div id="inputDesc">
             <div>description : </div>
-            <textarea id="descBox"
-              onChange={e => {
-                if (this.byteCheck(e.target) < 100) {
+            <textarea
+              id="descBox"
+              onChange={(e) => {
+                if (this.byteCheck(e.target) < 200) {
                   this.changeState("description", e.target.value);
                 } else {
                   e.target.value = this.state.description;
                 }
-              }}>
-            </textarea>
+              }}
+            ></textarea>
           </div>
-          <div id="descCount">
-            {this.state.descByte}/100
-          </div>
+          <div id="descCount">{this.state.descByte}/200</div>
           <div>
             <ul id="questionList">
-              {this.state.questions.map(question =>
+              {this.state.questions.map((question) => (
                 <Question
                   key={question.id}
                   question={question}
                   deleteQuestion={this.deleteQuestion.bind(this)}
-                />)}
+                />
+              ))}
             </ul>
-            <input id="inputQuestion"
+            <input
+              id="inputQuestion"
               type="text"
+              autoComplete="off"
+              autoCorrect="off"
+              spellCheck="off"
               placeholder="+ add question"
-              onKeyPress={e => {
+              onFocus={(e) => (e.target.placeholder = "")}
+              onBlur={(e) => (e.target.placeholder = "+ add question")}
+              onKeyPress={(e) => {
                 if (e.key === "Enter") {
                   this.addQuestion(e.target.value);
                   e.target.value = "";
                 }
-              }}>
-            </input>
+              }}
+            ></input>
           </div>
-          <button id="startEndSaveBtn"
-            onClick={() => this.startBtn()}>
+          <button id="startEndSaveBtn" onClick={() => this.startBtn()}>
             start
           </button>
         </div>

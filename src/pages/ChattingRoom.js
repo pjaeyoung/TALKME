@@ -2,7 +2,7 @@ import React from "react";
 import QuestionAnswerPair from "../component/QuestionAnswerPair";
 import { withRouter } from "react-router-dom";
 import "../css/ChattingRoom.css";
-import plane from "../img/plane.png"
+import plane from "../img/plane.png";
 
 class ChattingRoom extends React.Component {
   constructor(props) {
@@ -12,7 +12,7 @@ class ChattingRoom extends React.Component {
       title: "",
       questions_answers: [],
       answer: "",
-      idx: 0
+      idx: 0,
     };
     this.handlingQuestions = this.handlingQuestions.bind(this);
     this.handlingAnswers = this.handlingAnswers.bind(this);
@@ -21,7 +21,8 @@ class ChattingRoom extends React.Component {
 
   componentDidMount() {
     const { id, title, questions } = this.props.location;
-    //id가 있으면 유저 -> id가지고 api요청 setstate, this.props.location.id 
+
+    //id가 있으면 유저 -> id가지고 api요청 setstate, this.props.location.id
     if (id) {
       fetch(`http://ec2-13-124-126-40.ap-northeast-2.compute.amazonaws.com:4000/room/${id}/questions`)
         .then(res => res.json())
@@ -47,12 +48,12 @@ class ChattingRoom extends React.Component {
         questions_answers: [
           {
             id: questions[0].id,
-            text: questions[0].text
-          }
-        ]
+            text: questions[0].text,
+          },
+        ],
       });
     }
-    // 
+    //
     else {
       this.props.history.push("/intro");
     }
@@ -68,16 +69,19 @@ class ChattingRoom extends React.Component {
     //answer 객체 추가
     newQuestions_answers.push({
       id: questions_answers[questions_answers.length - 1].id + 0.1,
-      answer: answer
+      answer: answer,
     });
     //state에 answer 추가 및 index + 1
     this.setState({
+      answer: "",
       questions_answers: newQuestions_answers,
-      idx: idx + 1
+      idx: idx + 1,
     });
+    setTimeout(() => this.moveScrollbar(), 100);
   }
 
   handlingQuestions() {
+    console.log("question");
     const { data, idx, questions_answers } = this.state;
     //다음 질문이 있으면
     if (data[idx]) {
@@ -85,56 +89,61 @@ class ChattingRoom extends React.Component {
       //state에 question 객체 추가
       newQuestions_answers.push({
         id: data[idx].id,
-        text: data[idx].text
+        text: data[idx].text,
       });
       //state에 question 추가
       this.setState({ questions_answers: newQuestions_answers });
+      setTimeout(() => this.moveScrollbar(), 900);
     }
     //다음 질문이 없으면
     else {
+      setTimeout(() => this.moveScrollbar(), 300);
       return;
     }
+  }
+
+  moveScrollbar() {
+    const messageBox = document.getElementById("messageBox");
+    messageBox.scrollTop = messageBox.scrollHeight;
   }
 
   render() {
     const { title, questions_answers } = this.state;
     return (
-      <>
-        {/*뒤로가기 버튼을 누르면 질문작성화면으로 이동*/}
-        <button
-          id="chattingRoomBack"
-          onClick={() => {
-            if (this.props.isLogin) {
-              this.props.history.push("/roomlist");
-            } else if (this.props.isGuest) {
-              this.props.history.push("/createroom");
-            } else {
-              this.props.history.push("/intro");
-            }
-          }}>
-          <i className="fas fa-arrow-left"></i>
-        </button>
-        {/*Room의 title 뿌려주기*/}
-        {title ?
-          <div id="chattingRoomTitle">
-            <p id="headTitle">{title}</p>
-          </div>
-          :
-          ""
-        }
+      <div id="chat-wrapper">
+        <header id="chat-header">
+          {/*뒤로가기 버튼을 누르면 질문작성화면으로 이동*/}
+          <button
+            id="chattingRoomBack"
+            onClick={() => {
+              if (this.props.isLogin) {
+                this.props.history.push("/roomlist");
+              } else if (this.props.isGuest) {
+                this.props.history.push("/createroom");
+              } else {
+                this.props.history.push("/intro");
+              }
+            }}
+          >
+            <i className="fas fa-arrow-left"></i>
+          </button>
+          {/*Room의 title 뿌려주기*/}
+          {title ? (
+            <div id="chattingRoomTitle">
+              <p id="headTitle">{title}</p>
+            </div>
+          ) : (
+              ""
+            )}
+        </header>
 
         {/*Questions_Answers 뿌려주기*/}
         <div id="messageBox">
-          {questions_answers.length ?
-            questions_answers.map(el =>
-              <QuestionAnswerPair
-                key={el.id}
-                data={el}
-              />
-            )
-            :
-            ""
-          }
+          {questions_answers.length
+            ? questions_answers.map((el) => (
+              <QuestionAnswerPair key={el.id} data={el} />
+            ))
+            : ""}
         </div>
 
         {/*입력받은 값을을 state에 저장하고 보내기버튼 클릭시 메시지 생성*/}
@@ -143,25 +152,34 @@ class ChattingRoom extends React.Component {
             type="text"
             id="answerInput"
             placeholder="send messages...."
+            autoComplete="off"
             onChange={(e) => this.handlingInputValue(e)}
-            onKeyPress={e => {
+            onKeyPress={(e) => {
               if (e.key === "Enter") {
+                if (this.state.answer.length === 0) {
+                  return;
+                }
                 this.handlingAnswers();
                 window.setTimeout(this.handlingQuestions, 1000);
                 e.target.value = "";
               }
-            }}>
-          </input>
+            }}
+          ></input>
           <div
             id="submitBtn"
             onClick={() => {
+              if (this.state.answer.length === 0) {
+                return;
+              }
               this.handlingAnswers();
               window.setTimeout(this.handlingQuestions, 1000);
-            }}>
+              document.querySelector("#answerInput").value = "";
+            }}
+          >
             <img id="img" src={plane}></img>
           </div>
         </div>
-      </>
+      </div>
     );
   }
 }

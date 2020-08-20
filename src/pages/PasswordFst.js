@@ -1,6 +1,6 @@
 import React from "react";
 import { withRouter } from "react-router-dom";
-import "../css/PasswordFst.css";
+import "../css/PasswordFstAndSnd.css";
 import mail from "../img/mail.png";
 
 class PasswordFst extends React.Component {
@@ -12,6 +12,7 @@ class PasswordFst extends React.Component {
   }
   // 뒤로가기 버튼 클릭 시 login page로 이동
   backBtn() {
+    this.props.handlingIsLogin("findPassword");
     this.props.history.push("/login");
   }
   // state의 email을 입력받은 email로 변경
@@ -51,17 +52,27 @@ class PasswordFst extends React.Component {
   render() {
     return (
       <>
-        <button id="passwordBack" onClick={() => this.backBtn()}>
+        <button className="passwordBack" onClick={() => this.backBtn()}>
           <i className="fas fa-arrow-left"></i>
         </button>
-        <div className="shootingStarAnimationBox">
+        <div className="PWshootingStarAnimationBox">
           <div className="shootingStarAnimation">
-            <div className="star"></div>
-
-            <div id="PWFirstText">Enter your email for new password</div>
+            <i id="star" className="fas fa-star fa-lg">
+              <div id="bigStarBack"></div>
+            </i>
+            <div className="allSatellite s1"></div>
+            <div className="allSatellite s2"></div>
+            <div className="allSatellite s3"></div>
+            <div className="allSatellite s4"></div>
+            <div className="allSatellite s5"></div>
+            <div className="meteor"></div>
+            <div className="meteor s6"></div>
+            <div className="meteor s7"></div>
+            <div className="meteor s8"></div>
           </div>
         </div>
-        <div className="PWFirstInputBox">
+        <div id="PWText">Enter your email for new password</div>
+        <div className="PWInputBox">
           <input
             onFocus={(e) => (e.target.placeholder = "")}
             onBlur={(e) => (e.target.placeholder = "Please Enter Your Email")}
@@ -80,8 +91,8 @@ class PasswordFst extends React.Component {
         </div>
 
         <div id="btnBox">
-          <div id="PWFirstBtn" onClick={() => this.sendEmail()}>
-            <div id="PWFirstSend">Send</div>
+          <div id="PWBtn" onClick={() => this.sendEmail()}>
+            <div id="PWBtnText">Send</div>
           </div>
         </div>
       </>

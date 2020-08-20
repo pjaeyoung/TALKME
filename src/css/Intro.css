@@ -105,8 +105,8 @@
   height:5px;
   border-radius:50%;
   background:#FFF;
-  top: -30%;
-  left: -40%;
+  top: -60%;
+  left: -10%;
   position:relative;
   transform-origin:100% 0;
   animation:star-ani 3s infinite ease-out;
@@ -129,8 +129,8 @@
 }
 
 .s6 {
-  top: 0%;
-  left: -30%;
+  top: -10%;
+  left: -10%;
   background: #FFF;
   animation-delay: 1.8s;
 }
@@ -141,8 +141,8 @@
 }
 
 .s7 {
-  top: 0%;
-  left: 0%;
+  top: -20%;
+  left: 30%;
   background: #FFF ;
   animation-delay: 4.5s;
 }
@@ -153,8 +153,8 @@
 }
 
 .s8 {
-  top: 20%;
-  left: 10%;
+  top: -30%;
+  left: 70%;
   background: #FFF;
   animation-delay: 5.8s;
 }
@@ -210,7 +210,7 @@
 }
 
 #guestBtn:hover{
-  opacity: 80%;
+  opacity: 0.8;
 }
 
 #guestText{
@@ -236,7 +236,7 @@
 }
 
 #loginBtn:hover{
-  opacity: 80%;
+  opacity:0.8;
 }
 
 #loginText{
@@ -258,7 +258,7 @@
 }
 
 #signupBtn:hover{
-  opacity: 80%;
+  opacity: 0.8;
 }
 
 #signupText {

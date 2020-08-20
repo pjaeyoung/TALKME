@@ -14,7 +14,7 @@
 }
 
 .signBack:hover{
-  opacity: 80%;
+  opacity: 0.8;
 }
 
 /*애니메이션박스*/
@@ -135,7 +135,7 @@
 }
 
 #forgotBtn:hover{
-  opacity: 80%;
+  opacity: 0.8;
 }
 
 .newLoginBtn{
@@ -152,7 +152,7 @@
 }
 
 .newLoginBtn:hover{
-  opacity: 80%;
+  opacity: 0.8;
 }
 
 .newLoginText{
@@ -178,7 +178,7 @@
 }
 
 .socialLoginBtn:hover{
-  opacity: 80%;
+  opacity: 0.8;
 }
 
 .socialLoginText{
