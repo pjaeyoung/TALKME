@@ -160,8 +160,9 @@ class CreateRoom extends React.Component {
                 }
               }}
             ></textarea>
+            <div id="descCount">{this.state.descByte}/200</div>
           </div>
-          <div id="descCount">{this.state.descByte}/200</div>
+
           <div>
             <ul id="questionList">
               {this.state.questions.map((question) => (

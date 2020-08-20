@@ -70,7 +70,7 @@ class UpdateRoom extends React.Component {
   // save 버튼 클릭 시 해당 방의 정보를 수정하는 API 요청 후 roomlist page로 이동
   saveBtn() {
     if (this.state.title && this.state.questions.length) {
-      let questionsText = this.state.questions.map(question => question.text);
+      let questionsText = this.state.questions.map((question) => question.text);
       fetch("/room", {
         method: "PATCH",
         headers: {
@@ -162,8 +162,8 @@ class UpdateRoom extends React.Component {
                 }
               }}
             ></textarea>
+            <div id="descCount">{this.state.descByte}/200</div>
           </div>
-          <div id="descCount">{this.state.descByte}/200</div>
           <div>
             <ul id="questionList">
               {this.state.questions.map((question) => (

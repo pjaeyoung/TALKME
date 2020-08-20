@@ -1,22 +1,22 @@
 /*애니메이션박스*/
 #introShootingStarAnimationBox {
   position: relative;
-  height:55%
+  height: 55%;
 }
 
 .shootingStarAnimation {
   position: absolute;
-  top:50%;
-  left:50%;
+  top: 50%;
+  left: 50%;
   height: 40%;
   width: 40%;
-  transform: translate(-50%,-50%);
+  transform: translate(-50%, -50%);
   display: flex;
   justify-content: center;
   align-items: center;
 }
 
-#star { 
+#star {
   position: absolute;
   top: 80%;
   left: 10%;
@@ -25,12 +25,12 @@
 
 .allSatellite {
   position: absolute;
-  background: #FFFFFF;
+  background: #ffffff;
   box-shadow: 0px 0px 5px 5px rgba(255, 255, 255, 0.25);
   border-radius: 70%;
   animation-name: satellite;
-  animation-iteration-count:infinite;
-  animation-duration: 1s ;
+  animation-iteration-count: infinite;
+  animation-duration: 1s;
   animation-direction: alternate;
 }
 
@@ -73,7 +73,7 @@
   animation-delay: 200ms;
 }
 
-@keyframes allSatellite{
+@keyframes allSatellite {
   0% {
     box-shadow: 0px 0px 10px 1px rgba(255, 255, 255, 0.25);
   }
@@ -94,181 +94,180 @@
     box-shadow: 0px 0px 10px 5px rgba(255, 255, 255, 0.25);
   }
 
-  100%{
+  100% {
     box-shadow: 0px 0px 10px 6px rgba(255, 255, 255, 0.25);
   }
 }
 
 .meteor {
-  display:block;
-  width:5px;
-  height:5px;
-  border-radius:50%;
-  background:#FFF;
+  display: block;
+  width: 5px;
+  height: 5px;
+  border-radius: 50%;
+  background: #fff;
   top: -40%;
   left: -30%;
-  position:relative;
-  transform-origin:100% 0;
-  animation:star-ani 3s infinite ease-out;
+  position: relative;
+  transform-origin: 100% 0;
+  animation: star-ani 2s infinite ease-out;
   animation-direction: normal;
-  opacity:0;
+  opacity: 0;
 }
 
 .meteor:after {
-  content: '';
+  content: "";
   position: absolute;
   top: 0px;
   left: 4px;
-  border: 2px solid #F00;
-  border-width: 2px 150px 2px 150px; 
-  border-color: transparent transparent transparent #FFF;
+  border: 2px solid #f00;
+  border-width: 2px 150px 2px 150px;
+  border-color: transparent transparent transparent #fff;
   transform: rotate(-45deg) translate3d(1px, -1px, 0);
   transform-origin: 0% 100%;
-  animation: shooting-ani 1s infinite  ease-out;
+  animation: shooting-ani 1s infinite ease-out;
   animation-direction: normal;
 }
 
 .s6 {
   top: 10%;
   left: -30%;
-  background: #FFF;
+  background: #fff;
   animation-delay: 1.8s;
 }
 
 .s6:after {
-  border-color: transparent transparent transparent #FFF ;
+  border-color: transparent transparent transparent #fff;
   animation-delay: 1.8s;
 }
 
 .s7 {
   top: -10%;
   left: 20%;
-  background: #FFF ;
+  background: #fff;
   animation-delay: 4.5s;
 }
 
 .s7:after {
-  border-color: transparent transparent transparent #FFF;
+  border-color: transparent transparent transparent #fff;
   animation-delay: 4.5s;
 }
 
 .s8 {
   top: 0%;
   left: 50%;
-  background: #FFF;
+  background: #fff;
   animation-delay: 5.8s;
 }
 
 .s8:after {
-  border-color: transparent transparent transparent #FFF;
+  border-color: transparent transparent transparent #fff;
   animation-delay: 5.8s;
 }
 
 @keyframes shooting-ani {
   0% {
-
   }
   50% {
-    transform:scale(1) rotate(-45deg) translate(0px, 0px);
+    transform: scale(1) rotate(-45deg) translate(0px, 0px);
   }
   100% {
-    transform:scale(1) rotate(-45deg) translate(0px, -1px);
+    transform: scale(1) rotate(-45deg) translate(0px, -1px);
   }
 }
 
 @keyframes star-ani {
   0% {
-    opacity:0;
-    transform:scale(0) rotate(0) translate3d(0, 0, 0);
+    opacity: 0;
+    transform: scale(0) rotate(0) translate3d(0, 0, 0);
   }
   50% {
-    opacity:1;
-    transform:scale(1) rotate(0) translate3d(-35px, 35px, 0);
+    opacity: 1;
+    transform: scale(1) rotate(0) translate3d(-35px, 35px, 0);
   }
   100% {
-    opacity:0;
-    transform:scale(1) rotate(0) translate3d(-70px, 70px, 0);
+    opacity: 0;
+    transform: scale(1) rotate(0) translate3d(-70px, 70px, 0);
   }
 }
 
 /*버튼박스*/
-#introBtnBox{
+#introBtnBox {
   position: relative;
   height: 45%;
 }
 
-#guestBtn{
+#guestBtn {
   position: absolute;
-  left:50%;
+  left: 50%;
   transform: translateX(-50%);
-  height:20%;
+  height: 20%;
   width: 80%;
-  background: #AFB8CE;
+  background: #afb8ce;
   border-radius: 34.5px;
-  cursor : pointer;
+  cursor: pointer;
   box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
 }
 
-#guestBtn:hover{
+#guestBtn:hover {
   opacity: 0.8;
 }
 
-#guestText{
+#guestText {
   position: absolute;
   color: #303345;
-  top:50%;
-  left:50%;
-  transform: translate(-50%,-50%);
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
   font-size: 1.3em;
 }
 
-#loginBtn{
+#loginBtn {
   position: absolute;
   top: 25%;
-  left:50%;
+  left: 50%;
   transform: translateX(-50%);
-  height:20%;
+  height: 20%;
   width: 80%;
-  background: #4B4F6C;
+  background: #4b4f6c;
   border-radius: 34.5px;
-  cursor : pointer;
+  cursor: pointer;
   box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
 }
 
-#loginBtn:hover{
-  opacity:0.8;
+#loginBtn:hover {
+  opacity: 0.8;
 }
 
-#loginText{
+#loginText {
   position: absolute;
-  color: #AFB8CE;
-  top:50%;
-  left:50%;
-  transform: translate(-50%,-50%);
+  color: #afb8ce;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
   font-size: 1.3em;
 }
 
-#signupBtn{
+#signupBtn {
   position: absolute;
-  height:10%;
-  top :50%;
-  left :50%;
+  height: 10%;
+  top: 50%;
+  left: 50%;
   transform: translateX(-50%);
-  cursor : pointer;
+  cursor: pointer;
 }
 
-#signupBtn:hover{
+#signupBtn:hover {
   opacity: 0.8;
 }
 
 #signupText {
   position: relative;
-  color: #AFB8CE;
+  color: #afb8ce;
   font-size: 1.2em;
 }
 
 #signupLine {
   position: relative;
-  width : 50px;
-  border: 1px solid #AFB8CE;
+  width: 50px;
+  border: 1px solid #afb8ce;
 }
