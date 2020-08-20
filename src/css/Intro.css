@@ -1,7 +1,7 @@
 /*애니메이션박스*/
 #introShootingStarAnimationBox {
   position: relative;
-  height:50%
+  height:55%
 }
 
 .shootingStarAnimation {
@@ -105,8 +105,8 @@
   height:5px;
   border-radius:50%;
   background:#FFF;
-  top: -60%;
-  left: -10%;
+  top: -40%;
+  left: -30%;
   position:relative;
   transform-origin:100% 0;
   animation:star-ani 3s infinite ease-out;
@@ -129,8 +129,8 @@
 }
 
 .s6 {
-  top: -10%;
-  left: -10%;
+  top: 10%;
+  left: -30%;
   background: #FFF;
   animation-delay: 1.8s;
 }
@@ -141,8 +141,8 @@
 }
 
 .s7 {
-  top: -20%;
-  left: 30%;
+  top: -10%;
+  left: 20%;
   background: #FFF ;
   animation-delay: 4.5s;
 }
@@ -153,8 +153,8 @@
 }
 
 .s8 {
-  top: -30%;
-  left: 70%;
+  top: 0%;
+  left: 50%;
   background: #FFF;
   animation-delay: 5.8s;
 }
@@ -172,7 +172,7 @@
     transform:scale(1) rotate(-45deg) translate(0px, 0px);
   }
   100% {
-    transform:scale(0.5) rotate(-45deg) translate(0px, -1px);
+    transform:scale(1) rotate(-45deg) translate(0px, -1px);
   }
 }
 
@@ -183,18 +183,18 @@
   }
   50% {
     opacity:1;
-    transform:scale(1) rotate(0) translate3d(-50px, 50px, 0);
+    transform:scale(1) rotate(0) translate3d(-35px, 35px, 0);
   }
   100% {
     opacity:0;
-    transform:scale(1) rotate(0) translate3d(-100px, 100px, 0);
+    transform:scale(1) rotate(0) translate3d(-70px, 70px, 0);
   }
 }
 
 /*버튼박스*/
 #introBtnBox{
   position: relative;
-  height: 50%;
+  height: 45%;
 }
 
 #guestBtn{

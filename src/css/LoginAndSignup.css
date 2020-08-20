@@ -20,7 +20,12 @@
 /*애니메이션박스*/
 .newShootingStarAnimationBox1 {
   position: relative;
-  height:35%
+  height:40%;
+}
+
+.loginShootingStar {
+  top: 65%;
+  height: 50%
 }
 
 /*인풋박스*/

@@ -1,5 +1,6 @@
 import React from "react";
 import "../css/CreateAndUpdate.css";
+import remove from "../img/remove.png";
 
 class Question extends React.Component {
   constructor(props) {
@@ -11,6 +12,7 @@ class Question extends React.Component {
     this.handleButtonPress = this.handleButtonPress.bind(this);
     this.handleButtonRelease = this.handleButtonRelease.bind(this);
     this.handleButtonLeave = this.handleButtonLeave.bind(this);
+    this.handleButtonEnter = this.handleButtonEnter.bind(this);
   }
   // 마우스를 누를 시 deleteDisplay의 값에 따라 시간을 달리하여 deleteDisplay의 값을 변경
   handleButtonPress() {
@@ -26,15 +28,23 @@ class Question extends React.Component {
   }
   // 마우스가 태그에서 벗어날 시 deleteDisplay를 false로 변경
   handleButtonLeave() {
-    this.setState({
-      deleteDisplay: false
-    });
+    this.buttonLeaveTimer = setTimeout(() => {
+      this.setState({
+        deleteDisplay: false
+      });
+    }, 1000)
+  }
+  // 마우스가 태그에 들어갈 시 buttonLeaveTimer의 타이머 해제
+  handleButtonEnter() {
+    clearTimeout(this.buttonLeaveTimer);
   }
 
   render() {
     return (
       <li className="question"
-        onMouseLeave={this.handleButtonLeave}>
+        onMouseLeave={this.handleButtonLeave}
+        onMouseEnter={this.handleButtonEnter}
+      >
         <div className="ring">
         </div>
         <div className="text"
@@ -49,10 +59,10 @@ class Question extends React.Component {
             <div className="dndStick"></div>
             <div className="dndStick"></div>
           </button>
-          <button className="deleteBtn"
+          <button className="removeBtn"
             onClick={() => this.props.deleteQuestion(this.state.question.id)}
             style={{ display: this.state.deleteDisplay ? "block" : "none" }}>
-            삭제
+            <img className="remove" src={remove} />
           </button>
         </div>
       </li>

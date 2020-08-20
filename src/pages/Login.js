@@ -53,12 +53,10 @@ class Login extends React.Component {
           <i className="fas fa-arrow-left"></i>
         </button >
         <div className="newShootingStarAnimationBox1">
-          <div className="shootingStarAnimation">
+          <div className="shootingStarAnimation loginShootingStar">
             <i id="star" className="fas fa-star fa-lg">
               <div id="bigStarBack"></div>
             </i>
-            <div className="satelliteLine starLightLine"></div>
-            <div className="satelliteLine satelliteLightLine"></div>
             <div className="allSatellite s1"></div>
             <div className="allSatellite s2"></div>
             <div className="allSatellite s3"></div>
