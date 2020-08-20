@@ -84,7 +84,7 @@ class CreateRoom extends React.Component {
 
       if (this.props.isLogin) {
         // 유저일 때
-        fetch("/room", {
+        fetch("http://ec2-13-124-126-40.ap-northeast-2.compute.amazonaws.com:4000/room", {
           method: "POST",
           headers: {
             "Content-Type": "application/json",

@@ -22,7 +22,7 @@ class Signup extends React.Component {
   handlingUserInformation() {
     const { email, password } = this.state;
     //입력받은 값을 바탕으로 포스트 요청
-    fetch("/auth/signup", {
+    fetch("http://ec2-13-124-126-40.ap-northeast-2.compute.amazonaws.com:4000/auth/signup", {
       method: "POST",
       headers: {
         "Content-Type": "application/json"

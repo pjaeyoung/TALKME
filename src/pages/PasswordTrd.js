@@ -26,7 +26,7 @@ class PasswordTrd extends React.Component {
   saveBtn() {
     let { newPassword, confirmPassword } = this.state;
     if (newPassword === confirmPassword) {
-      fetch("/auth/pwinquiry/newpassword", {
+      fetch("http://ec2-13-124-126-40.ap-northeast-2.compute.amazonaws.com:4000/auth/pwinquiry/newpassword", {
         method: "PATCH",
         headers: {
           "Content-Type": "application/json",

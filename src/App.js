@@ -30,7 +30,7 @@ class App extends React.Component {
   }
 
   componentDidMount() {
-    fetch("/auth/isLogin", {
+    fetch("http://ec2-13-124-126-40.ap-northeast-2.compute.amazonaws.com:4000/auth/isLogin", {
       method: "GET",
       headers: {
         "Content-Type": "application/json"

@@ -21,7 +21,7 @@ class Login extends React.Component {
     const { email, password } = this.state;
     const { handlingIsLogin } = this.props;
     //입력받은 값을 바탕으로 포스트 요청
-    fetch("/auth/login", {
+    fetch("http://ec2-13-124-126-40.ap-northeast-2.compute.amazonaws.com:4000/auth/login", {
       method: "POST",
       headers: {
         "Content-Type": "application/json"

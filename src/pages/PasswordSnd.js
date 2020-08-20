@@ -21,7 +21,7 @@ class PasswordSnd extends React.Component {
   }
   // submit 버튼 클릭 시 입력한 secret key가 일치하는지 확인하는 API 요청 후 passwordtrd page로 이동
   submitSecretKey() {
-    fetch("/auth/pwinquiry/comparekey", {
+    fetch("http://ec2-13-124-126-40.ap-northeast-2.compute.amazonaws.com:4000/auth/pwinquiry/comparekey", {
       method: "POST",
       headers: {
         "Content-Type": "application/json",
