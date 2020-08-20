@@ -20,7 +20,7 @@
 /*애니메이션박스*/
 .newShootingStarAnimationBox {
   position: relative;
-  height:30%
+  height:35%
 }
 
 /*인풋박스*/
@@ -123,11 +123,12 @@
 /*버튼 박스*/
 .signBox{
   position: relative;
-  height: 50%;
+  height: 45%;
 }
 
 #forgotBtn{
   position: absolute;
+  top:5%;
   left :50%;
   transform: translateX(-50%);
   cursor : pointer;
@@ -140,7 +141,7 @@
 
 .newLoginBtn{
   position: absolute;
-  top:15%;
+  top:20%;
   left:50%;
   transform: translateX(-50%);
   height:20%;
@@ -166,7 +167,7 @@
 
 .socialLoginBtn{
   position: absolute;
-  top: 45%;
+  top: 48%;
   left:50%;
   transform: translateX(-50%);
   height:20%;

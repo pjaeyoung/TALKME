@@ -41,24 +41,37 @@ class Login extends React.Component {
           }, 1000);
         }
       })
-      .catch(err=>console.log(err))
+      .catch(err => console.log(err))
   }
 
   render() {
     return (
       <>
         <button className="signBack" onClick={() => this.props.history.push("/intro")}>
-        <i className="fas fa-arrow-left"></i>
+          <i className="fas fa-arrow-left"></i>
         </button >
         <div className="newShootingStarAnimationBox">
           <div className="shootingStarAnimation">
+            <i id="star" className="fas fa-star fa-lg">
+              <div id="bigStarBack"></div>
+            </i>
+            <div className="satelliteLine starLightLine"></div>
+            <div className="satelliteLine satelliteLightLine"></div>
+            <div className="allSatellite s1"></div>
+            <div className="allSatellite s2"></div>
+            <div className="allSatellite s3"></div>
+            <div className="allSatellite s4"></div>
+            <div className="allSatellite s5"></div>
+            <div className="meteor"></div>
+            <div className="meteor s6"></div>
+            <div className="meteor s7"></div>
+            <div className="meteor s8"></div>
           </div>
         </div>
         <div className="signInputBox">
-          <div className="wobble-horizontal">테스트</div>
           <input
-            onFocus={(e)=>e.target.placeholder=""}
-            onBlur={(e)=>e.target.placeholder="Please Enter Your ID"}
+            onFocus={(e) => e.target.placeholder = ""}
+            onBlur={(e) => e.target.placeholder = "Please Enter Your ID"}
             placeholder="Please Enter Your ID"
             className="IDBOX"
             type="text"
@@ -72,8 +85,8 @@ class Login extends React.Component {
           </input>
           <img className="mail" src={mail}></img>
           <input
-            onFocus={(e)=>e.target.placeholder=""}
-            onBlur={(e)=>e.target.placeholder="Please Enter Your Password"}
+            onFocus={(e) => e.target.placeholder = ""}
+            onBlur={(e) => e.target.placeholder = "Please Enter Your Password"}
             placeholder="Please Enter Your Password"
             className="PWBOX"
             type="password"
@@ -84,8 +97,8 @@ class Login extends React.Component {
                 e.target.value = "";
               }
             }}>
-            </input>
-            <img className="lock" src={lock}></img>
+          </input>
+          <img className="lock" src={lock}></img>
         </div>
         <div className="signBox">
           <div id="forgotBtn" onClick={() => this.props.history.push("/passwordfst")}>forgot password</div>
@@ -96,7 +109,7 @@ class Login extends React.Component {
             window.location.href = 'https://accounts.google.com/o/oauth2/v2/auth?response_type=code&client_id=573943257082-7st2e4102s4unen44o7794ooiimbm97u.apps.googleusercontent.com&scope=openid%20profile%20email&redirect_uri=http://localhost:4000/auth/social'
           }>
             <div className="socialLoginText"> Continue with Google</div>
-            </div>
+          </div>
         </div>
       </>
     );
