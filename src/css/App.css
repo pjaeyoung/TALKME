@@ -1,21 +1,26 @@
-html, body, #root, #main {
+html,
+body,
+#root,
+#main {
   width: 100%;
   height: 100%;
   /*옆에 스크롤이 생겨서 margin 0으로 설정함*/
-  margin:0;
+  margin: 0;
 }
 
 @font-face {
-  font-family: 'BMHANNAAir';
-  src: url('https://cdn.jsdelivr.net/gh/projectnoonnu/noonfonts_four@1.0/BMHANNAAir.woff') format('woff');
+  font-family: "BMHANNAAir";
+  src: url("https://cdn.jsdelivr.net/gh/projectnoonnu/noonfonts_four@1.0/BMHANNAAir.woff")
+    format("woff");
   font-weight: normal;
   font-style: normal;
 }
 
-body, #contactBtn {
-  background-color: #1D1A28;
+body,
+#contactBtn {
+  background-color: #1d1a28;
   color: white;
-  font-family: 'BMHANNAAir';
+  font-family: "BMHANNAAir";
 }
 
 #main {
@@ -30,18 +35,24 @@ body, #contactBtn {
 #rightMain {
   position: relative;
   width: 45%;
+  height: 100%;
+  display: grid;
+  grid-auto-rows: minmax(140px, 1fr);
+  padding: 0px 50px;
+  justify-content: center;
 }
 
 /*오른쪽 헤더*/
 #rightHeader {
   position: relative;
-  height: 10%;
+  grid-row: span 1;
+  right: -180px;
 }
 
-#contactBtn{
+#contactBtn {
   position: absolute;
-  cursor : pointer;
-  top : 50%;
+  cursor: pointer;
+  top: 50%;
   left: 75%;
 }
 
@@ -55,26 +66,37 @@ body, #contactBtn {
 
 #contactLine {
   position: relative;
-  width : 49px;
-  border: 1px solid #FFFFFF;
+  width: 49px;
+  border: 1px solid #ffffff;
 }
 
 /*오른쪽 모바일박스*/
-#mobileBox{
+#mobileBox {
   position: relative;
-  height:80%;
+  height: 100%;
+  min-width: 425px;
+  min-height: 700px;
+  width: 70%;
+  grid-row: span 5;
 }
 
 /*모바일 레이아웃*/
 #mobile {
   position: absolute;
   top: 50%;
-  left:35%;
-  transform: translate(-35%,-50%);
-  width: 425px;
-  height: 760px;
-  background: linear-gradient(180deg, #171521 0%, #171521 15.1%, rgba(41, 38, 47, 0) 48.96%, rgba(41, 38, 47, 0) 100%), #303345;
-  border: 9px solid #2E3142;
+  left: 35%;
+  transform: translate(-35%, -50%);
+  width: 100%;
+  height: 100%;
+  background: linear-gradient(
+      180deg,
+      #171521 0%,
+      #171521 15.1%,
+      rgba(41, 38, 47, 0) 48.96%,
+      rgba(41, 38, 47, 0) 100%
+    ),
+    #303345;
+  border: 9px solid #2e3142;
   box-sizing: border-box;
   box-shadow: 3px 56px 10px -10px rgba(21, 22, 26, 0.7);
   border-radius: 35px;
@@ -82,42 +104,41 @@ body, #contactBtn {
 
 #mobileTop {
   position: absolute;
-  left:50%;
-  transform : translateX(-50%);
+  left: 50%;
+  transform: translateX(-50%);
   width: 50%;
   height: 4%;
-  background: #2E3142;
+  background: #2e3142;
   border-radius: 0px 0px 15px 15px;
 }
 
 /*오른쪽 바텀*/
 #rightBottom {
   position: relative;
-  height: 10%;
+  grid-row: span 1;
 }
 
 #teamName {
   position: absolute;
-  top :50%;
-  left :35%;
-  transform : translate(-15%,-50%);
-  font-family: cursive; 
+  top: 50%;
+  left: 35%;
+  transform: translate(-15%, -50%);
+  font-family: cursive;
 }
 
-
 /* 왼쪽 탑 */
-#leftTop{
+#leftTop {
   position: relative;
   height: 50%;
 }
 
-#title { 
+#title {
   position: absolute;
   top: 30%;
   left: 50%;
   transform: translateX(-50%);
   font-size: 75px;
-  font-family: 'Rationale';
+  font-family: "Rationale";
 }
 
 /* 달 */
@@ -128,15 +149,15 @@ body, #contactBtn {
   left: 43%;
   width: 10em;
   height: 10em;
-  border: 1px solid #FFFFFF;
+  border: 1px solid #ffffff;
   box-sizing: border-box;
   box-shadow: 0px 0px 5px 5px rgba(255, 255, 255, 0.25);
   border-radius: 50%;
   animation-name: satellite, spin;
-  animation-iteration-count:infinite;
+  animation-iteration-count: infinite;
   animation-duration: 3s, 12s;
   animation-direction: alternate, normal;
-  animation-timing-function: ease,linear;
+  animation-timing-function: ease, linear;
 }
 
 /*원 회전*/
@@ -144,48 +165,76 @@ body, #contactBtn {
   from {
     transform: rotate(0);
   }
-  to{
+  to {
     transform: rotate(360deg);
   }
 }
 
 #moon {
   position: absolute;
-  top:59%;
-  left:43%;
+  top: 59%;
+  left: 43%;
   width: 10em;
   height: 10em;
-  background: radial-gradient(50% 50% at 50% 50%, #FFFFFF 0%, rgba(255, 255, 255, 0) 85%);
+  background: radial-gradient(
+    50% 50% at 50% 50%,
+    #ffffff 0%,
+    rgba(255, 255, 255, 0) 85%
+  );
   animation-name: moon;
-  animation-iteration-count:infinite;
+  animation-iteration-count: infinite;
   animation-duration: 3s;
   animation-direction: alternate;
 }
 
 /*달 애니메이션*/
-@keyframes moon{
+@keyframes moon {
   0% {
-    background: radial-gradient(50% 50% at 50% 50%, #FFFFFF 0%, rgba(255, 255, 255, 0) 85%);
+    background: radial-gradient(
+      50% 50% at 50% 50%,
+      #ffffff 0%,
+      rgba(255, 255, 255, 0) 85%
+    );
   }
 
   20% {
-    background: radial-gradient(50% 50% at 50% 50%, #FFFFFF 0%, rgba(255, 255, 255, 0) 87%);
+    background: radial-gradient(
+      50% 50% at 50% 50%,
+      #ffffff 0%,
+      rgba(255, 255, 255, 0) 87%
+    );
   }
 
   40% {
-    background: radial-gradient(50% 50% at 50% 50%, #FFFFFF 0%, rgba(255, 255, 255, 0) 89%);
+    background: radial-gradient(
+      50% 50% at 50% 50%,
+      #ffffff 0%,
+      rgba(255, 255, 255, 0) 89%
+    );
   }
 
   60% {
-    background: radial-gradient(50% 50% at 50% 50%, #FFFFFF 0%, rgba(255, 255, 255, 0) 91%);
+    background: radial-gradient(
+      50% 50% at 50% 50%,
+      #ffffff 0%,
+      rgba(255, 255, 255, 0) 91%
+    );
   }
 
   80% {
-    background: radial-gradient(50% 50% at 50% 50%, #FFFFFF 0%, rgba(255, 255, 255, 0) 93%);
+    background: radial-gradient(
+      50% 50% at 50% 50%,
+      #ffffff 0%,
+      rgba(255, 255, 255, 0) 93%
+    );
   }
 
-  100%{
-    background: radial-gradient(50% 50% at 50% 50%, #FFFFFF 0%, rgba(255, 255, 255, 0) 95%);
+  100% {
+    background: radial-gradient(
+      50% 50% at 50% 50%,
+      #ffffff 0%,
+      rgba(255, 255, 255, 0) 95%
+    );
   }
 }
 
@@ -200,18 +249,17 @@ body, #contactBtn {
   height: 9px;
   top: 81%;
   left: 84%;
-  background: #FFFFFF;
+  background: #ffffff;
   box-shadow: 0px 0px 5px 5px rgba(255, 255, 255, 0.25);
   border-radius: 70%;
   animation-name: satellite;
-  animation-iteration-count:infinite;
-  animation-duration: 3s ;
+  animation-iteration-count: infinite;
+  animation-duration: 3s;
   animation-direction: alternate;
 }
 
-
 /*위성 애니메이션*/
-@keyframes satellite{
+@keyframes satellite {
   0% {
     box-shadow: 0px 0px 10px 1px rgba(255, 255, 255, 0.25);
   }
@@ -232,74 +280,71 @@ body, #contactBtn {
     box-shadow: 0px 0px 10px 5px rgba(255, 255, 255, 0.25);
   }
 
-  100%{
+  100% {
     box-shadow: 0px 0px 10px 6px rgba(255, 255, 255, 0.25);
   }
 }
 
 /*왼쪽 바텀*/
-#leftBottom{
+#leftBottom {
   position: relative;
   height: 50%;
 }
 
 #description {
   position: absolute;
-  top:10%;
-  left:23%;
+  top: 10%;
+  left: 23%;
   width: 80%;
   font-size: 1.7em;
   line-height: 30px;
 }
 
 /*별*/
-#bigStar{
+#bigStar {
   position: absolute;
-  left:62%;
-  top:30%;
-
+  left: 62%;
+  top: 30%;
 }
 
-#bigStarBack{
+#bigStarBack {
   position: absolute;
-  top:50%;
-  left:50%;
+  top: 50%;
+  left: 50%;
   transform: translate(-50%, -50%);
   width: 10px;
   height: 10px;
   box-shadow: 0px 0px 10px 5px rgba(255, 255, 255, 0.25);
   border-radius: 70%;
   animation-name: star;
-  animation-iteration-count:infinite;
+  animation-iteration-count: infinite;
   animation-duration: 3s;
   animation-direction: alternate;
 }
 
-
-
-#smallStar{
+#smallStar {
   position: absolute;
-  left:64.5%;
-  top:25.5%;
+  left: 64.5%;
+  top: 25.5%;
 }
 
-#smallStarBack{
+#smallStarBack {
   position: absolute;
-  top:50%;
-  left:50%;
+  top: 50%;
+  left: 50%;
   transform: translate(-50%, -50%);
   width: 9px;
   height: 9px;
   box-shadow: 0px 0px 4px 5px rgba(255, 255, 255, 0.25);
   border-radius: 70%;
   animation-name: star;
-  animation-iteration-count:infinite;
+  animation-iteration-count: infinite;
   animation-duration: 3s;
   animation-direction: alternate;
 }
 
 /*별 애니메이션*/
-@keyframes star{
+@keyframes star {
   0% {
     box-shadow: 0px 0px 10px 5px rgba(255, 255, 255, 0.25);
   }
@@ -320,8 +365,7 @@ body, #contactBtn {
     box-shadow: 0px 0px 10px 9px rgba(255, 255, 255, 0.25);
   }
 
-  100%{
+  100% {
     box-shadow: 0px 0px 10px 10px rgba(255, 255, 255, 0.25);
   }
 }
-
