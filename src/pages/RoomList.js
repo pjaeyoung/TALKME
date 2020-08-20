@@ -2,6 +2,7 @@ import React from "react";
 import Room from "../component/Room";
 import { withRouter } from "react-router-dom";
 import "../css/RoomList.css";
+import exit from "../img/exit.png"
 
 class RoomList extends React.Component {
   constructor(props) {
@@ -13,20 +14,22 @@ class RoomList extends React.Component {
   }
   // 뒤로가기 버튼 클릭 시 로그아웃 API 요청 후 login page로 이동
   backBtn() {
-    fetch("/auth/logout", {
-      method: "GET",
-      headers: {
-        "Content-Type": "application/json"
-      },
-      credentials: "include"
-    })
-      .then(res => {
-        if (res.ok) {
-          this.props.handlingIsLogin("isLogin");
-          this.props.history.push("/login");
-        }
+    if (window.confirm("로그아웃 하시겠습니까?")) {
+      fetch("/auth/logout", {
+        method: "GET",
+        headers: {
+          "Content-Type": "application/json"
+        },
+        credentials: "include"
       })
-      .catch(err => console.log(err));
+        .then(res => {
+          if (res.ok) {
+            this.props.handlingIsLogin("isLogin");
+            this.props.history.push("/login");
+          }
+        })
+        .catch(err => console.log(err));
+    }
   }
   // 생성버튼 클릭 시 createroom page로 이동
   redirectCreateRoom() {
@@ -80,7 +83,7 @@ class RoomList extends React.Component {
     return (
       <>
         <button id="roomListBack" onClick={() => this.backBtn()}>
-          <i className="fas fa-arrow-left"></i>
+          <img id="exitImg" src={exit} />
         </button>
         <div id="roomListTitle">
           <p id="headTitle">
@@ -96,7 +99,9 @@ class RoomList extends React.Component {
             />
           )}
           <li id="createRoomBtn" onClick={() => this.redirectCreateRoom()}>
-            +
+            <div id="plusIcon">
+              +
+            </div>
           </li>
         </ul>
       </>
