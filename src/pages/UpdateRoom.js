@@ -71,7 +71,7 @@ class UpdateRoom extends React.Component {
   saveBtn() {
     if (this.state.title && this.state.questions.length) {
       let questionsText = this.state.questions.map(question => question.text);
-      fetch("http://ec2-13-124-126-40.ap-northeast-2.compute.amazonaws.com:4000/room", {
+      fetch("/room", {
         method: "PATCH",
         headers: {
           "Content-Type": "application/json",
@@ -98,7 +98,7 @@ class UpdateRoom extends React.Component {
   }
   // path의 params를 확인하여 해당 방의 정보를 가져오는 API 요청
   componentDidMount() {
-    fetch(`http://ec2-13-124-126-40.ap-northeast-2.compute.amazonaws.com:4000/room/${this.props.match.params.roomId}`, {
+    fetch(`/room/${this.props.match.params.roomId}`, {
       method: "GET",
       headers: {
         "Content-Type": "application/json",

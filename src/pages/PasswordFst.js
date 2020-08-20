@@ -23,7 +23,7 @@ class PasswordFst extends React.Component {
   }
   // send 버튼 클릭 시 secret key 발급 API 요청 후 passwordsnd page로 이동
   sendEmail() {
-    fetch("http://ec2-13-124-126-40.ap-northeast-2.compute.amazonaws.com:4000/auth/pwinquiry/askkey", {
+    fetch("/auth/pwinquiry/askkey", {
       method: "POST",
       headers: {
         "Content-Type": "application/json",

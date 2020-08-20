@@ -15,7 +15,7 @@ class RoomList extends React.Component {
   // 뒤로가기 버튼 클릭 시 로그아웃 API 요청 후 login page로 이동
   backBtn() {
     if (window.confirm("로그아웃 하시겠습니까?")) {
-      fetch("http://ec2-13-124-126-40.ap-northeast-2.compute.amazonaws.com:4000/auth/logout", {
+      fetch("/auth/logout", {
         method: "GET",
         headers: {
           "Content-Type": "application/json"
@@ -37,7 +37,7 @@ class RoomList extends React.Component {
   }
   // 삭제버튼 클릭 시 입력받은 room id의 해당하는 유저의 방을 삭제
   deleteRoom(id) {
-    fetch("http://ec2-13-124-126-40.ap-northeast-2.compute.amazonaws.com:4000/room", {
+    fetch("/room", {
       method: "DELETE",
       headers: {
         "Content-Type": "application/json"
@@ -63,7 +63,7 @@ class RoomList extends React.Component {
   }
   // 로딩 시 유저의 roomlist를 가져오는 API 요청 
   componentDidMount() {
-    fetch("http://ec2-13-124-126-40.ap-northeast-2.compute.amazonaws.com:4000/roomList", {
+    fetch("/roomList", {
       method: "GET",
       headers: {
         "Content-Type": "application/json"
@@ -71,7 +71,6 @@ class RoomList extends React.Component {
       credentials: "include"
     })
       .then(res => {
-        console.log(res)
         if (res.ok) {
           return res.json();
         } else {

@@ -18,6 +18,7 @@ class CreateRoom extends React.Component {
     if (this.props.isLogin) {
       this.props.history.push("/roomlist");
     } else {
+      this.props.handlingIsLogin("isGuest");
       this.props.history.push("/intro");
     }
   }
@@ -87,7 +88,7 @@ class CreateRoom extends React.Component {
 
       if (this.props.isLogin) {
         // 유저일 때
-        fetch("http://ec2-13-124-126-40.ap-northeast-2.compute.amazonaws.com:4000/room", {
+        fetch("/room", {
           method: "POST",
           headers: {
             "Content-Type": "application/json",

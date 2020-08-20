@@ -31,7 +31,7 @@ class App extends React.Component {
   }
 
   componentDidMount() {
-    fetch("http://ec2-13-124-126-40.ap-northeast-2.compute.amazonaws.com:4000/auth/isLogin", {
+    fetch("/auth/isLogin", {
       method: "GET",
       headers: {
         "Content-Type": "application/json",
@@ -106,8 +106,8 @@ class App extends React.Component {
                       this.state.isLogin ? (
                         <Redirect to="/roomlist" />
                       ) : (
-                        <Intro handlingIsLogin={this.handlingIsLogin} />
-                      )
+                          <Intro handlingIsLogin={this.handlingIsLogin} />
+                        )
                     }
                   />
                   <Route
@@ -117,8 +117,8 @@ class App extends React.Component {
                       this.state.isLogin ? (
                         <Redirect to="/roomlist" />
                       ) : (
-                        <Login handlingIsLogin={this.handlingIsLogin} />
-                      )
+                          <Login handlingIsLogin={this.handlingIsLogin} />
+                        )
                     }
                   />
                   <Route
@@ -128,8 +128,8 @@ class App extends React.Component {
                       this.state.isLogin ? (
                         <Redirect to="/roomlist" />
                       ) : (
-                        <Signup />
-                      )
+                          <Signup />
+                        )
                     }
                   />
                   <Route exact path="/signup" render={() => <Signup />} />
@@ -142,8 +142,8 @@ class App extends React.Component {
                       ) : this.state.findPassword ? (
                         <PasswordFst handlingIsLogin={this.handlingIsLogin} />
                       ) : (
-                        <Redirect to="/login" />
-                      )
+                            <Redirect to="/login" />
+                          )
                     }
                   />
                   <Route
@@ -155,8 +155,8 @@ class App extends React.Component {
                       ) : this.state.findPassword ? (
                         <PasswordSnd />
                       ) : (
-                        <Redirect to="/login" />
-                      )
+                            <Redirect to="/login" />
+                          )
                     }
                   />
                   <Route
@@ -168,8 +168,8 @@ class App extends React.Component {
                       ) : this.state.findPassword ? (
                         <PasswordTrd />
                       ) : (
-                        <Redirect to="/login" />
-                      )
+                            <Redirect to="/login" />
+                          )
                     }
                   />
                   <Route
@@ -179,8 +179,8 @@ class App extends React.Component {
                       this.state.isLogin ? (
                         <RoomList handlingIsLogin={this.handlingIsLogin} />
                       ) : (
-                        <Redirect to="/intro" />
-                      )
+                          <Redirect to="/intro" />
+                        )
                     }
                   />
                   <Route
@@ -188,10 +188,10 @@ class App extends React.Component {
                     path="/createroom"
                     render={() =>
                       this.state.isLogin || this.state.isGuest ? (
-                        <CreateRoom isLogin={isLogin} />
+                        <CreateRoom handlingIsLogin={this.handlingIsLogin} isLogin={isLogin} />
                       ) : (
-                        <Redirect to="/intro" />
-                      )
+                          <Redirect to="/intro" />
+                        )
                     }
                   />
                   <Route
@@ -201,8 +201,8 @@ class App extends React.Component {
                       this.state.isLogin ? (
                         <UpdateRoom />
                       ) : (
-                        <Redirect to="/intro" />
-                      )
+                          <Redirect to="/intro" />
+                        )
                     }
                   />
                   <Route
@@ -212,22 +212,22 @@ class App extends React.Component {
                       this.state.isLogin || this.state.isGuest ? (
                         <ChattingRoom isLogin={isLogin} isGuest={isGuest} />
                       ) : (
-                        <Redirect to="/intro" />
-                      )
+                          <Redirect to="/intro" />
+                        )
                     }
                   />
                   <Route path="/" render={() => <Main />} />
                   <Route path="/" render={() => <Main />} />
                 </Switch>
               ) : (
-                <div className="loadingAnimationBox">
-                  <div id="loadingStick1" className="loadingStick"></div>
-                  <div id="loadingStick2" className="loadingStick"></div>
-                  <div id="loadingStick3" className="loadingStick"></div>
-                  <div id="loadingStick4" className="loadingStick"></div>
-                  <div id="loadingStick5" className="loadingStick"></div>
-                </div>
-              )}
+                  <div className="loadingAnimationBox">
+                    <div id="loadingStick1" className="loadingStick"></div>
+                    <div id="loadingStick2" className="loadingStick"></div>
+                    <div id="loadingStick3" className="loadingStick"></div>
+                    <div id="loadingStick4" className="loadingStick"></div>
+                    <div id="loadingStick5" className="loadingStick"></div>
+                  </div>
+                )}
             </div>
           </div>
 
