@@ -1,5 +1,5 @@
 /*애니메이션박스*/
-.shootingStarAnimationBox {
+#introShootingStarAnimationBox {
   position: relative;
   height:50%
 }
@@ -192,7 +192,7 @@
 }
 
 /*버튼박스*/
-#btnBox{
+#introBtnBox{
   position: relative;
   height: 50%;
 }
