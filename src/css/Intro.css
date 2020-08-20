@@ -11,6 +11,9 @@
   height: 40%;
   width: 40%;
   transform: translate(-50%,-50%);
+  display: flex;
+  justify-content: center;
+  align-items: center;
 }
 
 #star { 
@@ -19,10 +22,6 @@
   left: 10%;
   z-index: 1;
 }
-
-/* #bigStarBack {
-
-} */
 
 .allSatellite {
   position: absolute;
@@ -100,30 +99,96 @@
   }
 }
 
-.satelliteLine {
+.meteor {
+  display:block;
+  width:5px;
+  height:5px;
+  border-radius:50%;
+  background:#FFF;
+  top: -30%;
+  left: -40%;
+  position:relative;
+  transform-origin:100% 0;
+  animation:star-ani 3s infinite ease-out;
+  animation-direction: normal;
+  opacity:0;
+}
+
+.meteor:after {
+  content: '';
   position: absolute;
-  border: none;
-  border-top: 0.1px solid #DDDDDD;
-  transform: rotate(131.88deg);
-  animation-name: satelliteLine;
-  animation-iteration-count:infinite;
-  animation-duration: 1s;
-  animation-direction: alternate;
-  animation-timing-function: linear;
+  top: 0px;
+  left: 4px;
+  border: 2px solid #F00;
+  border-width: 2px 150px 2px 150px; 
+  border-color: transparent transparent transparent #FFF;
+  transform: rotate(-45deg) translate3d(1px, -1px, 0);
+  transform-origin: 0% 100%;
+  animation: shooting-ani 1s infinite  ease-out;
+  animation-direction: normal;
 }
 
-.starLightLine {
-  width: 85%;
-  height: 0px;
-  top: 48%;
-  left: 4%;
+.s6 {
+  top: 0%;
+  left: -30%;
+  background: #FFF;
+  animation-delay: 1.8s;
 }
 
-.satelliteLightLine {
-  width: 50%;
-  height: 0px;
-  top: 57%;
-  left: 46%;
+.s6:after {
+  border-color: transparent transparent transparent #FFF ;
+  animation-delay: 1.8s;
+}
+
+.s7 {
+  top: 0%;
+  left: 0%;
+  background: #FFF ;
+  animation-delay: 4.5s;
+}
+
+.s7:after {
+  border-color: transparent transparent transparent #FFF;
+  animation-delay: 4.5s;
+}
+
+.s8 {
+  top: 20%;
+  left: 10%;
+  background: #FFF;
+  animation-delay: 5.8s;
+}
+
+.s8:after {
+  border-color: transparent transparent transparent #FFF;
+  animation-delay: 5.8s;
+}
+
+@keyframes shooting-ani {
+  0% {
+
+  }
+  50% {
+    transform:scale(1) rotate(-45deg) translate(0px, 0px);
+  }
+  100% {
+    transform:scale(0.5) rotate(-45deg) translate(0px, -1px);
+  }
+}
+
+@keyframes star-ani {
+  0% {
+    opacity:0;
+    transform:scale(0) rotate(0) translate3d(0, 0, 0);
+  }
+  50% {
+    opacity:1;
+    transform:scale(1) rotate(0) translate3d(-50px, 50px, 0);
+  }
+  100% {
+    opacity:0;
+    transform:scale(1) rotate(0) translate3d(-100px, 100px, 0);
+  }
 }
 
 /*버튼박스*/
@@ -141,6 +206,11 @@
   background: #AFB8CE;
   border-radius: 34.5px;
   cursor : pointer;
+  box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
+}
+
+#guestBtn:hover{
+  opacity: 80%;
 }
 
 #guestText{
@@ -162,6 +232,11 @@
   background: #4B4F6C;
   border-radius: 34.5px;
   cursor : pointer;
+  box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
+}
+
+#loginBtn:hover{
+  opacity: 80%;
 }
 
 #loginText{
@@ -180,6 +255,10 @@
   left :50%;
   transform: translateX(-50%);
   cursor : pointer;
+}
+
+#signupBtn:hover{
+  opacity: 80%;
 }
 
 #signupText {

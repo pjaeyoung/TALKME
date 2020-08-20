@@ -182,7 +182,7 @@ class CreateRoom extends React.Component {
               }}>
             </input>
           </div>
-          <button id="startBtn"
+          <button id="startEndSaveBtn"
             onClick={() => this.startBtn()}>
             start
           </button>

@@ -1,8 +1,8 @@
 import React from "react";
 import { withRouter } from "react-router-dom";
-import "../css/Login.css";
-import lock from "../img/lock.png";
-import mail from "../img/mail.png";
+import "../css/LoginAndSignup.css"
+import lock from "../img/lock.png"
+import mail from "../img/mail.png"
 
 class Login extends React.Component {
   constructor(props) {
@@ -35,28 +35,45 @@ class Login extends React.Component {
           handlingIsLogin("isLogin");
           this.props.history.push("/roomlist");
         } else {
-          alert("잘못된 로그인 정보입니다.");
+          document.querySelector("#mobile").classList.add("wobble-horizontal")
+          window.setTimeout(() => {
+            document.querySelector("#mobile").classList.remove("wobble-horizontal")
+          }, 1000);
         }
       })
+<<<<<<< HEAD
       .catch((err) => {
         console.log(err);
       });
+=======
+      .catch(err=>console.log(err))
+>>>>>>> b146f39ec0b019bf459d6da88b8db81ce7807ae4
   }
 
   render() {
     return (
       <>
+<<<<<<< HEAD
         <button
           id="loginBack"
           onClick={() => this.props.history.push("/intro")}
         >
           <i className="fas fa-arrow-left"></i>
         </button>
+=======
+        <button className="signBack" onClick={() => this.props.history.push("/intro")}>
+        <i className="fas fa-arrow-left"></i>
+        </button >
+>>>>>>> b146f39ec0b019bf459d6da88b8db81ce7807ae4
         <div className="newShootingStarAnimationBox">
           <div className="shootingStarAnimation"></div>
         </div>
         <div className="signInputBox">
+          <div className="wobble-horizontal">테스트</div>
           <input
+            onFocus={(e)=>e.target.placeholder=""}
+            onBlur={(e)=>e.target.placeholder="Please Enter Your ID"}
+            placeholder="Please Enter Your ID"
             className="IDBOX"
             type="text"
             onChange={(e) => this.handlingInputValue("email", e)}
@@ -69,6 +86,9 @@ class Login extends React.Component {
           ></input>
           <img className="mail" src={mail}></img>
           <input
+            onFocus={(e)=>e.target.placeholder=""}
+            onBlur={(e)=>e.target.placeholder="Please Enter Your Password"}
+            placeholder="Please Enter Your Password"
             className="PWBOX"
             type="password"
             onChange={(e) => this.handlingInputValue("password", e)}
@@ -82,6 +102,7 @@ class Login extends React.Component {
           <img className="lock" src={lock}></img>
         </div>
         <div className="signBox">
+<<<<<<< HEAD
           <button
             id="forgotBtn"
             onClick={() => this.props.history.push("/passwordfst")}
@@ -103,6 +124,17 @@ class Login extends React.Component {
           >
             Continue with Google
           </button>
+=======
+          <div id="forgotBtn" onClick={() => this.props.history.push("/passwordfst")}>forgot password</div>
+          <div className="newLoginBtn" onClick={() => this.handlingUserInformation()}>
+            <div className="newLoginText">LOGIN</div>
+          </div>
+          <div className="socialLoginBtn" onClick={() =>
+            window.location.href = 'https://accounts.google.com/o/oauth2/v2/auth?response_type=code&client_id=573943257082-7st2e4102s4unen44o7794ooiimbm97u.apps.googleusercontent.com&scope=openid%20profile%20email&redirect_uri=http://localhost:4000/auth/social'
+          }>
+            <div className="socialLoginText"> Continue with Google</div>
+            </div>
+>>>>>>> b146f39ec0b019bf459d6da88b8db81ce7807ae4
         </div>
       </>
     );

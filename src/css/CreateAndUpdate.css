@@ -106,14 +106,18 @@
   outline : 0;
 }
 
-#startBtn {
+#startEndSaveBtn {
   position: absolute;
-  top: 90%;
+  font-size: 1.3em;
   width: 65%;
   height: 10%;
+  top: 90%;
+  left: 50%;
+  transform: translate(-50%,-90%);
   background: #D1D1D3;
   box-shadow: 0px 4px 4px 2px rgba(0, 0, 0, 0.25);
   border-radius: 28px;
+  cursor: pointer;
 }
 
 .question {
@@ -163,9 +167,9 @@
 .deleteBtn {
   width: 100%;
   height: 20px;
-  background:red;
+  background:rgb(160, 53, 53);
   font-family: 'BMHANNAAir';
-  border: 0;
+  border: 1px solid black;
   padding: 0;
   outline: 0;
 }
