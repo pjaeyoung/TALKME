@@ -70,6 +70,40 @@
   color: white
 }
 
+@keyframes wobble-horizontal {
+	16.65% {
+		left: 39%
+	}
+
+	33.3% {
+		left: 31%
+	}
+
+	49.95% {
+		left: 37%
+	}
+
+	66.6% {
+		left: 33%
+	}
+
+	83.25% {
+		left: 36%
+	}
+
+	100% {
+		left: 35%
+	}
+}
+
+.wobble-horizontal {
+  display: inline-block;
+  animation-name: wobble-horizontal;
+  animation-duration: 1s;
+  animation-timing-function: linear;
+  animation-iteration-count: 1;
+}
+
 .mail{
   position: absolute;
   width: 35px;

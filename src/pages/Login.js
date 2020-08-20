@@ -35,9 +35,13 @@ class Login extends React.Component {
           handlingIsLogin("isLogin");
           this.props.history.push("/roomlist");
         } else {
-          alert("잘못된 로그인 정보입니다.");
+          document.querySelector("#mobile").classList.add("wobble-horizontal")
+          window.setTimeout(() => {
+            document.querySelector("#mobile").classList.remove("wobble-horizontal")
+          }, 1000);
         }
-      });
+      })
+      .catch(err=>console.log(err))
   }
 
   render() {
@@ -51,6 +55,7 @@ class Login extends React.Component {
           </div>
         </div>
         <div className="signInputBox">
+          <div className="wobble-horizontal">테스트</div>
           <input
             onFocus={(e)=>e.target.placeholder=""}
             onBlur={(e)=>e.target.placeholder="Please Enter Your ID"}
