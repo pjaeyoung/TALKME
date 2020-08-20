@@ -1,6 +1,7 @@
 import React from "react";
 import { withRouter } from "react-router-dom";
-import "../css/PasswordSnd.css";
+import "../css/PasswordFstAndSnd.css";
+import key from "../img/key.png";
 
 class PasswordSnd extends React.Component {
   constructor(props) {
@@ -44,22 +45,32 @@ class PasswordSnd extends React.Component {
   render() {
     return (
       <>
-        <button id="passwordBack" onClick={() => this.backBtn()}>
+        <button className="passwordBack" onClick={() => this.backBtn()}>
           <i className="fas fa-arrow-left"></i>
         </button>
-        <div className="shootingStarAnimationBox">
+        <div className="PWshootingStarAnimationBox">
           <div className="shootingStarAnimation">
-            <div className="star"></div>
-
-            <div id="PWSndText">
-              Enter the secret key
-              <br />
-              written in the email you recieved.
-            </div>
+            <i id="star" className="fas fa-star fa-lg">
+              <div id="bigStarBack"></div>
+            </i>
+            <div className="allSatellite s1"></div>
+            <div className="allSatellite s2"></div>
+            <div className="allSatellite s3"></div>
+            <div className="allSatellite s4"></div>
+            <div className="allSatellite s5"></div>
+            <div className="meteor"></div>
+            <div className="meteor s6"></div>
+            <div className="meteor s7"></div>
+            <div className="meteor s8"></div>
           </div>
         </div>
+        <div id="PWText">
+          Enter the secret key
+          <br />
+          written in the email you recieved.
+        </div>
 
-        <div className="PWSndInputBox">
+        <div className="PWInputBox">
           <input
             onFocus={(e) => (e.target.placeholder = "")}
             onBlur={(e) =>
@@ -71,16 +82,17 @@ class PasswordSnd extends React.Component {
             onChange={(e) => this.changeSecretKey(e.target.value)}
             onKeyPress={(e) => {
               if (e.key === "Enter") {
-                this.handlingUserInformation();
+                this.submitSecretKey();
                 e.target.value = "";
               }
             }}
           ></input>
+          <img className="key" src={key}></img>
         </div>
 
         <div id="btnBox">
-          <div id="PWSndBtn" onClick={() => this.submitSecretKey()}>
-            <div id="PWSndSubmit">Submit</div>
+          <div id="PWBtn" onClick={() => this.submitSecretKey()}>
+            <div id="PWBtnText">Submit</div>
           </div>
         </div>
       </>
