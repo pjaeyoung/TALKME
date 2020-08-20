@@ -124,6 +124,7 @@
   border-radius: 28px;
   cursor: pointer;
   border: none;
+  outline: 0;
 }
 
 #startEndSaveBtn:hover {

@@ -23,6 +23,11 @@
   z-index: 1;
   outline: 0;
 }
+
+#chattingRoomBack:hover{
+  opacity: 0.8;
+}
+
 /*타이틀*/
 #chattingRoomTitle {
   position: relative;
@@ -124,18 +129,21 @@
   box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
   border-radius: 31.5px;
   outline: 0;
+  top:75%;
   left: 50%;
-  transform: translateX(-50%);
+  transform: translate(-50%,-80%);
   color: #4a4f6c;
   font-size: 1.2em;
   box-sizing: border-box;
   padding-left: 30px;
   padding-right: 50px;
   overflow-x: hidden;
+  border: none;
 }
 
 #submitBtn {
   position: absolute;
+  top:14%;
   width: 15%;
   height: 70%;
   left: 80%;
