@@ -49,29 +49,34 @@
   display: grid;
   grid-auto-rows: max-content;
   grid-gap: 30px;
+  padding: 0px 30px;
 }
 
 #messageBox::-webkit-scrollbar {
   display: none;
 }
 
-/*질문 메시지*/
-.questionBox {
+.questionBox,
+.answerBox {
   position: relative;
-  left: 30px;
   transform: scale(0);
   transform-origin: 0 0;
   animation: bounce 500ms linear both;
-  animation-delay: 1s;
-  width: 65%;
-  background: #4a4f6c;
   border-radius: 13px;
+  max-width: 300px;
+  word-break: break-all;
   filter: drop-shadow(0px 4px 4px rgba(0, 0, 0, 0.25));
 }
 
-.questionText {
-  padding: 15px;
-  padding-left: 20px;
+.questionBox {
+  background: #4a4f6c;
+  justify-self: self-start;
+  animation-delay: 0.8s;
+}
+
+.questionText,
+.answerText {
+  padding: 15px 30px;
   font-size: 1.3em;
 }
 
@@ -86,26 +91,12 @@
   border-right: 30px solid #4a4f6c;
 }
 
-/*답변 메시지*/
 .answerBox {
   justify-self: self-end;
-  position: relative;
-  right: 30px;
-  transform: scale(0);
-  transform-origin: 0 0;
-  animation: bounce 500ms linear both;
-  animation-delay: 0.5s;
   background: #d1d1d3;
-  border-radius: 13px;
-  filter: drop-shadow(0px 4px 4px rgba(0, 0, 0, 0.25));
-  max-width: 300px;
-  width: 50%;
-  word-break: break-all;
 }
 
 .answerText {
-  padding: 15px;
-  font-size: 1.3em;
   color: #4a4f6c;
 }
 

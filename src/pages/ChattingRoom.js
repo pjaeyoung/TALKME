@@ -78,23 +78,27 @@ class ChattingRoom extends React.Component {
       questions_answers: newQuestions_answers,
       idx: idx + 1,
     });
+    setTimeout(() => this.moveScrollbar(), 100);
   }
 
   handlingQuestions() {
+    console.log("question");
     const { data, idx, questions_answers } = this.state;
     //다음 질문이 있으면
-    if (data[idx + 1]) {
+    if (data[idx]) {
       let newQuestions_answers = questions_answers;
       //state에 question 객체 추가
       newQuestions_answers.push({
-        id: data[idx + 1].id,
-        text: data[idx + 1].text,
+        id: data[idx].id,
+        text: data[idx].text,
       });
       //state에 question 추가
       this.setState({ questions_answers: newQuestions_answers });
+      setTimeout(() => this.moveScrollbar(), 900);
     }
     //다음 질문이 없으면
     else {
+      setTimeout(() => this.moveScrollbar(), 300);
       return;
     }
   }
@@ -102,10 +106,6 @@ class ChattingRoom extends React.Component {
   moveScrollbar() {
     const messageBox = document.getElementById("messageBox");
     messageBox.scrollTop = messageBox.scrollHeight;
-  }
-
-  componentDidUpdate() {
-    setTimeout(() => this.moveScrollbar(), 600);
   }
 
   render() {
@@ -161,8 +161,7 @@ class ChattingRoom extends React.Component {
                   return;
                 }
                 this.handlingAnswers();
-                this.handlingQuestions();
-                // window.setTimeout(this.handlingQuestions, 1000);
+                window.setTimeout(this.handlingQuestions, 1000);
                 e.target.value = "";
               }
             }}
@@ -173,10 +172,9 @@ class ChattingRoom extends React.Component {
               if (this.state.answer.length === 0) {
                 return;
               }
-              document.querySelector("#answerInput").value = "";
               this.handlingAnswers();
-              this.handlingQuestions();
-              // window.setTimeout(this.handlingQuestions, 1000);
+              window.setTimeout(this.handlingQuestions, 1000);
+              document.querySelector("#answerInput").value = "";
             }}
           >
             <img id="img" src={plane}></img>
