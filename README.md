@@ -23,11 +23,9 @@
 ## :iphone: 시연 GIF
 
 <details>
-<summary>로그인</summary>
-
-</details>
-<details>
-<summary>회원가입</summary>
+<summary>회원가입 및 로그인</summary>
+  
+![login](https://user-images.githubusercontent.com/47022167/95010425-388a0e00-0664-11eb-9f7a-c4f3a03b0f91.gif)
 
 </details>
 <details>
@@ -38,14 +36,9 @@
 
 </details>
 <details>
-<summary>질문리스트화면</summary>
-
-![8  방생성](https://user-images.githubusercontent.com/47022167/95009619-6cfacb80-065e-11eb-97a0-f1d8a790bfad.gif)
-
-</details>
-<details>
 <summary>질문작성화면</summary>
 
+![8  방생성](https://user-images.githubusercontent.com/47022167/95009619-6cfacb80-065e-11eb-97a0-f1d8a790bfad.gif)
 ![9 방편집](https://user-images.githubusercontent.com/47022167/95009708-16da5800-065f-11eb-9a9e-17b323cf9cb6.gif)
 
 </details>
